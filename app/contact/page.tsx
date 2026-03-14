@@ -26,7 +26,7 @@ export default function ContactPage() {
         </h1>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         {/* Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export default function ContactPage() {
           className="space-y-4"
           onSubmit={(e) => e.preventDefault()}
         >
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#444] mb-2">
                 Name

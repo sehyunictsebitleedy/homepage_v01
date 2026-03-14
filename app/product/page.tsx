@@ -69,7 +69,7 @@ export default function ProductPage() {
               {/* Right */}
               <div className="flex-1">
                 <p className="text-sm text-[#666] leading-relaxed mb-8">{desc}</p>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {features.map((f) => (
                     <div key={f} className="flex items-center gap-2">
                       <span className="w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: accent }} />

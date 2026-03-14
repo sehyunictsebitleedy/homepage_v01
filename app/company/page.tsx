@@ -57,7 +57,7 @@ export default function CompanyPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 + i * 0.1, duration: 0.6 }}
-            className="bg-[#080808] p-8"
+            className="bg-[#080808] p-6 md:p-8"
           >
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#444] mb-4">
               {label}
@@ -80,7 +80,7 @@ export default function CompanyPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="flex items-center gap-8 py-5"
+              className="flex items-center gap-4 md:gap-8 py-5"
             >
               <span className="font-mono text-xs tracking-widest text-[#c8ff00] w-12 shrink-0">
                 {year}

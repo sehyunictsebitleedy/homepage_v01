@@ -55,7 +55,7 @@ export default function BusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-[#080808] p-8 flex flex-col gap-6"
+            className="bg-[#080808] p-6 md:p-8 flex flex-col gap-6"
           >
             <div className="flex items-start justify-between">
               <span className="font-mono text-xs text-[#333] tracking-widest">{num}</span>

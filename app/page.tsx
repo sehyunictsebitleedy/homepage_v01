@@ -66,11 +66,11 @@ export default function HomePage() {
           transition={{ duration: 0.8 }}
           className="flex items-center justify-between relative z-10"
         >
-          <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#444]">
+          <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-[#444]">
             Est. 2015 — Hwaseong, Korea
           </span>
           {/* Scramble effect on status label */}
-          <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#444]">
+          <span className="hidden sm:inline font-mono text-[12px] tracking-[0.2em] uppercase text-[#444]">
             <ScrambleText text="IT SOLUTION PROVIDER" delay={0.5} />
           </span>
         </motion.div>
@@ -87,30 +87,30 @@ export default function HomePage() {
             ✦ <ScrambleText text="LEADER OF SMARTER WORLD" delay={0.3} />
           </motion.p>
 
-          {/* SplitText character reveal — "SEHYUN" (outlined) */}
-          <h1
-            className="font-black leading-[0.9] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]"
+          {/* 전체 화면 크기 → 정상 크기로 줄어드는 scale 효과 */}
+          <motion.div
+            initial={{ x: "100vw" }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.1, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
           >
-            <SplitText
-              text="SEHYUN"
-              delay={0.35}
-              stagger={0.05}
-              className="text-outline"
-            />
-          </h1>
-
-          {/* "ICT" — filled + glitch */}
-          <h1
-            className="font-black leading-[0.9] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]"
-          >
-            <SplitText
-              text="ICT"
-              delay={0.65}
-              stagger={0.06}
-              className="text-[#c8ff00] glitch"
-              data-text="ICT"
-            />
-          </h1>
+            <h1 className="font-black leading-[0.9] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]">
+              <SplitText
+                text="SEHYUN"
+                delay={0.35}
+                stagger={0.05}
+                className="text-outline"
+              />
+            </h1>
+            <h1 className="font-black leading-[0.9] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]">
+              <SplitText
+                text="ICT"
+                delay={0.65}
+                stagger={0.06}
+                className="text-[#c8ff00] glitch"
+                data-text="ICT"
+              />
+            </h1>
+          </motion.div>
 
           {/* Sub description */}
           <motion.p
@@ -128,7 +128,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.15, duration: 0.6 }}
-            className="mt-10 flex items-center gap-4"
+            className="mt-10 flex flex-wrap items-center gap-3"
           >
             <Link
               href="/business"
