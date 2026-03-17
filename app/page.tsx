@@ -67,7 +67,7 @@ export default function HomePage() {
           className="flex items-center justify-between relative z-10"
         >
           <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-[#d1d1d1]">
-            Est. 2015 — Hwaseong, Korea
+            Est. 2013 — Hwaseong, Korea
           </span>
           {/* Scramble effect on status label */}
           <span className="hidden sm:inline font-mono text-[12px] tracking-[0.2em] uppercase text-[#d1d1d1]">

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const HISTORY = [
-  { year: "2015", event: "세현ICT 설립" },
+  { year: "2013", event: "세현ICT 설립" },
   { year: "2017", event: "2D GIS Engine 1.0 출시" },
   { year: "2019", event: "CAD View / CAD Compare 솔루션 출시" },
   { year: "2021", event: "경기도 화성시 금강펜테리움 IT타워 이전" },
