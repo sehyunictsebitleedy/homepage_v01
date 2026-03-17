@@ -39,7 +39,7 @@ export default function Navbar() {
                   className={`text-sm font-medium tracking-wider uppercase transition-colors ${
                     active
                       ? "text-[#c8ff00]"
-                      : "text-[#888] hover:text-[#f0f0f0]"
+                      : "text-[#ddd9d9] hover:text-[#f0f0f0]"
                   }`}
                 >
                   {label}
@@ -51,7 +51,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-[#888] hover:text-[#f0f0f0] transition-colors"
+          className="md:hidden text-[#ddd9d9] hover:text-[#f0f0f0] transition-colors"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -71,7 +71,7 @@ export default function Navbar() {
                     href={href}
                     onClick={() => setOpen(false)}
                     className={`block text-sm font-medium tracking-wider uppercase transition-colors ${
-                      active ? "text-[#c8ff00]" : "text-[#888] hover:text-[#f0f0f0]"
+                      active ? "text-[#c8ff00]" : "text-[#ddd9d9] hover:text-[#f0f0f0]"
                     }`}
                   >
                     {label}

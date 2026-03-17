@@ -35,7 +35,7 @@ export default function CompanyPage() {
         transition={{ delay: 0.2, duration: 0.7 }}
         className="mb-24 max-w-2xl"
       >
-        <p className="text-[clamp(1rem,2vw,1.25rem)] leading-[1.8] text-[#666]">
+        <p className="text-[clamp(1rem,2vw,1.25rem)] leading-[1.8] text-[#ededed]">
           세현ICT는{" "}
           <span className="text-[#f0f0f0] font-medium">
             Smarter IT 기술 기반의 IT Solution Provider Group
@@ -59,7 +59,7 @@ export default function CompanyPage() {
             transition={{ delay: 0.3 + i * 0.1, duration: 0.6 }}
             className="bg-[#080808] p-6 md:p-8"
           >
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#444] mb-4">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#d1d1d1] mb-4">
               {label}
             </p>
             <p className="text-lg font-semibold text-[#f0f0f0] leading-tight">{text}</p>
@@ -69,7 +69,7 @@ export default function CompanyPage() {
 
       {/* History */}
       <div>
-        <p className="font-mono text-xs tracking-[0.25em] uppercase text-[#444] mb-10">
+        <p className="font-mono text-xs tracking-[0.25em] uppercase text-[#d1d1d1] mb-10">
           — Company History
         </p>
         <div className="space-y-0 divide-y divide-[#1e1e1e]">
@@ -85,7 +85,7 @@ export default function CompanyPage() {
               <span className="font-mono text-xs tracking-widest text-[#c8ff00] w-12 shrink-0">
                 {year}
               </span>
-              <span className="text-sm text-[#888]">{event}</span>
+              <span className="text-sm text-[#ddd9d9]">{event}</span>
             </motion.div>
           ))}
         </div>

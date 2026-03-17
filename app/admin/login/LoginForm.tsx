@@ -23,20 +23,20 @@ export default function LoginForm({ action }: Props) {
           <span className="font-mono text-lg font-bold tracking-[0.2em] uppercase">
             SEHYUN<span className="text-[#c8ff00]">ICT</span>
           </span>
-          <p className="mt-2 text-xs text-[#555] tracking-widest uppercase">
+          <p className="mt-2 text-xs text-[#b5b5b5] tracking-widest uppercase">
             Admin CMS
           </p>
         </div>
 
         {/* Card */}
         <div className="border border-[#1e1e1e] bg-[#0d0d0d] p-8">
-          <h1 className="text-sm font-semibold tracking-widest uppercase text-[#888] mb-6">
+          <h1 className="text-sm font-semibold tracking-widest uppercase text-[#ddd9d9] mb-6">
             Sign In
           </h1>
 
           <form action={formAction} className="space-y-4">
             <div>
-              <label className="block text-xs text-[#555] tracking-wider uppercase mb-1.5">
+              <label className="block text-xs text-[#b5b5b5] tracking-wider uppercase mb-1.5">
                 Username
               </label>
               <input
@@ -44,13 +44,13 @@ export default function LoginForm({ action }: Props) {
                 name="username"
                 autoComplete="username"
                 required
-                className="w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#333]"
+                className="w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#a1a1a1]"
                 placeholder="admin"
               />
             </div>
 
             <div>
-              <label className="block text-xs text-[#555] tracking-wider uppercase mb-1.5">
+              <label className="block text-xs text-[#b5b5b5] tracking-wider uppercase mb-1.5">
                 Password
               </label>
               <input
@@ -58,7 +58,7 @@ export default function LoginForm({ action }: Props) {
                 name="password"
                 autoComplete="current-password"
                 required
-                className="w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#333]"
+                className="w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#a1a1a1]"
                 placeholder="••••••••"
               />
             </div>
@@ -79,7 +79,7 @@ export default function LoginForm({ action }: Props) {
           </form>
         </div>
 
-        <p className="mt-6 text-center text-xs text-[#333]">
+        <p className="mt-6 text-center text-xs text-[#a1a1a1]">
           SEHYUNICT CMS v1.0
         </p>
       </div>

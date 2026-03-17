@@ -62,43 +62,25 @@ body::before {
   color: transparent;
 }
 
-/* ── Glitch effect ─────────────────────────────── */
-@keyframes glitch-clip-1 {
-  0%,100% { clip-path: inset(0 0 96% 0); transform: translate(-3px, 0); }
-  20%     { clip-path: inset(25% 0 55% 0); transform: translate(3px, 0); }
-  40%     { clip-path: inset(60% 0 18% 0); transform: translate(-3px, 0); }
-  60%     { clip-path: inset(82% 0 4% 0);  transform: translate(3px, 0); }
-  80%     { clip-path: inset(10% 0 72% 0); transform: translate(-3px, 0); }
-}
-@keyframes glitch-clip-2 {
-  0%,100% { clip-path: inset(88% 0 0 0);  transform: translate(3px, 0); opacity: 0.7; }
-  20%     { clip-path: inset(8% 0 78% 0);  transform: translate(-3px, 0); }
-  40%     { clip-path: inset(48% 0 35% 0); transform: translate(3px, 0); }
-  60%     { clip-path: inset(18% 0 65% 0); transform: translate(-3px, 0); }
-  80%     { clip-path: inset(72% 0 8% 0);  transform: translate(3px, 0); }
+/* ── Neon glow breathe effect ──────────────────── */
+@keyframes neon-breathe {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(200, 255, 0, 0.35),
+      0 0 30px rgba(200, 255, 0, 0.15),
+      0 0 70px rgba(200, 255, 0, 0.05);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(200, 255, 0, 0.75),
+      0 0 60px rgba(200, 255, 0, 0.4),
+      0 0 120px rgba(200, 255, 0, 0.2),
+      0 0 200px rgba(200, 255, 0, 0.05);
+  }
 }
 
-.glitch {
-  position: relative;
-}
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  background: #080808;
-  font: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
-}
-.glitch::before {
-  color: #ff3cac;
-  animation: glitch-clip-1 4s infinite step-start;
-}
-.glitch::after {
-  color: #c8ff00;
-  animation: glitch-clip-2 4s infinite step-start;
-  animation-delay: 0.15s;
+.text-neon {
+  animation: neon-breathe 3.5s ease-in-out infinite;
 }
 
 /* ── Marquee animation ─────────────────────────── */

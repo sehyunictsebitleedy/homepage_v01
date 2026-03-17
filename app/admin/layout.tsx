@@ -38,7 +38,7 @@ export default async function AdminLayout({
           <span className="font-mono text-sm font-bold tracking-[0.15em] uppercase">
             SEHYUN<span className="text-[#c8ff00]">ICT</span>
           </span>
-          <span className="ml-2 text-[10px] text-[#444] tracking-widest uppercase">
+          <span className="ml-2 text-[10px] text-[#d1d1d1] tracking-widest uppercase">
             CMS
           </span>
         </div>
@@ -49,7 +49,7 @@ export default async function AdminLayout({
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-wider uppercase text-[#555] hover:text-[#f0f0f0] hover:bg-[#111] transition-colors rounded-sm group"
+              className="flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-wider uppercase text-[#b5b5b5] hover:text-[#f0f0f0] hover:bg-[#111] transition-colors rounded-sm group"
             >
               <Icon size={14} className="group-hover:text-[#c8ff00] transition-colors" />
               {label}
@@ -62,7 +62,7 @@ export default async function AdminLayout({
           <form action={logoutAction}>
             <button
               type="submit"
-              className="w-full flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-wider uppercase text-[#555] hover:text-[#ff3cac] transition-colors rounded-sm"
+              className="w-full flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-wider uppercase text-[#b5b5b5] hover:text-[#ff3cac] transition-colors rounded-sm"
             >
               <LogOut size={14} />
               Logout
@@ -75,7 +75,7 @@ export default async function AdminLayout({
       <div className="flex-1 flex flex-col min-w-0">
         {/* Topbar */}
         <header className="h-14 border-b border-[#1e1e1e] flex items-center px-6">
-          <span className="text-xs text-[#444] tracking-widest uppercase">
+          <span className="text-xs text-[#d1d1d1] tracking-widest uppercase">
             Admin Panel
           </span>
         </header>

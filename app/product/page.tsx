@@ -59,21 +59,21 @@ export default function ProductPage() {
             <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
               {/* Left */}
               <div className="md:w-80 shrink-0">
-                <span className="font-mono text-xs text-[#333] tracking-widest block mb-4">{id}</span>
+                <span className="font-mono text-xs text-[#a1a1a1] tracking-widest block mb-4">{id}</span>
                 <h2 className="text-2xl font-black tracking-tight mb-2" style={{ color: accent }}>
                   {name}
                 </h2>
-                <p className="text-sm text-[#555]">{tagline}</p>
+                <p className="text-sm text-[#b5b5b5]">{tagline}</p>
               </div>
 
               {/* Right */}
               <div className="flex-1">
-                <p className="text-sm text-[#666] leading-relaxed mb-8">{desc}</p>
+                <p className="text-sm text-[#ededed] leading-relaxed mb-8">{desc}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {features.map((f) => (
                     <div key={f} className="flex items-center gap-2">
                       <span className="w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: accent }} />
-                      <span className="text-xs text-[#555]">{f}</span>
+                      <span className="text-xs text-[#b5b5b5]">{f}</span>
                     </div>
                   ))}
                 </div>

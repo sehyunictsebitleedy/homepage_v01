@@ -66,11 +66,11 @@ export default function HomePage() {
           transition={{ duration: 0.8 }}
           className="flex items-center justify-between relative z-10"
         >
-          <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-[#444]">
+          <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-[#d1d1d1]">
             Est. 2015 — Hwaseong, Korea
           </span>
           {/* Scramble effect on status label */}
-          <span className="hidden sm:inline font-mono text-[12px] tracking-[0.2em] uppercase text-[#444]">
+          <span className="hidden sm:inline font-mono text-[12px] tracking-[0.2em] uppercase text-[#d1d1d1]">
             <ScrambleText text="IT SOLUTION PROVIDER" delay={0.5} />
           </span>
         </motion.div>
@@ -106,8 +106,7 @@ export default function HomePage() {
                 text="ICT"
                 delay={0.65}
                 stagger={0.06}
-                className="text-[#c8ff00] glitch"
-                data-text="ICT"
+                className="text-[#c8ff00] text-neon"
               />
             </h1>
           </motion.div>
@@ -117,7 +116,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
-            className="mt-8 max-w-md text-sm leading-relaxed text-[#666]"
+            className="mt-8 max-w-md text-sm leading-relaxed text-[#ededed]"
           >
             Smarter IT 기술 기반의 IT Solution Provider Group.
             <br />
@@ -139,7 +138,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/contact"
-              className="flex items-center gap-2 border border-[#1e1e1e] text-[#888] text-xs font-medium tracking-widest uppercase px-6 py-3 hover:border-[#444] hover:text-[#f0f0f0] transition-colors"
+              className="flex items-center gap-2 border border-[#1e1e1e] text-[#ddd9d9] text-xs font-medium tracking-widest uppercase px-6 py-3 hover:border-[#444] hover:text-[#f0f0f0] transition-colors"
             >
               Contact Us
             </Link>
@@ -157,9 +156,9 @@ export default function HomePage() {
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
           >
-            <ArrowDown size={14} className="text-[#444]" />
+            <ArrowDown size={14} className="text-[#d1d1d1]" />
           </motion.div>
-          <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#444]">
+          <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#d1d1d1]">
             Scroll
           </span>
         </motion.div>
@@ -186,7 +185,7 @@ export default function HomePage() {
           <motion.div variants={fadeUp} custom={1}>
             <Link
               href="/product"
-              className="group flex items-center gap-1 text-xs text-[#555] hover:text-[#f0f0f0] transition-colors font-mono tracking-wider uppercase"
+              className="group flex items-center gap-1 text-xs text-[#b5b5b5] hover:text-[#f0f0f0] transition-colors font-mono tracking-wider uppercase"
             >
               All Products
               <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -209,19 +208,19 @@ export default function HomePage() {
                 className="group flex flex-col justify-between gap-8 bg-[#080808] p-8 h-full hover:bg-[#0d0d0d] transition-colors"
               >
                 <div className="flex items-start justify-between">
-                  <span className="font-mono text-xs text-[#333] tracking-widest">
+                  <span className="font-mono text-xs text-[#a1a1a1] tracking-widest">
                     {num}
                   </span>
                   <ArrowUpRight
                     size={14}
-                    className="text-[#333] group-hover:text-[#c8ff00] transition-colors"
+                    className="text-[#a1a1a1] group-hover:text-[#c8ff00] transition-colors"
                   />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold tracking-tight text-[#f0f0f0] mb-3 group-hover:text-[#c8ff00] transition-colors">
                     {title}
                   </h3>
-                  <p className="text-sm text-[#555] leading-relaxed">{desc}</p>
+                  <p className="text-sm text-[#b5b5b5] leading-relaxed">{desc}</p>
                 </div>
               </Link>
             </motion.div>
@@ -253,7 +252,7 @@ export default function HomePage() {
           >
             <Link
               href="/company"
-              className="group inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#555] hover:text-[#f0f0f0] transition-colors border-b border-[#1e1e1e] pb-1 hover:border-[#444]"
+              className="group inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#b5b5b5] hover:text-[#f0f0f0] transition-colors border-b border-[#1e1e1e] pb-1 hover:border-[#444]"
             >
               About Company
               <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -292,10 +291,10 @@ export default function HomePage() {
 
         {/* footer info */}
         <div className="mt-16 pt-8 border-t border-[#1e1e1e] flex flex-col md:flex-row justify-between gap-4">
-          <span className="font-mono text-xs text-[#333] tracking-wider">
+          <span className="font-mono text-xs text-[#a1a1a1] tracking-wider">
             © 2015 SEHYUN ICT. All rights reserved.
           </span>
-          <span className="font-mono text-xs text-[#333] tracking-wider">
+          <span className="font-mono text-xs text-[#a1a1a1] tracking-wider">
             Hwaseong, Gyeonggi — 070-4047-8955
           </span>
         </div>

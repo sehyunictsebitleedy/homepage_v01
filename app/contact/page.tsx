@@ -40,10 +40,10 @@ export default function ContactPage() {
                 <Icon size={13} className="text-[#c8ff00]" />
               </div>
               <div>
-                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#444] mb-1">
+                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#d1d1d1] mb-1">
                   {label}
                 </p>
-                <p className="text-sm text-[#888]">{value}</p>
+                <p className="text-sm text-[#ddd9d9]">{value}</p>
               </div>
             </div>
           ))}
@@ -59,7 +59,7 @@ export default function ContactPage() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#444] mb-2">
+              <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#d1d1d1] mb-2">
                 Name
               </label>
               <input
@@ -69,7 +69,7 @@ export default function ContactPage() {
               />
             </div>
             <div>
-              <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#444] mb-2">
+              <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#d1d1d1] mb-2">
                 Company
               </label>
               <input
@@ -80,7 +80,7 @@ export default function ContactPage() {
             </div>
           </div>
           <div>
-            <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#444] mb-2">
+            <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#d1d1d1] mb-2">
               Email
             </label>
             <input
@@ -90,7 +90,7 @@ export default function ContactPage() {
             />
           </div>
           <div>
-            <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#444] mb-2">
+            <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#d1d1d1] mb-2">
               Message
             </label>
             <textarea

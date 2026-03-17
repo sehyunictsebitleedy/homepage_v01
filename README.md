@@ -29,7 +29,7 @@ homepage_v01/
 ├── app/
 │   ├── layout.tsx          # 루트 레이아웃 (Navbar 포함)
 │   ├── page.tsx            # 홈페이지
-│   ├── globals.css         # 전역 스타일 (grain, glitch, outline text)
+│   ├── globals.css         # 전역 스타일 (grain, neon-glow, outline text)
 │   ├── company/page.tsx    # 회사 소개
 │   ├── business/page.tsx   # 사업 영역
 │   ├── project/page.tsx    # 주요 프로젝트
@@ -61,10 +61,19 @@ homepage_v01/
 | `--accent-2` | `#ff3cac` | 핑크 포인트 |
 | `--border` | `#1e1e1e` | 경계선 |
 
+### 텍스트 컬러 팔레트 (Tailwind 유틸리티)
+| 클래스 | 색상값 | 용도 |
+|---|---|---|
+| `text-[#ededed]` | `#ededed` | 본문 설명 (밝음) |
+| `text-[#ddd9d9]` | `#ddd9d9` | 보조 텍스트 (밝음) |
+| `text-[#d1d1d1]` | `#d1d1d1` | 레이블 / 메타 |
+| `text-[#b5b5b5]` | `#b5b5b5` | 설명 / 서브 |
+| `text-[#a1a1a1]` | `#a1a1a1` | 넘버링 / 약한 강조 |
+
 ### 타이포그래피 효과
 - **SplitText** — 글자 단위 마스크 슬라이드 reveal
 - **ScrambleText** — 랜덤 문자 → 실제 텍스트 decode 효과
-- **`.glitch`** — clip-path 기반 RGB 분리 글리치 (::before `#ff3cac`, ::after `#c8ff00`)
+- **`.text-neon`** — 네온 글로우 브리딩 애니메이션 (3.5s ease-in-out, `#c8ff00` glow)
 - **`.text-outline`** — `-webkit-text-stroke` 아웃라인 텍스트
 
 ### 텍스처

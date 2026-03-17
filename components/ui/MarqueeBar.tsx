@@ -15,7 +15,7 @@ export default function MarqueeBar() {
       <div className="flex animate-[marquee_20s_linear_infinite] whitespace-nowrap w-max">
         {[...ITEMS, ...ITEMS].map((item, i) => (
           <span key={i} className="flex items-center gap-6 px-6">
-            <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#444]">
+            <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#d1d1d1]">
               {item}
             </span>
             <span className="text-[#c8ff00] text-xs">✦</span>

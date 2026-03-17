@@ -14,7 +14,7 @@ const PROJECTS = [
 const TAG_COLOR: Record<string, string> = {
   GIS: "text-[#c8ff00] border-[#c8ff00]/30",
   CAD: "text-[#ff3cac] border-[#ff3cac]/30",
-  IT:  "text-[#888] border-[#444]",
+  IT:  "text-[#ddd9d9] border-[#444]",
 };
 
 export default function ProjectPage() {
@@ -50,13 +50,13 @@ export default function ProjectPage() {
               >
                 {tag}
               </span>
-              <span className="text-sm md:text-base font-medium text-[#888] group-hover:text-[#f0f0f0] transition-colors truncate">
+              <span className="text-sm md:text-base font-medium text-[#ddd9d9] group-hover:text-[#f0f0f0] transition-colors truncate">
                 {title}
               </span>
             </div>
             <div className="flex items-center gap-6 shrink-0 ml-4">
-              <span className="hidden md:block text-xs text-[#444] font-mono">{client}</span>
-              <span className="font-mono text-xs text-[#333]">{year}</span>
+              <span className="hidden md:block text-xs text-[#d1d1d1] font-mono">{client}</span>
+              <span className="font-mono text-xs text-[#a1a1a1]">{year}</span>
             </div>
           </motion.div>
         ))}
