@@ -1,0 +1,10 @@
+{
+  "projects": [
+    { "title": "지자체 GIS 통합 플랫폼 구축", "client": "경기도 A시", "year": "2023", "tag": "GIS" },
+    { "title": "CAD 도면 관리 시스템 개발", "client": "건설사 B사", "year": "2023", "tag": "CAD" },
+    { "title": "공간정보 시스템 고도화", "client": "공공기관 C", "year": "2022", "tag": "GIS" },
+    { "title": "CAD Compare 도입 컨설팅", "client": "엔지니어링 D사", "year": "2022", "tag": "CAD" },
+    { "title": "IT 인프라 전환 프로젝트", "client": "제조사 E사", "year": "2021", "tag": "IT" },
+    { "title": "GIS 기반 시설물 관리 시스템", "client": "지자체 F", "year": "2021", "tag": "GIS" }
+  ]
+}

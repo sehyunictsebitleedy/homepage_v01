@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/ui/Navbar";
+import { readData } from "@/lib/data";
+import type { SiteData } from "@/lib/types";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,10 +15,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "SEHYUN ICT",
-  description: "sehyunict.com — homepage renewal",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const site = readData<SiteData>("site.json");
+  return {
+    title: site.seo.title,
+    description: site.seo.description,
+  };
+}
 
 export default function RootLayout({
   children,
