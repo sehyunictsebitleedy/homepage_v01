@@ -54,6 +54,15 @@ export interface ContactData {
   address: string;
 }
 
+export interface PartnerItem {
+  id: string;
+  name: string;
+}
+
+export interface PartnersData {
+  partners: PartnerItem[];
+}
+
 // ── 사이트 설정 ───────────────────────────────────────────
 
 export interface SiteData {
@@ -100,8 +109,10 @@ export interface HomeData {
     description: string;
     btn1Label: string;
     btn1Href: string;
+    btn1Target: "_self" | "_blank";
     btn2Label: string;
     btn2Href: string;
+    btn2Target: "_self" | "_blank";
   };
   services: HomeServiceItem[];
   about: {

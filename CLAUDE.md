@@ -9,7 +9,9 @@ http://sehyunict.com 홈페이지 리뉴얼
 - 전체 배경: 딥 블랙 (`#080808`)
 - 포인트 컬러: 라임 `#c8ff00` / 핑크 `#ff3cac`
 - grain 노이즈 텍스처 오버레이 (SVG fractalNoise, body::before)
-- 타이포그래피 효과: SplitText (글자 reveal), ScrambleText (decode), glitch, outline text
+- 타이포그래피 효과: SplitText (글자 reveal), ScrambleText (decode), `.text-glitch` (크로마틱 글리치), `.text-neon` (네온 글로우), outline text
+- 인터랙션: 커스텀 커서 (Cursor.tsx), 카드 hover lift (.sebit-card, .card-hover), 링크 언더라인 (.link-underline)
+- Hero 인트로 오버레이: 전체화면 타이틀 → 스크롤/클릭 시 축소 전환 (AnimatePresence)
 
 ## 기술 스택
 
@@ -49,6 +51,7 @@ data/                     ← JSON 콘텐츠 파일 (CMS 단일 데이터 소스
   project.json            ← 주요 프로젝트
   product.json            ← 제품 소개
   contact.json            ← 연락처
+  partners.json           ← 협력사 목록 (마퀴 배너용, PartnerItem[])
 
 app/
   layout.tsx              ← 루트 레이아웃 (SEO generateMetadata → site.json)
@@ -68,12 +71,13 @@ app/
       home/               ← 홈페이지 섹션 관리 (HomeForm + actions.ts)
       nav/                ← 내비게이션 관리 (NavForm + actions.ts)
       company/            ← 각 페이지 *Form.tsx + actions.ts 패턴
-      business/ project/ product/ contact/ settings/
+      business/ project/ product/ contact/ settings/ partners/
 
 components/ui/
   Navbar.tsx              ← 서버 컴포넌트 (nav.json + site.json 읽기)
-  NavbarContent.tsx       ← 클라이언트 컴포넌트 (pathname, 햄버거 메뉴)
-  MarqueeBar.tsx          ← 키워드 마퀴 (CSS animation)
+  NavbarContent.tsx       ← 클라이언트 컴포넌트 (pathname, 햄버거 메뉴, SEbit 버튼)
+  MarqueeBar.tsx          ← 협력사 마퀴 (partners: string[] props 기반)
+  Cursor.tsx              ← 커스텀 커서 (닷+링, spring physics, 터치 기기 숨김)
   SplitText.tsx           ← 글자별 overflow:hidden 마스크 reveal
   ScrambleText.tsx        ← 랜덤 문자 → 실제 텍스트 decode
 
@@ -113,5 +117,9 @@ proxy.ts                  ← /admin/* 라우트 보호
 - `.env` 파일은 절대 커밋하지 마세요
 - `/prisma`, Stripe, Cloudinary는 현재 미사용 — 관련 코드 추가 금지
 - `proxy.ts`의 export 함수명은 반드시 `proxy` (Next.js 16 규칙)
-- 타이포 효과 컴포넌트(SplitText, ScrambleText)는 `"use client"` 필수
+- 타이포 효과 컴포넌트(SplitText, ScrambleText, Cursor)는 `"use client"` 필수
 - 새 콘텐츠 타입 추가 시: `lib/types.ts` → `data/*.json` → 서버 컴포넌트 → 어드민 폼 + actions.ts 순서로 작업
+- `Cursor.tsx`는 `app/layout.tsx`에 등록, `body`에 `cursor-none` 클래스 필수
+- `HomeData.hero`의 `btn1Target` / `btn2Target`은 `"_self" | "_blank"` 유니온 타입 — `<a>` 태그 `target` 속성에 직접 전달
+- `MarqueeBar`는 `partners: string[]` props를 받아 렌더링 — `page.tsx`에서 `partners.json` 읽어 전달
+- `.text-glitch` 클래스는 `data-text` 속성 필수: `<span className="text-glitch" data-text={text}>{text}</span>`

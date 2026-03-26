@@ -57,13 +57,37 @@ export default function HomeForm({ initial }: { initial: HomeData }) {
         </div>
         <div><label className={label}>태그라인</label><input className={input} value={data.hero.tagline} onChange={(e) => setHero("tagline", e.target.value)} /></div>
         <div><label className={label}>설명 (줄바꿈: \n)</label><textarea rows={2} className={input + " resize-none"} value={data.hero.description} onChange={(e) => setHero("description", e.target.value)} /></div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-[1fr_1fr_auto] gap-3 items-end">
           <div><label className={label}>버튼1 텍스트</label><input className={input} value={data.hero.btn1Label} onChange={(e) => setHero("btn1Label", e.target.value)} /></div>
           <div><label className={label}>버튼1 링크</label><input className={input} value={data.hero.btn1Href} onChange={(e) => setHero("btn1Href", e.target.value)} /></div>
+          <div>
+            <label className={label}>창</label>
+            <div className="flex border border-[#1e1e1e] overflow-hidden">
+              {(["_self", "_blank"] as const).map((t) => (
+                <button key={t} type="button"
+                  onClick={() => setHero("btn1Target", t)}
+                  className={`px-2.5 py-2 text-[10px] font-mono tracking-widest uppercase transition-colors ${data.hero.btn1Target === t ? "bg-[#c8ff00] text-[#080808]" : "bg-[#080808] text-[#555] hover:text-[#a1a1a1]"}`}>
+                  {t === "_self" ? "현재" : "새창"}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-[1fr_1fr_auto] gap-3 items-end">
           <div><label className={label}>버튼2 텍스트</label><input className={input} value={data.hero.btn2Label} onChange={(e) => setHero("btn2Label", e.target.value)} /></div>
           <div><label className={label}>버튼2 링크</label><input className={input} value={data.hero.btn2Href} onChange={(e) => setHero("btn2Href", e.target.value)} /></div>
+          <div>
+            <label className={label}>창</label>
+            <div className="flex border border-[#1e1e1e] overflow-hidden">
+              {(["_self", "_blank"] as const).map((t) => (
+                <button key={t} type="button"
+                  onClick={() => setHero("btn2Target", t)}
+                  className={`px-2.5 py-2 text-[10px] font-mono tracking-widest uppercase transition-colors ${data.hero.btn2Target === t ? "bg-[#c8ff00] text-[#080808]" : "bg-[#080808] text-[#555] hover:text-[#a1a1a1]"}`}>
+                  {t === "_self" ? "현재" : "새창"}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

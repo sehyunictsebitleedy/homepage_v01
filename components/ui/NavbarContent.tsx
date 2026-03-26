@@ -36,7 +36,7 @@ export default function NavbarContent({
               <li key={href}>
                 <Link
                   href={href}
-                  className={`text-sm font-medium tracking-wider uppercase transition-colors ${
+                  className={`link-underline text-sm font-medium tracking-wider uppercase transition-colors ${
                     active ? "text-[#c8ff00]" : "text-[#ddd9d9] hover:text-[#f0f0f0]"
                   }`}
                 >
@@ -47,13 +47,29 @@ export default function NavbarContent({
           })}
         </ul>
 
-        <button
-          className="md:hidden text-[#ddd9d9] hover:text-[#f0f0f0] transition-colors"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-3">
+          {/* SEbit 브랜드 버튼 */}
+          <a
+            href="http://sebit.co.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center gap-1.5 relative group overflow-hidden border border-[#c8ff00]/40 px-3.5 py-1.5 text-[11px] font-mono font-bold tracking-[0.2em] uppercase text-[#c8ff00] hover:text-[#080808] transition-colors duration-300"
+          >
+            {/* 슬라이드 fill 효과 */}
+            <span className="absolute inset-0 bg-[#c8ff00] translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+            <span className="relative z-10">
+              SE<span className="opacity-60">bit</span>
+            </span>
+          </a>
+
+          <button
+            className="md:hidden text-[#ddd9d9] hover:text-[#f0f0f0] transition-colors"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       {open && (
@@ -75,6 +91,17 @@ export default function NavbarContent({
                 </li>
               );
             })}
+            <li className="pt-2 border-t border-[#1e1e1e]">
+              <a
+                href="http://sebit.co.kr"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center gap-2 text-[11px] font-mono font-bold tracking-[0.2em] uppercase text-[#c8ff00]"
+              >
+                SEbit Brand Site
+              </a>
+            </li>
           </ul>
         </div>
       )}

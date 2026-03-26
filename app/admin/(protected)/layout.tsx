@@ -13,6 +13,7 @@ import {
   Home,
   Navigation,
   Settings,
+  Users,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -26,6 +27,7 @@ const NAV_ITEMS = [
   { label: "Project", href: "/admin/project", icon: FolderKanban },
   { label: "Product", href: "/admin/product", icon: Package },
   { label: "Contact", href: "/admin/contact", icon: Phone },
+  { label: "Partners", href: "/admin/partners", icon: Users },
   { label: "─ 시스템", href: "", icon: null },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
