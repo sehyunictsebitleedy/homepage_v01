@@ -47,11 +47,9 @@ export default function HomeContent({
 
   useEffect(() => {
     const dismiss = () => setIntro(false);
-    window.addEventListener("wheel", dismiss, { once: true, passive: true });
     window.addEventListener("click", dismiss, { once: true });
     window.addEventListener("touchstart", dismiss, { once: true, passive: true });
     return () => {
-      window.removeEventListener("wheel", dismiss);
       window.removeEventListener("click", dismiss);
       window.removeEventListener("touchstart", dismiss);
     };

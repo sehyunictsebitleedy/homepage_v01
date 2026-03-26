@@ -20,7 +20,7 @@ export default function ProductContent({ data }: { data: ProductData }) {
         </h1>
       </motion.div>
 
-      <div className="space-y-px bg-[#1e1e1e]">
+      <div className="space-y-2">
         {data.products.map(({ id, name, tagline, desc, features, accent }, i) => (
           <motion.div
             key={id}
@@ -28,7 +28,7 @@ export default function ProductContent({ data }: { data: ProductData }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ delay: i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-[#080808] p-8 md:p-12"
+            className="sebit-card bg-[#080808] border border-[#1e1e1e] p-8 md:p-12"
           >
             <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
               <div className="md:w-80 shrink-0">

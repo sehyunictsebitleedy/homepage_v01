@@ -180,6 +180,15 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-03-26 (2) — 인트로·카드 hover·Business 콘텐츠 개선
+
+- 인트로 오버레이 dismiss 조건: 스크롤(`wheel`) 제거, 클릭·터치만 유지
+- Product 카드에 `.sebit-card` hover 효과 적용 (SEbit 카드와 동일: accent 바 + shine + glow)
+  - 카드 래퍼 `space-y-px bg-[#1e1e1e]` → `space-y-2` 변경 (hover lift 클리핑 방지)
+- Business 03번 "IT Consulting" → "SEbit Brand" 콘텐츠로 교체
+
+---
+
 ### 2026-03-26 — UI/UX 전면 개선 & CMS 확장
 
 #### Hero 섹션 재설계
