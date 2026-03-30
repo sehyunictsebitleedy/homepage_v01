@@ -180,6 +180,40 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-03-30 — 콘텐츠 고도화 & Project 전면 재구성
+
+#### 홈페이지 (HomeContent)
+- 인트로 오버레이: 클릭/터치 이벤트 제거 → **3초 타이머 자동 전환**으로 변경
+- SEbit 브랜드 섹션을 홈페이지 **최상단**으로 이동 (MARQUEE 바로 아래)
+- h2 폰트 크기 **1.5배** 확대 (`clamp(2rem,5vw,4rem)` → `clamp(3rem,7.5vw,6rem)`)
+- 섹션 상하 패딩 축소 (`py-24` → `py-14`), h2 하단 마진 축소 (`mb-14` → `mb-8`)
+- SEbit 카드 설명 문장 마침표 기준 **단락 분리** 렌더링
+- `SplitText` (한 글자씩 애니메이션) 제거 → 단락 단위 fade 애니메이션으로 통일
+
+#### 회사 연혁 (Company)
+- 연혁 데이터 구조 변경: `event: string` → `events: string[]` (연도당 다중 내용 지원)
+- `CompanyForm`: 연도 블록 내 내용 항목 추가·삭제 UI
+- `CompanyContent`: 같은 연도의 여러 내용 세로 나열 렌더링
+- `company.json`: 2013~2018년 실제 이력 데이터 대폭 보강
+
+#### 프로젝트 (Project) 전면 재구성
+- 데이터 구조 변경: `projects[]` → `years[{ year, projects[] }]` 연도별 그룹
+- **연도 탭 바** 추가 — sticky 고정, 클릭 시 해당 연도로 smooth scroll
+- **펼치기/접기** 기능 — 2025년(최신)은 항상 펼침, 나머지는 클릭으로 토글
+- **2열 그리드** 레이아웃 — 모든 연도 공통 적용
+- `project.json`: sehyunict.com 실제 데이터 기준 **2014~2025년 181건** 전체 반영
+- `ProjectForm`: 연도 단위 관리 UI (연도·프로젝트 추가/삭제)
+- `lib/types.ts`: `ProjectItem`, `ProjectYear`, `HistoryItem` 타입 재정의
+
+#### Business
+- 03번 "IT Consulting" → **"SEbit Brand"** 콘텐츠로 교체
+
+#### 어드민 (Company)
+- 연혁 연도 입력창 너비 최적화 (`w-full` 제거, `w-16` 고정)
+- 내용 입력창 `flex-1 min-w-0` 적용 (레이아웃 깨짐 수정)
+
+---
+
 ### 2026-03-26 (2) — 인트로·카드 hover·Business 콘텐츠 개선
 
 - 인트로 오버레이 dismiss 조건: 스크롤(`wheel`) 제거, 클릭·터치만 유지
