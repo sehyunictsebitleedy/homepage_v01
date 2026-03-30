@@ -276,7 +276,7 @@ export default function HomeContent({
           </a>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1e1e1e]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#1e1e1e]">
           {[
             { name: "SEbit Nexus", category: "iPaaS", desc: "AI Flow Builder 기반의 통합 플랫폼. API Gateway, DLQ Manager로 엔터프라이즈 연동을 자동화합니다.", accent: "#c8ff00" },
             { name: "SEbit AI", category: "LLM", desc: "Context Engineering 기술로 구현한 AI 에이전트. Agen-D, Agen-Sight, Agen-Talk 시리즈.", accent: "#ff3cac" },
@@ -304,7 +304,7 @@ export default function HomeContent({
                 <ArrowUpRight size={13} className="text-[#2a2a2a] group-hover:text-[#444] transition-colors" />
               </div>
               <div>
-                <h3 className="text-base font-bold tracking-tight mb-2 transition-colors" style={{ color: accent }}>
+                <h3 className="text-xl font-bold tracking-tight mb-2 transition-colors" style={{ color: accent }}>
                   {name}
                 </h3>
                 <div className="flex flex-col gap-1">

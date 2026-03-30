@@ -114,7 +114,7 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
                   {year}
                 </span>
                 <div className="flex-1 h-px bg-[#1e1e1e]" />
-                <span className="font-mono text-[10px] text-[#333] tracking-widest">
+                <span className="font-mono text-[10px] text-[#666] tracking-widest">
                   {projects.length} PJT
                 </span>
                 {year !== CURRENT_YEAR && (

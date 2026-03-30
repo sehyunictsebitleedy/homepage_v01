@@ -22,15 +22,28 @@ export default function ProductContent({ data }: { data: ProductData }) {
             OUR<br />PRODUCTS
           </h1>
         </div>
+      </motion.div>
 
-        {/* PDF 다운로드 버튼 */}
+      {/* PDF 배너 */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+        className="mb-10 border border-[#1e1e1e] p-8 flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <div>
+          <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-2">SmartGeoKit ServiceLine</p>
+          <p className="text-base font-semibold text-[#f0f0f0]">전체 제품 소개서를 PDF로 다운받으세요.</p>
+          <p className="text-xs text-[#a1a1a1] mt-1">SmartGeoKit 8종 제품군 상세 사양 및 적용 사례 포함</p>
+        </div>
         <a
           href="/SmartGeoKit_catalog.pdf"
           download
-          className="group inline-flex items-center gap-3 border border-[#1e1e1e] hover:border-[#c8ff00] text-[#ddd9d9] hover:text-[#c8ff00] text-xs font-bold tracking-widest uppercase px-6 py-4 transition-all shrink-0"
+          className="group flex items-center gap-3 bg-[#c8ff00] text-[#080808] text-xs font-bold tracking-widest uppercase px-8 py-4 hover:bg-[#d4ff33] transition-colors shrink-0"
         >
           <FileDown size={15} className="group-hover:translate-y-0.5 transition-transform" />
-          제품 카탈로그 PDF
+          PDF 다운로드
+          <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </a>
       </motion.div>
 
@@ -79,29 +92,7 @@ export default function ProductContent({ data }: { data: ProductData }) {
         ))}
       </div>
 
-      {/* 하단 PDF 배너 */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mt-16 border border-[#1e1e1e] p-8 flex flex-col md:flex-row items-center justify-between gap-6"
-      >
-        <div>
-          <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-2">SmartGeoKit</p>
-          <p className="text-base font-semibold text-[#f0f0f0]">전체 제품 소개서를 PDF로 다운받으세요.</p>
-          <p className="text-xs text-[#a1a1a1] mt-1">SmartGeoKit 8종 제품군 상세 사양 및 적용 사례 포함</p>
-        </div>
-        <a
-          href="/SmartGeoKit_catalog.pdf"
-          download
-          className="group flex items-center gap-3 bg-[#c8ff00] text-[#080808] text-xs font-bold tracking-widest uppercase px-8 py-4 hover:bg-[#d4ff33] transition-colors shrink-0"
-        >
-          <FileDown size={15} className="group-hover:translate-y-0.5 transition-transform" />
-          PDF 다운로드
-          <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </a>
-      </motion.div>
+      
     </div>
   );
 }
