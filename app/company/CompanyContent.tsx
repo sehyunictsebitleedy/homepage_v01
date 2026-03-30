@@ -13,7 +13,7 @@ export default function CompanyContent({ data }: { data: CompanyData }) {
         className="mb-20"
       >
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-4">
-          ✦ 01 — Company
+          ✦ Company
         </p>
         <h1 className="font-black tracking-[-0.04em] leading-[0.9] text-[clamp(3rem,8vw,7rem)] text-[#f0f0f0]">
           WHO<br />WE ARE

@@ -14,7 +14,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
         className="mb-20"
       >
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-4">
-          ✦ 02 — Business
+          ✦ Business
         </p>
         <h1 className="font-black tracking-[-0.04em] leading-[0.9] text-[clamp(3rem,8vw,7rem)] text-[#f0f0f0]">
           WHAT<br />WE DO
@@ -22,7 +22,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
-        {data.areas.map(({ num, title, desc, tags }, i) => (
+        {data.areas.map(({ num, title, accent, desc, tags }, i) => (
           <motion.div
             key={num}
             initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
               <ArrowUpRight size={14} className="text-[#2a2a2a]" />
             </div>
             <div>
-              <h3 className="text-xl font-bold tracking-tight text-[#f0f0f0] mb-3">{title}</h3>
+              <h3 className="text-xl font-bold tracking-tight mb-3" style={{ color: accent }}>{title}</h3>
               <p className="text-sm text-[#b5b5b5] leading-relaxed">{desc}</p>
             </div>
             <div className="flex flex-wrap gap-2 mt-auto">

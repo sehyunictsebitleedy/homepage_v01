@@ -16,6 +16,7 @@ export interface CompanyData {
 export interface BusinessArea {
   num: string;
   title: string;
+  accent: string;
   desc: string;
   tags: string[];
 }
@@ -46,6 +47,7 @@ export interface Product {
   desc: string;
   features: string[];
   accent: string;
+  cert?: string;
 }
 
 export interface ProductData {

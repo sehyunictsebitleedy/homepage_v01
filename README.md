@@ -180,6 +180,33 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-03-30 (2) — 콘텐츠 전면 업데이트 & UI 개선
+
+#### Product 페이지
+- `product.json`: sehyunict.com 기준 SmartGeoKit **8개 제품** 실제 데이터로 전면 교체
+  - 2D GIS Engine, 3D GIS Engine, CAD View, CAD Compare, Layout Manager, Xler, AR, RMCP
+  - CAD View·Compare에 **GS인증 1등급** cert 뱃지 추가
+- `ProductContent`: 헤더 우측 + 하단에 **PDF 카탈로그 다운로드 버튼** 추가
+- `lib/types.ts`: `Product`에 `cert?: string` 선택 필드 추가
+
+#### Company 페이지
+- `company.json`: sehyunict.com 기준 **2019~2025년 연혁** 추가 (기존 2013~2018 보완)
+- 연혁 정렬 **최신순(2025→2013)** 으로 변경
+
+#### Business 페이지
+- `business.json`: 4개 카드에 `accent` 컬러 필드 추가
+  - GIS 솔루션 `#c8ff00` / CAD 솔루션 `#ff3cac` / SEbit Brand `#00f0ff` / 시스템 구축 `#ddd9d9`
+- `BusinessContent`: 카드 타이틀에 accent 색상 적용
+- `lib/types.ts`: `BusinessArea`에 `accent: string` 필드 추가
+
+#### Project 페이지
+- 긴 프로젝트명 축약: `삼성전자 수원 GIS솔루션/반도체 도면관리/SDC Layout Manager 솔루션 유지보수` → `GIS솔루션/도면관리/Layout Manager 유지보수` (5개 연도 일괄 적용)
+
+#### 전체 페이지 공통
+- 페이지 상단 레이블에서 숫자 제거: `✦ 01 — Company` → `✦ Company` (5개 페이지 일괄)
+
+---
+
 ### 2026-03-30 — 콘텐츠 고도화 & Project 전면 재구성
 
 #### 홈페이지 (HomeContent)

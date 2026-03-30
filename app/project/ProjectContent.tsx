@@ -54,7 +54,7 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
         className="mb-12"
       >
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-4">
-          ✦ 03 — Project
+          ✦ Project
         </p>
         <h1 className="font-black tracking-[-0.04em] leading-[0.9] text-[clamp(3rem,8vw,7rem)] text-[#f0f0f0]">
           OUR<br />WORK
@@ -136,7 +136,7 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px">
                       {projects.map(({ title, client, tag }, i) => (
                         <div
                           key={i}

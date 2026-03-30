@@ -2,27 +2,69 @@
   "products": [
     {
       "id": "01",
-      "name": "2D GIS Engine",
-      "tagline": "고성능 공간 데이터 시각화 엔진",
-      "desc": "독자 개발한 2D GIS 엔진으로 대용량 공간 데이터를 빠르고 정확하게 렌더링합니다. 다양한 좌표계를 지원하며 웹 환경에 최적화되어 있습니다.",
-      "features": ["레이어 기반 렌더링", "실시간 공간 쿼리", "다중 좌표계 지원", "대용량 데이터 처리"],
+      "name": "SmartGeoKit 2D GIS Engine",
+      "tagline": "HTML5 Canvas 기반 웹/모바일 GIS 이미지 엔진",
+      "desc": "HTML5 Canvas 기술을 활용한 웹·모바일 GIS 이미지 엔진입니다. Windows·Linux·Unix·Android 크로스 플랫폼을 지원하며, CAD/SHP 파일 변환, 레이어 관리, 위성 이미지 연동 등 공간 데이터를 빠르고 정확하게 렌더링합니다.",
+      "features": ["HTML5 Canvas 고속 렌더링", "크로스 브라우저·플랫폼 지원", "CAD / SHP 파일 변환", "레이어 관리 및 위성 이미지 연동", "줌·거리·면적 측정", "다중 좌표계 지원"],
       "accent": "#c8ff00"
     },
     {
       "id": "02",
-      "name": "CAD Compare",
-      "tagline": "CAD 도면 변경사항 자동 감지",
-      "desc": "두 개의 CAD 도면을 자동으로 비교 분석하여 변경된 요소를 시각적으로 표시합니다. 설계 변경 이력을 체계적으로 관리할 수 있습니다.",
-      "features": ["자동 변경 감지", "시각적 차이 표시", "변경 이력 관리", "다양한 포맷 지원"],
-      "accent": "#ff3cac"
+      "name": "SmartGeoKit 3D GIS Engine",
+      "tagline": "WebGL·HTML5 기반 3D 공간 이미지 엔진",
+      "desc": "WebGL과 HTML5 기술을 기반으로 수치·DB 데이터를 3D로 표현하는 이미지 엔진입니다. 2D 캔버스 통합, 3D 객체 조작, 시뮬레이션 기능을 제공하며 삼성전자 반도체 라인 모니터링·IRMS 시스템에 적용되었습니다.",
+      "features": ["WebGL 기반 3D 렌더링", "수치/DB 데이터 3D 변환", "2D 캔버스 통합", "3D 객체 조작 및 레이어 제어", "포맷 변환 도구", "시뮬레이션 기능"],
+      "accent": "#00f0ff"
     },
     {
       "id": "03",
-      "name": "CAD View",
-      "tagline": "브라우저 기반 CAD 도면 뷰어",
-      "desc": "별도의 소프트웨어 설치 없이 웹 브라우저에서 CAD 도면을 바로 열람합니다. 모바일 환경에서도 원활하게 동작합니다.",
-      "features": ["설치 불필요", "모바일 지원", "고속 렌더링", "협업 주석 기능"],
-      "accent": "#888"
+      "name": "SmartGeoKit CAD View",
+      "tagline": "Non-ActiveX 브라우저 기반 CAD 도면 뷰어",
+      "desc": "Canvas·Tile Map·SVG·HTML5 기술을 활용한 CAD 뷰어입니다. ActiveX 없이 모든 브라우저에서 DWG/DXF 도면을 열람할 수 있으며, SSL 암호화와 폰트 무손실 보존을 지원합니다. GS인증 1등급을 획득하였습니다.",
+      "features": ["Non-ActiveX 크로스 브라우저", "DWG / DXF 파일 지원", "SSL 암호화 보안", "폰트 무손실 보존", "레이어 토글 및 컬러 모드", "모바일 환경 지원"],
+      "accent": "#ff3cac",
+      "cert": "GS인증 1등급"
+    },
+    {
+      "id": "04",
+      "name": "SmartGeoKit CAD Compare",
+      "tagline": "CAD 도면 버전 간 자동 변경 감지 솔루션",
+      "desc": "두 CAD 파일을 자동 비교하여 변경된 Entity·레이어·확장자를 시각적으로 표시합니다. 내부 공간 인덱싱으로 빠른 비교 속도를 제공하며 설계 변경 이력을 체계적으로 관리할 수 있습니다. GS인증 1등급을 획득하였습니다.",
+      "features": ["자동 변경 요소 감지", "Entity / 레이어 / 확장자 비교", "변경 전후 시각화", "내부 공간 인덱싱 고속 처리", "변경 이력 관리", "다양한 CAD 포맷 지원"],
+      "accent": "#ff3cac",
+      "cert": "GS인증 1등급"
+    },
+    {
+      "id": "05",
+      "name": "SmartGeoKit Layout Manager",
+      "tagline": "CAD/이미지 기반 배치 및 정보 연계 솔루션",
+      "desc": "WebGL·SVG 기반 웹 환경에서 CAD·이미지를 활용한 레이아웃 구성 및 정보 연계 솔루션입니다. PC·태블릿·모바일 멀티 기기를 지원하며, 삼성디스플레이 좌석 관리·MES 4.0·uSpace 프로젝트에 적용되었습니다.",
+      "features": ["WebGL / SVG 기반 웹 환경", "Non-ActiveX 멀티 기기 지원", "객체 통계·정렬·크기 조정", "그룹화 및 검색 기능", "다중 사용자 동시 지원", "CAD / 이미지 정보 연계"],
+      "accent": "#c8ff00"
+    },
+    {
+      "id": "06",
+      "name": "SmartGeoKit Xler",
+      "tagline": "실시간 설비·센서 위치 통합 연계 솔루션",
+      "desc": "RabbitMQ 기반 기술로 설비·센서를 실시간 위치와 연계하는 솔루션입니다. 복합 신호 실내 측위 모듈을 내장하여 이벤트 연동, 프로토콜 처리, 웹 관리 기능을 제공합니다.",
+      "features": ["RabbitMQ 기반 실시간 연계", "복합 신호 실내 측위", "실시간 이벤트 연동", "다양한 프로토콜 처리", "웹 관리 콘솔 제공", "설비·센서 통합 관제"],
+      "accent": "#ddd9d9"
+    },
+    {
+      "id": "07",
+      "name": "SmartGeoKit AR",
+      "tagline": "현장·디지털 정보 통합 증강현실 솔루션",
+      "desc": "GPS·QR·AP·Beacon 멀티 측위를 활용한 AR 솔루션입니다. Android·iOS를 지원하며 보안·암호화가 적용됩니다. 실내외 위치 오버레이, 현장 이미지와 시설 정보를 통합하여 제공합니다.",
+      "features": ["GPS / QR / AP / Beacon 멀티 측위", "Android / iOS 지원", "보안·암호화 적용", "실내외 위치 오버레이", "현장 이미지 연동", "시설 정보 통합 조회"],
+      "accent": "#00f0ff"
+    },
+    {
+      "id": "08",
+      "name": "SmartGeoKit RMCP",
+      "tagline": "통합 재난 모니터링 제어 플랫폼",
+      "desc": "다중 기술 통합 기반의 실시간 재난 모니터링 제어 플랫폼입니다. Windows·Linux·Unix 크로스 플랫폼을 지원하며, 소스 레벨 변환·시스템 최적화·멀티 시스템 인터페이스를 제공합니다.",
+      "features": ["다중 기술 통합 모니터링", "크로스 플랫폼 (Windows / Linux / Unix)", "실시간 모니터링 안정성", "소스 레벨 변환", "시스템 최적화", "멀티 시스템 인터페이스"],
+      "accent": "#c8ff00"
     }
   ]
 }
