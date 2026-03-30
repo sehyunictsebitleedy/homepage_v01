@@ -1,10 +1,239 @@
 {
-  "projects": [
-    { "title": "지자체 GIS 통합 플랫폼 구축", "client": "경기도 A시", "year": "2023", "tag": "GIS" },
-    { "title": "CAD 도면 관리 시스템 개발", "client": "건설사 B사", "year": "2023", "tag": "CAD" },
-    { "title": "공간정보 시스템 고도화", "client": "공공기관 C", "year": "2022", "tag": "GIS" },
-    { "title": "CAD Compare 도입 컨설팅", "client": "엔지니어링 D사", "year": "2022", "tag": "CAD" },
-    { "title": "IT 인프라 전환 프로젝트", "client": "제조사 E사", "year": "2021", "tag": "IT" },
-    { "title": "GIS 기반 시설물 관리 시스템", "client": "지자체 F", "year": "2021", "tag": "GIS" }
+  "years": [
+    {
+      "year": "2025",
+      "projects": [
+        { "title": "반도체 인프라 통합 DIGITAL TWIN 플랫폼(DUE) 운영", "client": "삼성전자", "tag": "GIS" },
+        { "title": "반도체 인프라 통합 DIGITAL TWIN 플랫폼(DUE) 고도화", "client": "삼성전자", "tag": "GIS" },
+        { "title": "SDC 25년 MES 도면관리/제조 모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "SDC 25년 MIS 모바일 오피스 운영", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "삼성전자/SDC SmartGeoKit 솔루션 유지보수", "client": "삼성전자 / 삼성디스플레이", "tag": "유지보수" },
+        { "title": "반도체 25년 인프라환경안전WP 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 25년 도면관리/설비계통관리 운영", "client": "삼성전자", "tag": "CAD" },
+        { "title": "반도체 25년 DS EHS 시스템 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 25년 IDPS 시스템 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "중국 서안 반도체 24~25년 IDPS 운영", "client": "삼성전자 (서안)", "tag": "SI" },
+        { "title": "중국 서안 반도체 24~25년 ARTS 운영", "client": "삼성전자 (서안)", "tag": "SI" },
+        { "title": "삼성전자 GTC DT Designer 고도화 개발", "client": "삼성전자", "tag": "GIS" },
+        { "title": "삼성전자 GTC BOP DT 디자이너 연동고도화", "client": "삼성전자", "tag": "GIS" },
+        { "title": "SDC Mobile App 고도화 개발", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "반도체 IDPS 출동사후관리 및 개별방재연계", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC 총무포탈 시스템 레이아웃 최신화", "client": "삼성디스플레이", "tag": "SI" },
+        { "title": "삼성전자 설비정보연계 시스템 이관 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "삼성전자 수원/반도체 GIS Map 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "SDC GIS Map 유지보수", "client": "삼성디스플레이", "tag": "유지보수" }
+      ]
+    },
+    {
+      "year": "2024",
+      "projects": [
+        { "title": "SDC 24년 MES 도면관리/제조모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "SDC 24년 MIS 모바일 오피스 운영", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "삼성전자 수원 GIS솔루션/반도체 도면관리/SDC Layout Manager 솔루션 유지보수", "client": "삼성전자 / 삼성디스플레이", "tag": "유지보수" },
+        { "title": "반도체 24년 인프라환경안전WP 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 24년 도면관리/계통관리 운영", "client": "삼성전자", "tag": "CAD" },
+        { "title": "반도체 24년 DS EHS 시스템 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 24년 IDPS 시스템 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "중국 서안 반도체 24~25년 IDPS 시스템 운영", "client": "삼성전자 (서안)", "tag": "SI" },
+        { "title": "중국 서안 반도체 24~25년 ARTS 시스템 운영", "client": "삼성전자 (서안)", "tag": "SI" },
+        { "title": "수원 NEHS 도면관리 SW 납품", "client": "삼성전자", "tag": "CAD" },
+        { "title": "반도체 평택 Nport 구매 납품", "client": "삼성전자 / IMK", "tag": "SI" },
+        { "title": "반도체 P4 통합관제 구축 및 기능 고도화", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 Uspace Map 고도화 개발", "client": "삼성전자 / 쌍용", "tag": "GIS" },
+        { "title": "삼성전자 수원 VR기반 제조현장 가시화", "client": "삼성전자 / SDS", "tag": "GIS" },
+        { "title": "삼성전자 GTC DT Designer 유니티 편집기능", "client": "삼성전자", "tag": "GIS" },
+        { "title": "SDC 생체인증 모바일 플랫폼 개선구축", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "수원/반도체 GIS Map 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "SDC GIS Map 유지보수", "client": "삼성디스플레이", "tag": "유지보수" }
+      ]
+    },
+    {
+      "year": "2023",
+      "projects": [
+        { "title": "SDC 23년 MES 도면관리/제조모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "SDC 23년 MIS 모바일 오피스 운영", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "삼성전자 수원 GIS솔루션/반도체 도면관리/SDC Layout Manager 솔루션 유지보수", "client": "삼성전자 / 삼성디스플레이", "tag": "유지보수" },
+        { "title": "반도체 23년 인프라환경안전WP 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 23년 도면관리/계통관리 운영", "client": "삼성전자", "tag": "CAD" },
+        { "title": "반도체 23년 DS EHS 시스템 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 23년 IDPS 시스템 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "중국 서안 반도체 23년 IDPS 시스템 운영", "client": "삼성전자 (서안)", "tag": "SI" },
+        { "title": "반도체 평택 Nport 구매 납품", "client": "삼성전자 / IMK", "tag": "SI" },
+        { "title": "반도체 통합관제 지휘통제 및 SW 고도화", "client": "삼성전자", "tag": "SI" },
+        { "title": "인도 SDC 법인 IDPS GIS Map 구축", "client": "삼성디스플레이 / SDS", "tag": "GIS" },
+        { "title": "반도체 DS EHS 공사작업 수직제어 개선", "client": "삼성전자 / SDS", "tag": "SI" },
+        { "title": "삼성전자 수원 NEHS CAD 서버 구축", "client": "삼성전자", "tag": "CAD" },
+        { "title": "반도체 지하매설물 CAD 구축 관리", "client": "삼성전자 / PWC", "tag": "CAD" },
+        { "title": "수원/반도체 GIS Map 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "SDC GIS Map 유지보수", "client": "삼성디스플레이", "tag": "유지보수" }
+      ]
+    },
+    {
+      "year": "2022",
+      "projects": [
+        { "title": "SDC MES 도면관리/제조모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "SDC MIS 모바일 오피스 운영", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "삼성전자 GMES4.0 제조설계 3D 운영", "client": "삼성전자", "tag": "GIS" },
+        { "title": "삼성전자 수원 GIS솔루션/반도체 도면관리/SDC Layout Manager 유지보수", "client": "삼성전자 / 삼성디스플레이", "tag": "유지보수" },
+        { "title": "반도체 22년 인프라환경안전WP 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 22년 도면관리/계통관리 운영", "client": "삼성전자", "tag": "CAD" },
+        { "title": "반도체 22년 DS EHS 시스템 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 평택 Nport 1, 2차 구매 납품", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 천안사업장 Vesda 연계방식 변경 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 DS EHS GIS 이관전략수립 PI", "client": "삼성전자 / SDS", "tag": "GIS" },
+        { "title": "삼성전자 전사 GEHS GIS CB전환 구축", "client": "삼성전자", "tag": "GIS" },
+        { "title": "반도체 통합관제 지휘통제 및 플랫폼 전환", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 서안 ARTS 고도화 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "수원/반도체 GIS Map 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "SDC GIS Map 유지보수", "client": "삼성디스플레이", "tag": "유지보수" }
+      ]
+    },
+    {
+      "year": "2021",
+      "projects": [
+        { "title": "SDC MES 도면관리/제조모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "SDC MIS 모바일 오피스 운영", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "삼성전자 GMES4.0 제조설계 3D 운영", "client": "삼성전자", "tag": "GIS" },
+        { "title": "삼성전자 수원 GIS솔루션/반도체 도면관리/SDC Layout Manager 유지보수", "client": "삼성전자 / 삼성디스플레이", "tag": "유지보수" },
+        { "title": "반도체 21년 인프라환경안전WP 운영", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 평택 P2(Ph3,4) 서편하부 Vesda 연계", "client": "삼성전자", "tag": "SI" },
+        { "title": "삼성물산 공사작업제어 구축", "client": "삼성물산 / SDS", "tag": "SI" },
+        { "title": "반도체 DWP Uspace Map 변경 개발", "client": "삼성전자", "tag": "GIS" },
+        { "title": "반도체 평택 P2(Ph3,4) 동편하부 Vesda 통합방재", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 통합관제 2단계", "client": "삼성전자", "tag": "SI" },
+        { "title": "수원 GTC 설계 사전 검증 플랫폼 개발", "client": "삼성전자", "tag": "GIS" },
+        { "title": "반도체 P2 상부동편(Ph-3) 통합방재", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC 인사이드 구축", "client": "삼성디스플레이", "tag": "SI" },
+        { "title": "반도체 평택 P3(Ph1) 통합방재", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 통합관제 3단계(누수/UT/WAS)", "client": "삼성전자", "tag": "SI" },
+        { "title": "수원/반도체 GIS Map 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "SDC GIS Map 유지보수", "client": "삼성디스플레이", "tag": "유지보수" }
+      ]
+    },
+    {
+      "year": "2020",
+      "projects": [
+        { "title": "SDC MES 도면관리 / 제조모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "SDC MIS 모바일 오피스 운영", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "삼성전자 GMES 4.0 제조설계 3D 운영", "client": "삼성전자", "tag": "GIS" },
+        { "title": "삼성전자 수원 GIS솔루션/반도체 도면관리/SDC Layout Manager 유지보수", "client": "삼성전자 / 삼성디스플레이", "tag": "유지보수" },
+        { "title": "반도체 평택 P2 상부층 통합방재모니터링 연계 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC Mobile 근태시스템 고도화", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "반도체 협력사 환경안전 포털 시스템", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 법적 도면 자동화 관리", "client": "삼성전자", "tag": "CAD" },
+        { "title": "삼성전자 수원 DTS Portal 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 통합관제시스템 1단계 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "삼성엔지니어링 공사작업 중복제어 구축", "client": "삼성Eng / SDS", "tag": "SI" },
+        { "title": "수원/반도체 GIS Map 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "SDC GIS Map 유지보수", "client": "삼성디스플레이", "tag": "유지보수" }
+      ]
+    },
+    {
+      "year": "2019",
+      "projects": [
+        { "title": "SDC 도면 관리 / 모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "수원 GIS솔루션 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "수원/반도체 GIS Map 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "SDC GIS Map 유지보수", "client": "삼성디스플레이", "tag": "유지보수" },
+        { "title": "반도체 환경안전교육 / 법적자격자관리", "client": "삼성전자", "tag": "SI" },
+        { "title": "서안반도체 위치표준화 / X2 통합방재모니터링 연계 구축", "client": "삼성전자", "tag": "GIS" },
+        { "title": "반도체 소방시설 장애관리 시스템 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC MIS 모바일 관리체계 구축", "client": "삼성디스플레이", "tag": "Mobile" },
+        { "title": "반도체 DSR 기준정보 변경 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "수원 MES4.0 Simulation 및 3D 개발", "client": "삼성전자", "tag": "GIS" },
+        { "title": "반도체 EUV 통합방재연계", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 IDMS New EMS 설비체계 변경", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 통합방재 New EMS 체계 변경", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 현장관리 Map 기능개선", "client": "삼성전자", "tag": "GIS" }
+      ]
+    },
+    {
+      "year": "2018",
+      "projects": [
+        { "title": "SDC 도면 관리 / 모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "수원 GIS솔루션 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "반도체 천안사업장 통합방재연계", "client": "삼성전자", "tag": "SI" },
+        { "title": "한국가스공사 전자도면 검색시스템", "client": "한국가스공사", "tag": "CAD" },
+        { "title": "3D Factory 관제 플랫폼 고도화", "client": "삼성전자", "tag": "GIS" },
+        { "title": "삼성전자 FAB관제 고도화 및 서버이중화 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "삼성전자 도면관리 고도화 및 DB서버 구조 개선", "client": "삼성전자", "tag": "CAD" },
+        { "title": "반도체 Foundry 통합방재 연계 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "삼성디스플레이 총무포탈 고도화 OneStop 서비스 구축", "client": "삼성디스플레이", "tag": "SI" },
+        { "title": "반도체 환경안전 법규대응 효율화 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 서안 MSDS 관리체계 개선 구축", "client": "삼성전자", "tag": "SI" }
+      ]
+    },
+    {
+      "year": "2017",
+      "projects": [
+        { "title": "SDC 도면 관리 / 모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "수원 GIS솔루션 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "반도체 K1 5L CCSS 통합방재연계", "client": "삼성전자", "tag": "SI" },
+        { "title": "수원/반도체 GIS Map 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "반도체 DSR C동 통합방재연계 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC 베트남법인 GIS DB 구축", "client": "삼성디스플레이", "tag": "GIS" },
+        { "title": "반도체 전라인 폭발지역 IRMS 확대", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 사고예방 기능 고도화", "client": "삼성전자", "tag": "SI" },
+        { "title": "수원 삼성전자 3D엔진 요소기술 개발", "client": "삼성전자", "tag": "GIS" },
+        { "title": "반도체 평택 통합방재 모니터링", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 S3하부층 통합방재 연계", "client": "삼성전자", "tag": "SI" }
+      ]
+    },
+    {
+      "year": "2016",
+      "projects": [
+        { "title": "SDC 베트남법인 GIS DB / Map 구축", "client": "삼성디스플레이", "tag": "GIS" },
+        { "title": "아산 침수 대응 지하 매설물 구축", "client": "삼성디스플레이", "tag": "GIS" },
+        { "title": "수원/반도체 GIS Map 유지보수", "client": "삼성전자 / 삼성디스플레이", "tag": "유지보수" },
+        { "title": "SDC GIS Map 유지보수", "client": "삼성디스플레이", "tag": "유지보수" },
+        { "title": "SDC 도면 관리 / 모바일 운영", "client": "삼성디스플레이", "tag": "CAD" },
+        { "title": "반도체 방폭지역 통합관제", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 환경안전 법규대응 고도화", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC 환경안전 활동 Map 구축", "client": "삼성디스플레이", "tag": "GIS" },
+        { "title": "반도체 17라인 7층 Vesda연계", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 평택 통합방재 모니터링", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC해외법인 IT서비스 관리체계", "client": "삼성디스플레이", "tag": "SI" }
+      ]
+    },
+    {
+      "year": "2015",
+      "projects": [
+        { "title": "반도체/SDC GIS Map 유지보수", "client": "삼성전자 / 삼성디스플레이", "tag": "유지보수" },
+        { "title": "반도체 모바일 출동체계 구축", "client": "삼성전자", "tag": "Mobile" },
+        { "title": "반도체 IDMS 고도화 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC IDPS CCTV연계 구축", "client": "삼성디스플레이", "tag": "SI" },
+        { "title": "반도체 CCTV위치표준화 구축", "client": "삼성전자", "tag": "GIS" },
+        { "title": "SDC 감지기 위치표준화 구축", "client": "삼성디스플레이", "tag": "GIS" },
+        { "title": "반도체 누수시스템 위치표준화 구축", "client": "삼성전자", "tag": "GIS" },
+        { "title": "반도체 환경안전법규대응체계", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC IDMS 횡전개 구축", "client": "삼성디스플레이", "tag": "SI" },
+        { "title": "반도체 BPM 불합리 변경관리 구축", "client": "삼성전자", "tag": "SI" },
+        { "title": "SDC SMCS 위치표준화 적용", "client": "삼성디스플레이", "tag": "GIS" },
+        { "title": "반도체 17라인 Ph2 통합방재구축", "client": "삼성전자", "tag": "SI" }
+      ]
+    },
+    {
+      "year": "2014",
+      "projects": [
+        { "title": "반도체 통합 누수 모니터링", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 전광판 표시관리", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 누수Leak 도면표시", "client": "삼성전자", "tag": "CAD" },
+        { "title": "삼성디스플레이 통합방재 GIS", "client": "삼성디스플레이", "tag": "GIS" },
+        { "title": "반도체 환경안전 유지보수", "client": "삼성전자", "tag": "유지보수" },
+        { "title": "삼성전자 SEV사출 설비 모니터링", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 미사 추가 모니터링", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 DSR 통합방재", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 공사작업 수직제어", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 온양 통합방재 모니터링", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 중국서안 누수감지", "client": "삼성SDS", "tag": "SI" },
+        { "title": "Global 방재모니터링 본사", "client": "삼성전자", "tag": "GIS" },
+        { "title": "Global 방재모니터링 SIEL / SEDA / SEIN / SEHZ", "client": "삼성전자", "tag": "GIS" },
+        { "title": "Global 방재모니터링 SEV / SAMEX / SEM / TSE", "client": "삼성전자", "tag": "GIS" },
+        { "title": "삼성전자 도면관리 해외 확산 (31개 법인)", "client": "삼성전자", "tag": "CAD" },
+        { "title": "반도체 17라인 통합방재", "client": "삼성전자", "tag": "SI" },
+        { "title": "반도체 위치모니터링 표준화", "client": "삼성전자", "tag": "GIS" },
+        { "title": "중국서안 Leak도면표시 추가", "client": "삼성전자", "tag": "CAD" }
+      ]
+    }
   ]
 }

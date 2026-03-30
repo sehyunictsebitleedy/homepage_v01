@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
-import SplitText from "@/components/ui/SplitText";
 import ScrambleText from "@/components/ui/ScrambleText";
 import type { HomeData, SiteData } from "@/lib/types";
 
@@ -46,13 +45,8 @@ export default function HomeContent({
   const [intro, setIntro] = useState(true);
 
   useEffect(() => {
-    const dismiss = () => setIntro(false);
-    window.addEventListener("click", dismiss, { once: true });
-    window.addEventListener("touchstart", dismiss, { once: true, passive: true });
-    return () => {
-      window.removeEventListener("click", dismiss);
-      window.removeEventListener("touchstart", dismiss);
-    };
+    const timer = setTimeout(() => setIntro(false), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -184,7 +178,7 @@ export default function HomeContent({
                 transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 <h1 className="font-black leading-[0.88] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]">
-                  <SplitText text={hero.title1} delay={0.25} stagger={0.05} className="text-outline" />
+                  <span className="text-outline">{hero.title1}</span>
                 </h1>
                 <h1 className="font-black leading-[0.88] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]">
                   <span className="text-glitch" data-text={hero.title2}>{hero.title2}</span>
@@ -252,74 +246,18 @@ export default function HomeContent({
       {/* ── MARQUEE ──────────────────────────────────────── */}
       <MarqueeBar partners={partners} />
 
-      {/* ── SERVICES ─────────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-24">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mb-14 flex items-end justify-between"
-        >
-          <motion.div variants={fadeUp} custom={0}>
-            <h2 className="font-black tracking-[-0.03em] text-[clamp(2rem,5vw,4rem)] leading-tight">
-              <span className="text-outline">Our</span>
-              <br />
-              <span className="text-[#c8ff00]">Products</span>
-            </h2>
-          </motion.div>
-          <motion.div variants={fadeUp} custom={1}>
-            <Link
-              href="/product"
-              className="group flex items-center gap-1 text-xs text-[#b5b5b5] hover:text-[#f0f0f0] transition-colors font-mono tracking-wider uppercase"
-            >
-              All Products
-              <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
-          {services.map(({ num, title, desc, href }, i) => (
-            <motion.div
-              key={num}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={fadeUp}
-              custom={i}
-            >
-              <Link
-                href={href}
-                className="card-hover group flex flex-col justify-between gap-8 bg-[#080808] border border-[#1e1e1e] p-8 h-full hover:bg-[#0d0d0d] transition-colors"
-              >
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-xs text-[#a1a1a1] tracking-widest">{num}</span>
-                  <ArrowUpRight size={14} className="text-[#a1a1a1] group-hover:text-[#c8ff00] transition-colors" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold tracking-tight text-[#f0f0f0] mb-3 group-hover:text-[#c8ff00] transition-colors">
-                    {title}
-                  </h3>
-                  <p className="text-sm text-[#b5b5b5] leading-relaxed">{desc}</p>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
       {/* ── SEBIT BRAND ──────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-24 border-t border-[#1e1e1e]">
+      <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
             <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-4">✦ Brand</p>
-            <h2 className="font-black tracking-[-0.03em] text-[clamp(2rem,5vw,4rem)] leading-tight">
+            <h2 className="font-black tracking-[-0.03em] text-[clamp(3rem,7.5vw,6rem)] leading-tight">
               <span className="text-outline">SE</span>
               <span className="text-[#c8ff00]">bit</span>
             </h2>
@@ -369,15 +307,74 @@ export default function HomeContent({
                 <h3 className="text-base font-bold tracking-tight mb-2 transition-colors" style={{ color: accent }}>
                   {name}
                 </h3>
-                <p className="text-xs text-[#b5b5b5] leading-relaxed">{desc}</p>
+                <div className="flex flex-col gap-1">
+                  {desc.split(/(?<=\.) /).map((sentence, si) => (
+                    <p key={si} className="text-xs text-[#b5b5b5] leading-relaxed">{sentence}</p>
+                  ))}
+                </div>
               </div>
             </motion.a>
           ))}
         </div>
       </section>
 
+      {/* ── SERVICES ─────────────────────────────────────── */}
+      <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mb-8 flex items-end justify-between"
+        >
+          <motion.div variants={fadeUp} custom={0}>
+            <h2 className="font-black tracking-[-0.03em] text-[clamp(3rem,7.5vw,6rem)] leading-tight">
+              <span className="text-outline">Our</span>&nbsp;
+              <span className="text-[#c8ff00]">Products</span>
+            </h2>
+          </motion.div>
+          <motion.div variants={fadeUp} custom={1}>
+            <Link
+              href="/product"
+              className="group flex items-center gap-1 text-xs text-[#b5b5b5] hover:text-[#f0f0f0] transition-colors font-mono tracking-wider uppercase"
+            >
+              All Products
+              <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
+          {services.map(({ num, title, desc, href }, i) => (
+            <motion.div
+              key={num}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={fadeUp}
+              custom={i}
+            >
+              <Link
+                href={href}
+                className="card-hover group flex flex-col justify-between gap-8 bg-[#080808] border border-[#1e1e1e] p-8 h-full hover:bg-[#0d0d0d] transition-colors"
+              >
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-xs text-[#a1a1a1] tracking-widest">{num}</span>
+                  <ArrowUpRight size={14} className="text-[#a1a1a1] group-hover:text-[#c8ff00] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight text-[#f0f0f0] mb-3 group-hover:text-[#c8ff00] transition-colors">
+                    {title}
+                  </h3>
+                  <p className="text-sm text-[#b5b5b5] leading-relaxed">{desc}</p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* ── ABOUT STRIP ──────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-24 border-t border-[#1e1e1e]">
+      <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
         <div className="max-w-3xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -407,7 +404,7 @@ export default function HomeContent({
       </section>
 
       {/* ── CONTACT CTA ──────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-24 border-t border-[#1e1e1e]">
+      <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -419,7 +416,7 @@ export default function HomeContent({
             <p className="font-mono text-xs tracking-[0.25em] uppercase text-[#c8ff00] mb-4">
               ✦ {cta.tagline}
             </p>
-            <h2 className="font-black tracking-[-0.03em] text-[clamp(2.5rem,6vw,5rem)] leading-[0.95]">
+            <h2 className="font-black tracking-[-0.03em] text-[clamp(3.75rem,9vw,7.5rem)] leading-[0.95]">
               <span className="text-outline">{cta.title1}</span>
               <br />
               <span className="text-[#f0f0f0]">{cta.title2}</span>

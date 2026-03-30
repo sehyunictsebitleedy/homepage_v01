@@ -2,7 +2,7 @@
 
 export interface HistoryItem {
   year: string;
-  event: string;
+  events: string[];
 }
 
 export interface CompanyData {
@@ -24,15 +24,19 @@ export interface BusinessData {
   areas: BusinessArea[];
 }
 
-export interface Project {
+export interface ProjectItem {
   title: string;
   client: string;
-  year: string;
   tag: string;
 }
 
+export interface ProjectYear {
+  year: string;
+  projects: ProjectItem[];
+}
+
 export interface ProjectData {
-  projects: Project[];
+  years: ProjectYear[];
 }
 
 export interface Product {

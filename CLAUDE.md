@@ -123,6 +123,6 @@ proxy.ts                  ← /admin/* 라우트 보호
 - `HomeData.hero`의 `btn1Target` / `btn2Target`은 `"_self" | "_blank"` 유니온 타입 — `<a>` 태그 `target` 속성에 직접 전달
 - `MarqueeBar`는 `partners: string[]` props를 받아 렌더링 — `page.tsx`에서 `partners.json` 읽어 전달
 - `.text-glitch` 클래스는 `data-text` 속성 필수: `<span className="text-glitch" data-text={text}>{text}</span>`
-- Hero 인트로 dismiss 조건: 클릭(`click`) + 터치(`touchstart`)만 허용, 스크롤(`wheel`)은 제외
+- Hero 인트로 dismiss 조건: **3초 타이머** 자동 전환 (`setTimeout 3000ms`) — 클릭/터치/스크롤 이벤트 없음
 - Product 카드에 `.sebit-card border border-[#1e1e1e]` 적용 — 모든 카드 hover는 `.sebit-card` 기준으로 통일
 - 카드 목록 래퍼에 `space-y-px`(구분선용) 사용 시 hover lift가 잘릴 수 있음 → `space-y-2` 사용

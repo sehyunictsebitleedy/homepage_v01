@@ -57,19 +57,23 @@ export default function CompanyContent({ data }: { data: CompanyData }) {
           — Company History
         </p>
         <div className="space-y-0 divide-y divide-[#1e1e1e]">
-          {data.history.map(({ year, event }, i) => (
+          {data.history.map(({ year, events }, i) => (
             <motion.div
               key={year}
               initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="flex items-center gap-4 md:gap-8 py-5"
+              className="flex gap-4 md:gap-8 py-5"
             >
-              <span className="font-mono text-xs tracking-widest text-[#c8ff00] w-12 shrink-0">
+              <span className="font-mono text-xs tracking-widest text-[#c8ff00] w-12 shrink-0 pt-0.5">
                 {year}
               </span>
-              <span className="text-sm text-[#ddd9d9]">{event}</span>
+              <div className="flex flex-col gap-1">
+                {events.map((ev, ei) => (
+                  <span key={ei} className="text-sm text-[#ddd9d9]">{ev}</span>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
