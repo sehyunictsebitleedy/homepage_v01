@@ -27,6 +27,47 @@ export default function ContactContent({ data }: { data: ContactData }) {
         </h1>
       </motion.div>
 
+      {/* 지도 */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.7 }}
+        className="mb-16"
+      >
+        <div className="flex items-center justify-between mb-4">
+          <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#d1d1d1]">
+            — Location
+          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href={`https://map.kakao.com/link/map/${encodeURIComponent(data.mapQuery || data.address)},37.2097454,127.0921059`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] tracking-widest uppercase text-[#c8ff00] hover:text-[#d4ff33] transition-colors"
+            >
+              카카오맵 ↗
+            </a>
+            <a
+              href={`https://map.naver.com/p/search/${encodeURIComponent(data.mapQuery || data.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] tracking-widest uppercase text-[#c8ff00] hover:text-[#d4ff33] transition-colors"
+            >
+              네이버지도 ↗
+            </a>
+          </div>
+        </div>
+        <div className="border border-[#1e1e1e] overflow-hidden" style={{ height: 420 }}>
+          <iframe
+            src={data.mapEmbedUrl || `https://www.openstreetmap.org/export/embed.html?bbox=127.0881%2C37.2077%2C127.0961%2C37.2117&layer=mapnik&marker=37.2097454%2C127.0921059`}
+            className="w-full h-full border-0"
+            loading="lazy"
+            allowFullScreen
+          />
+        </div>
+        <p className="mt-3 text-xs text-[#666] font-mono">{data.address}</p>
+      </motion.div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

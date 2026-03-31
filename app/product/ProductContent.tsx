@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, FileDown } from "lucide-react";
 import type { ProductData } from "@/lib/types";
+import TiltCard from "@/components/ui/TiltCard";
 
 export default function ProductContent({ data }: { data: ProductData }) {
   return (
@@ -56,8 +57,8 @@ export default function ProductContent({ data }: { data: ProductData }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ delay: i * 0.08, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="sebit-card bg-[#080808] border border-[#1e1e1e] p-8 md:p-12"
           >
+            <TiltCard className="sebit-card bg-[#080808] border border-[#1e1e1e] p-8 md:p-12">
             <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
               <div className="md:w-80 shrink-0">
                 <div className="flex items-center gap-3 mb-4">
@@ -88,6 +89,7 @@ export default function ProductContent({ data }: { data: ProductData }) {
                 </div>
               </div>
             </div>
+            </TiltCard>
           </motion.div>
         ))}
       </div>

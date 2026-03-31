@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import type { ProjectData } from "@/lib/types";
+import CountUp from "@/components/ui/CountUp";
 
 const TAG_COLOR: Record<string, string> = {
   GIS:    "text-[#c8ff00] border-[#c8ff00]/30",
@@ -114,9 +115,12 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
                   {year}
                 </span>
                 <div className="flex-1 h-px bg-[#1e1e1e]" />
-                <span className="font-mono text-[10px] text-[#666] tracking-widest">
-                  {projects.length} PJT
-                </span>
+                <CountUp
+                  to={projects.length}
+                  suffix=" PJT"
+                  duration={0.9}
+                  className="font-mono text-[10px] text-[#666] tracking-widest"
+                />
                 {year !== CURRENT_YEAR && (
                   <ChevronDown
                     size={14}

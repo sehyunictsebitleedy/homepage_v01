@@ -40,6 +40,30 @@ export default function ContactForm({ initial }: { initial: ContactData }) {
           <input className={inputCls} value={data.address}
             onChange={(e) => set("address", e.target.value)} />
         </div>
+        <div>
+          <label className={labelCls}>지도 검색어 (Map Query)</label>
+          <input
+            className={inputCls}
+            value={data.mapQuery ?? ""}
+            onChange={(e) => set("mapQuery", e.target.value)}
+            placeholder="비워두면 주소 필드 사용"
+          />
+          <p className="mt-1 text-[10px] text-[#555]">
+            Google Maps / 카카오맵 검색에 사용되는 키워드. mapEmbedUrl이 있으면 무시됩니다.
+          </p>
+        </div>
+        <div>
+          <label className={labelCls}>Google Maps Embed URL</label>
+          <input
+            className={inputCls}
+            value={data.mapEmbedUrl ?? ""}
+            onChange={(e) => set("mapEmbedUrl", e.target.value)}
+            placeholder="https://www.google.com/maps/embed?pb=..."
+          />
+          <p className="mt-1 text-[10px] text-[#555]">
+            Google Maps → 공유 → 지도 퍼가기 → iframe src 값을 붙여넣으세요. 입력 시 검색어보다 우선 적용됩니다.
+          </p>
+        </div>
       </section>
 
       <button

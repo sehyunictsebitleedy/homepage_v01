@@ -11,18 +11,17 @@ export default function Cursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  // 도트: 즉각 추적
+  // 다이아몬드: 즉각 추적
   const dotX = useSpring(mouseX, { stiffness: 1000, damping: 50, mass: 0.1 });
   const dotY = useSpring(mouseY, { stiffness: 1000, damping: 50, mass: 0.1 });
 
-  // 링: 부드럽게 트레일
-  const ringX = useSpring(mouseX, { stiffness: 120, damping: 20, mass: 0.5 });
-  const ringY = useSpring(mouseY, { stiffness: 120, damping: 20, mass: 0.5 });
+  // 링: 더 느린 트레일
+  const ringX = useSpring(mouseX, { stiffness: 80, damping: 18, mass: 0.8 });
+  const ringY = useSpring(mouseY, { stiffness: 80, damping: 18, mass: 0.8 });
 
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    // 모바일/터치 기기에서는 숨김
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const onMove = (e: MouseEvent) => {
@@ -70,38 +69,51 @@ export default function Cursor() {
 
   return (
     <>
-      {/* 링 */}
+      {/* 핑크 대시 링 - 느린 트레일 + 상시 회전 */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full border border-[#c8ff00]"
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
           x: ringX,
           y: ringY,
           translateX: "-50%",
           translateY: "-50%",
         }}
-        animate={{
-          opacity: visible ? 1 : 0,
-          width: hovering ? 48 : clicking ? 20 : 32,
-          height: hovering ? 48 : clicking ? 20 : 32,
-          borderColor: hovering ? "#c8ff00" : "rgba(200,255,0,0.4)",
-          backgroundColor: hovering ? "rgba(200,255,0,0.06)" : "transparent",
-        }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-      />
+        animate={{ opacity: visible ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <motion.div
+          className="rounded-full border border-dashed"
+          animate={{
+            rotate: 360,
+            width: hovering ? 54 : clicking ? 24 : 38,
+            height: hovering ? 54 : clicking ? 24 : 38,
+            borderColor: hovering ? "#c8ff00" : "#ff3cac",
+            backgroundColor: hovering ? "rgba(200,255,0,0.05)" : "transparent",
+          }}
+          transition={{
+            rotate: { duration: 5, ease: "linear", repeat: Infinity },
+            width: { duration: 0.25, ease: "easeOut" },
+            height: { duration: 0.25, ease: "easeOut" },
+            borderColor: { duration: 0.3 },
+            backgroundColor: { duration: 0.3 },
+          }}
+        />
+      </motion.div>
 
-      {/* 도트 */}
+      {/* 라임 다이아몬드 도트 - 즉각 추적 */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-[#c8ff00]"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] bg-[#c8ff00]"
         style={{
           x: dotX,
           y: dotY,
           translateX: "-50%",
           translateY: "-50%",
+          rotate: 45,
         }}
         animate={{
           opacity: visible ? 1 : 0,
-          width: hovering ? 5 : clicking ? 3 : 4,
-          height: hovering ? 5 : clicking ? 3 : 4,
+          width: hovering ? 8 : clicking ? 4 : 6,
+          height: hovering ? 8 : clicking ? 4 : 6,
         }}
         transition={{ duration: 0.15 }}
       />

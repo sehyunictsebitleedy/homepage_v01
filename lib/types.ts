@@ -58,6 +58,8 @@ export interface ContactData {
   tel: string;
   email: string;
   address: string;
+  mapQuery?: string;
+  mapEmbedUrl?: string;
 }
 
 export interface PartnerItem {

@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"let d=''; process.stdin.on('data',c=>d+=c); process.stdin.on('end',()=>{const o=JSON.parse(d); const f=o.tool_input?.file_path||''; process.exit(f.match(/\\.(ts|tsx)$/) ? 0 : 1)})\" && npx tsc --noEmit 2>&1 | tail -30 || true",
+            "async": true,
+            "statusMessage": "TypeScript 타입 체크 중..."
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"let d=''; process.stdin.on('data',c=>d+=c); process.stdin.on('end',()=>{const o=JSON.parse(d); const f=o.tool_input?.file_path||''; process.exit(f.match(/\\.(ts|tsx)$/) ? 0 : 1)})\" && npm run build 2>&1 | tail -50 || true",
+            "async": true,
+            "statusMessage": "빌드 검증 중..."
+          }
+        ]
+      }
+    ]
+  }
+}

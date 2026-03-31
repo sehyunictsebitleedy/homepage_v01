@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/ui/Navbar";
-import Cursor from "@/components/ui/Cursor";
 import { readData } from "@/lib/data";
 import type { SiteData } from "@/lib/types";
 import "./globals.css";
@@ -32,9 +31,8 @@ export default function RootLayout({
   return (
     <html lang="ko" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#080808] text-[#f0f0f0] min-h-screen cursor-none`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#080808] text-[#f0f0f0] min-h-screen`}
       >
-        <Cursor />
         <Navbar />
         <main className="pt-16">{children}</main>
       </body>

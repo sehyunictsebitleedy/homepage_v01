@@ -2,31 +2,52 @@
   "areas": [
     {
       "num": "01",
-      "title": "GIS 솔루션",
-      "accent": "#c8ff00",
-      "desc": "2D GIS 엔진을 기반으로 공간 데이터를 효율적으로 처리하고 시각화합니다. 지자체 및 공공기관 맞춤형 GIS 시스템 구축을 지원합니다.",
-      "tags": ["GIS Engine", "공간분석", "지도시각화"]
+      "title": "SEbit Brand",
+      "accent": "#00f0ff",
+      "desc": "SEbit는 세현ICT의 브랜드로, 스마트 IT 솔루션을 패키지화하여 제공합니다. Nexus/Ai/Lumo/GeoAxis  기반을 중심으로 국내외 기업에 납품·라이선스하며, 기술 혁신을 통해 더 넓은 시장으로 확장합니다.",
+      "tags": [
+        "SEbit",
+        "브랜드솔루션",
+        "라이선스",
+        "sebit.co.kr",
+        "Nexus",
+        "Ai",
+        "Lumo",
+        "GeoAxis"
+      ]
     },
     {
       "num": "02",
       "title": "CAD 솔루션",
       "accent": "#ff3cac",
       "desc": "CAD View·Compare 솔루션으로 도면 관리 프로세스를 자동화합니다. 설계 변경 이력 추적 및 협업 환경을 제공합니다.",
-      "tags": ["CAD View", "CAD Compare", "도면관리"]
+      "tags": [
+        "CAD View",
+        "CAD Compare",
+        "도면관리"
+      ]
     },
     {
       "num": "03",
-      "title": "SEbit Brand",
-      "accent": "#00f0ff",
-      "desc": "SEbit는 세현ICT의 브랜드 계열사로, 스마트 IT 솔루션을 패키지화하여 제공합니다. GIS·CAD 기반 제품을 중심으로 국내외 기업에 납품·라이선스하며, 기술 혁신을 통해 더 넓은 시장으로 확장합니다.",
-      "tags": ["SEbit", "브랜드솔루션", "라이선스", "sebit.co.kr"]
+      "title": "GIS 솔루션",
+      "accent": "#c8ff00",
+      "desc": "2D GIS 엔진을 기반으로 공간 데이터를 효율적으로 처리하고 시각화합니다. 지자체 및 공공기관 맞춤형 GIS 시스템 구축을 지원합니다.",
+      "tags": [
+        "GIS Engine",
+        "공간분석",
+        "지도시각화"
+      ]
     },
     {
       "num": "04",
       "title": "시스템 구축",
       "accent": "#ddd9d9",
       "desc": "Smarter IT 기반의 맞춤형 시스템을 기획·개발·운영합니다. 공공·민간 프로젝트 경험을 바탕으로 안정적인 시스템을 구축합니다.",
-      "tags": ["SI", "공공시스템", "유지보수"]
+      "tags": [
+        "SI",
+        "공공시스템",
+        "유지보수"
+      ]
     }
   ]
 }

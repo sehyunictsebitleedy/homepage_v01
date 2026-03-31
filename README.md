@@ -75,7 +75,8 @@ homepage_v01/
 │       ├── Navbar.tsx          # 서버 컴포넌트 (nav.json 읽기)
 │       ├── NavbarContent.tsx   # 클라이언트 컴포넌트 (햄버거 메뉴, SEbit 버튼)
 │       ├── MarqueeBar.tsx      # 협력사 마퀴 배너 (partners props)
-│       ├── Cursor.tsx          # 커스텀 커서 (닷+링, spring physics)
+│       ├── TiltCard.tsx        # 마우스 방향 3D 틸트 카드 래퍼
+│       ├── CountUp.tsx         # 뷰포트 진입 시 숫자 카운트업
 │       ├── SplitText.tsx       # 글자별 reveal 애니메이션
 │       └── ScrambleText.tsx    # 문자 decode 애니메이션
 ├── lib/
@@ -104,7 +105,7 @@ homepage_v01/
 | Business | `/admin/business` | 사업 영역, 태그 |
 | Project | `/admin/project` | 프로젝트 목록 |
 | Product | `/admin/product` | 제품 소개, 기능 목록, 컬러 |
-| Contact | `/admin/contact` | 전화·이메일·주소 |
+| Contact | `/admin/contact` | 전화·이메일·주소·지도 검색어·지도 embed URL |
 | Settings | `/admin/settings` | 사이트명, SEO, 푸터, 설립연도 |
 | Partners | `/admin/partners` | 협력사 마퀴 배너 추가·삭제 |
 
@@ -139,7 +140,9 @@ homepage_v01/
 - **`.sebit-card`** — 좌측 accent 바 + shine sweep + box-shadow 글로우
 - **`.card-hover`** — 카드 translateY lift + border 글로우
 - **`.link-underline`** — 슬라이드 언더라인 (`::after` width 0→100%)
-- **`Cursor.tsx`** — 닷(빠른 추적) + 링(부드러운 지연 추적) 이중 커서
+- **`TiltCard`** — 마우스 위치 기반 perspective 3D 틸트 (intensity 조절 가능)
+- **`CountUp`** — framer-motion `useInView` 기반 cubic ease-out 카운트업
+- **`template.tsx`** — 7개 가로 바 스태거 와이프 페이지 전환 (라임→핑크)
 
 ### 텍스처
 - `body::before` — SVG fractalNoise grain 오버레이 (opacity 3.5%)
@@ -179,6 +182,37 @@ homepage_v01/
 ---
 
 ## 변경 이력
+
+### 2026-03-31 — 인터랙션 효과 강화 & Contact 지도 추가
+
+#### Claude Code 하네스 설정
+- `.claude/settings.json` 신규 — 코드 편집 후 TypeScript 타입체크(`npx tsc --noEmit`) + 빌드 검증(`npm run build`) 자동 실행 (async 훅)
+
+#### Hero 인트로
+- 인트로 표시 시간 **3초 → 1.5초** (`setTimeout 3000ms → 1500ms`)
+
+#### 커스텀 커서 제거
+- `Cursor.tsx` 비활성화 — `layout.tsx`에서 `<Cursor />` 및 `cursor-none` 클래스 제거, 브라우저 기본 커서 사용
+
+#### UI 인터랙션 효과 3종 추가
+- **3D 틸트** (`TiltCard.tsx`) — 마우스 방향으로 perspective 기울기, 홈 서비스 카드 + 제품 카드 적용
+- **숫자 카운트업** (`CountUp.tsx`) — 뷰포트 진입 시 cubic ease-out 카운팅
+  - 프로젝트 페이지: 연도별 `N PJT` 카운트업
+  - 회사 연혁: 연도 숫자 `year-3 → year` 카운트업
+- **페이지 전환 와이프** (`template.tsx`) — 7개 가로 바(라임 5 + 핑크 2)가 위→아래 스태거로 슬라이드 아웃, 0.22s/바, 0.03s 간격
+
+#### Business 순서 변경
+- `business.json`: 1번(GIS 솔루션) ↔ 3번(SEbit Brand) 위치 교체
+- SEbit Brand desc·tags 내용 보강 (Nexus/Ai/Lumo/GeoAxis 명시)
+
+#### Contact 지도 추가
+- OpenStreetMap iframe 삽입 (좌표 기반, API 키 불필요)
+- 카카오맵 / 네이버지도 외부 링크 버튼 추가
+- 지도를 페이지 **최상단** (헤더 바로 아래)으로 배치
+- `ContactData`에 `mapQuery`, `mapEmbedUrl` 필드 추가
+- 관리자 `/admin/contact`에서 지도 검색어 및 Google Maps embed URL 수정 가능
+
+---
 
 ### 2026-03-30 (3) — UI 세부 조정
 

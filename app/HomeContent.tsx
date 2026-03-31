@@ -6,6 +6,7 @@ import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
 import ScrambleText from "@/components/ui/ScrambleText";
+import TiltCard from "@/components/ui/TiltCard";
 import type { HomeData, SiteData } from "@/lib/types";
 
 const fadeUp: Variants = {
@@ -45,7 +46,7 @@ export default function HomeContent({
   const [intro, setIntro] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIntro(false), 3000);
+    const timer = setTimeout(() => setIntro(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -353,6 +354,7 @@ export default function HomeContent({
               variants={fadeUp}
               custom={i}
             >
+              <TiltCard className="h-full" intensity={5}>
               <Link
                 href={href}
                 className="card-hover group flex flex-col justify-between gap-8 bg-[#080808] border border-[#1e1e1e] p-8 h-full hover:bg-[#0d0d0d] transition-colors"
@@ -368,6 +370,7 @@ export default function HomeContent({
                   <p className="text-sm text-[#b5b5b5] leading-relaxed">{desc}</p>
                 </div>
               </Link>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

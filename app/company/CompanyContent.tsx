@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { CompanyData } from "@/lib/types";
+import CountUp from "@/components/ui/CountUp";
 
 export default function CompanyContent({ data }: { data: CompanyData }) {
   return (
@@ -66,9 +67,12 @@ export default function CompanyContent({ data }: { data: CompanyData }) {
               transition={{ delay: i * 0.05, duration: 0.5 }}
               className="bg-[#080808] p-5 flex gap-4"
             >
-              <span className="font-mono text-xs tracking-widest text-[#c8ff00] w-12 shrink-0 pt-0.5">
-                {year}
-              </span>
+              <CountUp
+                to={parseInt(year)}
+                from={parseInt(year) - 3}
+                duration={0.8}
+                className="font-mono text-xs tracking-widest text-[#c8ff00] w-12 shrink-0 pt-0.5"
+              />
               <div className="flex flex-col gap-1">
                 {events.map((ev, ei) => (
                   <span key={ei} className="text-sm text-[#ddd9d9] leading-snug">{ev}</span>
