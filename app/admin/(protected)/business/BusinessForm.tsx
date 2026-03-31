@@ -19,7 +19,7 @@ export default function BusinessForm({ initial }: { initial: BusinessData }) {
     setData((d) => ({
       areas: [...d.areas, {
         num: String(d.areas.length + 1).padStart(2, "0"),
-        title: "", desc: "", tags: []
+        title: "", accent: "", desc: "", tags: []
       }]
     }));
 

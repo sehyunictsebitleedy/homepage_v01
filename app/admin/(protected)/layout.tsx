@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
 import { logoutAction } from "../logout/actions";
+import type { UserRole } from "@/lib/types";
 import {
   LayoutDashboard,
   Building2,
@@ -14,31 +15,64 @@ import {
   Navigation,
   Settings,
   Users,
+  UserCog,
 } from "lucide-react";
 
-const NAV_ITEMS = [
-  { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+type NavItem =
+  | { label: string; href: string; icon: React.ComponentType<{ size?: number; className?: string }>; roles: UserRole[] }
+  | { label: string; href: ""; icon: null };
+
+const NAV_ITEMS: NavItem[] = [
+  { label: "Dashboard", href: "/admin", icon: LayoutDashboard, roles: ["superadmin", "admin", "editor"] },
   { label: "─ 홈페이지", href: "", icon: null },
-  { label: "Home", href: "/admin/home", icon: Home },
-  { label: "Navigation", href: "/admin/nav", icon: Navigation },
+  { label: "Home", href: "/admin/home", icon: Home, roles: ["superadmin", "admin", "editor"] },
+  { label: "Navigation", href: "/admin/nav", icon: Navigation, roles: ["superadmin", "admin", "editor"] },
   { label: "─ 콘텐츠", href: "", icon: null },
-  { label: "Company", href: "/admin/company", icon: Building2 },
-  { label: "Business", href: "/admin/business", icon: Briefcase },
-  { label: "Project", href: "/admin/project", icon: FolderKanban },
-  { label: "Product", href: "/admin/product", icon: Package },
-  { label: "Contact", href: "/admin/contact", icon: Phone },
-  { label: "Partners", href: "/admin/partners", icon: Users },
+  { label: "Company", href: "/admin/company", icon: Building2, roles: ["superadmin", "admin", "editor"] },
+  { label: "Business", href: "/admin/business", icon: Briefcase, roles: ["superadmin", "admin", "editor"] },
+  { label: "Project", href: "/admin/project", icon: FolderKanban, roles: ["superadmin", "admin", "editor"] },
+  { label: "Product", href: "/admin/product", icon: Package, roles: ["superadmin", "admin", "editor"] },
+  { label: "Contact", href: "/admin/contact", icon: Phone, roles: ["superadmin", "admin", "editor"] },
+  { label: "Partners", href: "/admin/partners", icon: Users, roles: ["superadmin", "admin", "editor"] },
   { label: "─ 시스템", href: "", icon: null },
-  { label: "Settings", href: "/admin/settings", icon: Settings },
+  { label: "Users", href: "/admin/users", icon: UserCog, roles: ["superadmin", "admin"] },
+  { label: "Settings", href: "/admin/settings", icon: Settings, roles: ["superadmin", "admin"] },
 ];
+
+function filterNavItems(items: NavItem[], role: UserRole): NavItem[] {
+  const result: NavItem[] = [];
+  let pendingDivider: NavItem | null = null;
+  for (const item of items) {
+    if (!item.icon) {
+      pendingDivider = item;
+      continue;
+    }
+    if (item.roles.includes(role)) {
+      if (pendingDivider) {
+        result.push(pendingDivider);
+        pendingDivider = null;
+      }
+      result.push(item);
+    }
+  }
+  return result;
+}
+
+const ROLE_BADGE: Record<UserRole, string> = {
+  superadmin: "Superadmin",
+  admin: "Admin",
+  editor: "Editor",
+};
 
 export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const authenticated = await getSession();
-  if (!authenticated) redirect("/admin/login");
+  const session = await getSession();
+  if (!session) redirect("/admin/login");
+
+  const visibleItems = filterNavItems(NAV_ITEMS, session.role);
 
   return (
     <div className="min-h-screen bg-[#080808] flex">
@@ -51,28 +85,40 @@ export default async function AdminLayout({
         </div>
 
         <nav className="flex-1 py-4 px-3 space-y-0.5 overflow-y-auto">
-          {NAV_ITEMS.map(({ label, href, icon: Icon }) => {
-            if (!Icon) {
+          {visibleItems.map((item) => {
+            if (!item.icon) {
               return (
-                <p key={label} className="px-3 pt-4 pb-1 text-[9px] font-mono tracking-widest uppercase text-[#333]">
-                  {label.replace("─ ", "")}
+                <p
+                  key={item.label}
+                  className="px-3 pt-4 pb-1 text-[9px] font-mono tracking-widest uppercase text-[#333]"
+                >
+                  {item.label.replace("─ ", "")}
                 </p>
               );
             }
+            const Icon = item.icon;
             return (
               <Link
-                key={href}
-                href={href}
+                key={item.href}
+                href={item.href}
                 className="flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-wider uppercase text-[#b5b5b5] hover:text-[#f0f0f0] hover:bg-[#111] transition-colors rounded-sm group"
               >
                 <Icon size={14} className="group-hover:text-[#c8ff00] transition-colors" />
-                {label}
+                {item.label}
               </Link>
             );
           })}
         </nav>
 
         <div className="p-3 border-t border-[#1e1e1e]">
+          <div className="px-3 py-2 mb-1">
+            <p className="text-[10px] text-[#666] font-mono tracking-wider">
+              {session.id === "superadmin" ? "superadmin" : session.id}
+            </p>
+            <p className="text-[9px] text-[#444] font-mono tracking-widest uppercase mt-0.5">
+              {ROLE_BADGE[session.role]}
+            </p>
+          </div>
           <form action={logoutAction}>
             <button
               type="submit"

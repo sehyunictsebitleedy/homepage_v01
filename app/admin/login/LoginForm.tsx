@@ -80,7 +80,10 @@ export default function LoginForm({ action }: Props) {
         </div>
 
         <p className="mt-6 text-center text-xs text-[#a1a1a1]">
-          SEHYUNICT CMS v1.0
+          계정이 없으신가요?{" "}
+          <a href="/admin/register" className="text-[#c8ff00] hover:underline">
+            계정 신청
+          </a>
         </p>
       </div>
     </div>

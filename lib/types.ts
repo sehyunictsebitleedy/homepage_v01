@@ -1,3 +1,23 @@
+// ── 어드민 사용자 ──────────────────────────────────────────
+
+export type UserRole = "superadmin" | "admin" | "editor";
+export type UserStatus = "pending" | "active" | "disabled";
+
+export interface AdminUser {
+  id: string;
+  username: string;
+  passwordHash: string;
+  passwordSalt: string;
+  role: Exclude<UserRole, "superadmin">;
+  status: UserStatus;
+  createdAt: string;
+  approvedAt?: string;
+}
+
+export interface UsersData {
+  users: AdminUser[];
+}
+
 // ── 서브 페이지 ────────────────────────────────────────────
 
 export interface HistoryItem {
