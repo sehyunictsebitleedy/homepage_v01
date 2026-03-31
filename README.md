@@ -35,7 +35,8 @@ homepage_v01/
 │   ├── project.json            # 주요 프로젝트
 │   ├── product.json            # 제품 소개
 │   ├── contact.json            # 연락처
-│   └── partners.json           # 협력사 목록 (마퀴 배너)
+│   ├── partners.json           # 협력사 목록 (마퀴 배너)
+│   └── users.json              # LINE WORKS 어드민 사용자 목록
 ├── app/
 │   ├── layout.tsx              # 루트 레이아웃 (SEO → site.json)
 │   ├── page.tsx                # 홈페이지 (서버 컴포넌트 → home.json)
@@ -148,7 +149,7 @@ homepage_v01/
 - **`.link-underline`** — 슬라이드 언더라인 (`::after` width 0→100%)
 - **`TiltCard`** — 마우스 위치 기반 perspective 3D 틸트 (intensity 조절 가능)
 - **`CountUp`** — framer-motion `useInView` 기반 cubic ease-out 카운트업
-- **`template.tsx`** — 7개 가로 바 스태거 와이프 페이지 전환 (라임→핑크)
+- **`template.tsx`** — 페이지 전환 시 하단 3px 라임→핑크 그라디언트 라인 (`scaleX: 0→1→0`)
 
 ### 텍스처
 - `body::before` — SVG fractalNoise grain 오버레이 (opacity 3.5%)
@@ -186,6 +187,40 @@ homepage_v01/
 
 세션은 HMAC-SHA256 서명된 httpOnly 쿠키로 관리되며 8시간 유효합니다.
 
+세션 토큰 형식: `{userId}:{role}.{HMAC-SHA256}` — `proxy.ts`가 이 형식을 검증하며, 구형/만료 쿠키는 로그인 페이지 진입 시 자동 삭제됩니다.
+
+### LINE WORKS 설정 단계
+
+1. [LINE WORKS Developer Console](https://dev.worksmobile.com) → 앱 생성
+2. OAuth 2.0 → Redirect URI 등록
+   - 로컬: `http://localhost:3000/api/auth/callback`
+   - 운영: `https://sehyunict.com/api/auth/callback`
+3. Client ID / Client Secret 복사 → `.env`에 설정
+4. Superadmin으로 로그인 → `/admin/users`에서 LINE WORKS 이메일 등록
+
+### 사용자 등록 (`data/users.json`)
+
+관리자가 직접 등록하며 자동 가입 없음. 등록된 이메일만 LINE WORKS 로그인 가능.
+
+```json
+{
+  "users": [
+    {
+      "id": "uuid",
+      "worksId": "user@company.com",
+      "displayName": "홍길동",
+      "role": "editor",
+      "status": "active",
+      "createdAt": "2026-03-31T00:00:00.000Z"
+    }
+  ]
+}
+```
+
+### 어드민 접속 안 될 때
+
+리디렉션 루프 발생 시 브라우저에서 `admin_session` 쿠키를 직접 삭제하거나, 개발자 도구 → Application → Cookies에서 삭제 후 재접속.
+
 ## About 텍스트 강조 마크업
 
 `home.json`의 `about.text`에서 `**텍스트**` 형식으로 라임 강조를 표현합니다.
@@ -200,6 +235,8 @@ homepage_v01/
 - `any` 타입 사용 금지 (TypeScript strict 모드)
 - 커스텀 CSS 파일 생성 금지 — Tailwind 유틸리티 + `globals.css`만 사용
 - `data/*.json`은 런타임에 직접 수정되므로 git에서 추적되지만, 운영 서버에서는 별도 관리 권장
+- `lib/auth.ts` / `lib/users.ts` / `lib/types.ts` 변경 시 — 임포트하는 모든 파일 함께 수정 후 `npx tsc --noEmit` 확인 필수
+- 인증 흐름 변경 시 — `proxy.ts` + `(protected)/layout.tsx` + `login/actions.ts` 세 파일 세트로 점검
 
 ---
 
