@@ -19,7 +19,7 @@ export default function CountUp({
   padStart?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
   const [count, setCount] = useState(from);
 
   useEffect(() => {

@@ -183,6 +183,23 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-03-31 (2) — 모바일 대응 & 페이지 전환 효과 개선
+
+#### 페이지 전환 (`template.tsx`)
+- 7개 바 전체화면 와이프 → **하단 3px 라인**으로 교체
+- 라임→핑크 그라디언트 라인이 좌→우로 채워졌다 사라지는 효과 (`scaleX: [0,1,1,0]`)
+- `transformOrigin: "left center"` 명시, `w-full` 추가
+
+#### TiltCard 모바일 대응
+- `onTouchStart` / `onTouchMove` / `onTouchEnd` 추가
+- 터치 시 intensity 60% 적용 (스크롤 방해 없이 틸트 동작)
+- 공통 `applyTilt()` / `resetTilt()` 함수로 마우스·터치 로직 통합
+
+#### CountUp 모바일 대응
+- `useInView` margin `"-40px"` → `"0px"` — 뷰포트 진입 즉시 트리거 (소형 화면 대응)
+
+---
+
 ### 2026-03-31 — 인터랙션 효과 강화 & Contact 지도 추가
 
 #### Claude Code 하네스 설정
