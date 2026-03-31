@@ -56,11 +56,15 @@ homepage_v01/
 │   ├── contact/
 │   │   ├── page.tsx
 │   │   └── ContactContent.tsx
+│   ├── api/
+│   │   └── auth/
+│   │       ├── works/          # LINE WORKS OAuth 시작 (GET → 인증 페이지 리디렉트)
+│   │       └── callback/       # LINE WORKS OAuth 콜백 (코드 교환 → 세션 생성)
 │   └── admin/
-│       ├── login/              # 로그인 (server action + useActionState)
+│       ├── login/              # 로그인 (LINE WORKS 버튼 + Superadmin 폼)
 │       ├── logout/             # 로그아웃 (server action)
 │       └── (protected)/        # 세션 보호 라우트 그룹
-│           ├── layout.tsx      # CMS 레이아웃 (사이드바, 세션 검증)
+│           ├── layout.tsx      # CMS 레이아웃 (역할별 메뉴 필터링)
 │           ├── page.tsx        # 대시보드
 │           ├── home/           # 홈페이지 섹션 관리
 │           ├── nav/            # 내비게이션 관리
@@ -69,7 +73,8 @@ homepage_v01/
 │           ├── project/        # 프로젝트 관리
 │           ├── product/        # 제품 관리
 │           ├── contact/        # 연락처 관리
-│           └── settings/       # 사이트 설정 (SEO, 푸터)
+│           ├── settings/       # 사이트 설정 (SEO, 푸터)
+│           └── users/          # 사용자 관리 (Admin+만 접근)
 ├── components/
 │   └── ui/
 │       ├── Navbar.tsx          # 서버 컴포넌트 (nav.json 읽기)
@@ -80,9 +85,10 @@ homepage_v01/
 │       ├── SplitText.tsx       # 글자별 reveal 애니메이션
 │       └── ScrambleText.tsx    # 문자 decode 애니메이션
 ├── lib/
-│   ├── auth.ts                 # 세션 관리 (HMAC-SHA256)
+│   ├── auth.ts                 # 세션 관리 (HMAC-SHA256, SessionUser 포함)
+│   ├── users.ts                # LINE WORKS 사용자 CRUD
 │   ├── data.ts                 # JSON 파일 read/write 헬퍼
-│   └── types.ts                # 전체 타입 정의
+│   └── types.ts                # 전체 타입 정의 (AdminUser, UserRole 등)
 └── proxy.ts                    # /admin/* 라우트 보호 (Next.js 16 middleware)
 ```
 
@@ -152,17 +158,33 @@ homepage_v01/
 
 접속: `http://localhost:3000/admin/login`
 
+### 환경변수 (`.env`)
+
 | 환경변수 | 기본값 | 설명 |
 |---|---|---|
-| `ADMIN_USER` | `admin` | 관리자 아이디 |
-| `ADMIN_PASSWORD` | `admin1234` | 관리자 비밀번호 |
+| `ADMIN_USER` | `admin` | Superadmin 아이디 |
+| `ADMIN_PASSWORD` | `admin1234` | Superadmin 비밀번호 |
 | `ADMIN_SECRET` | `dev-secret-...` | 세션 서명 키 |
+| `WORKS_CLIENT_ID` | — | LINE WORKS OAuth Client ID |
+| `WORKS_CLIENT_SECRET` | — | LINE WORKS OAuth Client Secret |
+| `NEXTAUTH_URL` | `http://localhost:3000` | 서비스 도메인 (Redirect URI 기반) |
 
-> **주의:** 프로덕션에서는 반드시 `.env` 파일에 위 변수를 설정하세요.
+### 로그인 방식
+
+1. **LINE WORKS OAuth** — LINE WORKS 계정으로 로그인 (일반 사용자용)
+   - `/admin/users`에서 LINE WORKS 이메일을 미리 등록해야 로그인 가능
+   - LINE WORKS Developer Console에서 앱 생성 후 Redirect URI 등록: `{NEXTAUTH_URL}/api/auth/callback`
+2. **Superadmin** — 아이디/비밀번호 (env 변수 기반, 항상 최고 권한)
+
+### 역할 (Role)
+
+| 역할 | 메뉴 접근 |
+|---|---|
+| `superadmin` | 전체 |
+| `admin` | 전체 (Users, Settings 포함) |
+| `editor` | 콘텐츠만 (Users, Settings 접근 불가) |
 
 세션은 HMAC-SHA256 서명된 httpOnly 쿠키로 관리되며 8시간 유효합니다.
-
-리다이렉트 루프 방지를 위해 `/admin/login`은 `(protected)` 라우트 그룹 외부에 위치합니다.
 
 ## About 텍스트 강조 마크업
 
@@ -182,6 +204,52 @@ homepage_v01/
 ---
 
 ## 변경 이력
+
+### 2026-03-31 (3) — 역할 기반 어드민 권한 시스템 (LINE WORKS OAuth)
+
+#### 인증 아키텍처 개편
+- **세션 토큰 구조 변경**: `"authenticated.{hmac}"` → `"{userId}:{role}.{hmac}"`
+- `lib/auth.ts`: `getSession()` 반환 타입 `boolean` → `SessionUser | null` (`{ id, role }`)
+- `lib/auth.ts`: `setSession(userId, role)` 파라미터 추가
+- `lib/users.ts` 신규: LINE WORKS 기반 사용자 CRUD (`readUsers`, `writeUsers`, `findUserByWorksId`, `addUser`, `updateUser`, `removeUser`)
+- `data/users.json` 신규: 사용자 레지스트리 (관리자가 직접 등록)
+
+#### LINE WORKS OAuth 2.0 로그인
+- `app/api/auth/works/route.ts` — OAuth 시작 (state 생성 → LINE WORKS 인증 페이지 리디렉트)
+- `app/api/auth/callback/route.ts` — 콜백 처리 (코드 → 토큰 교환 → 사용자 정보 조회 → 세션 생성)
+- 로그인 흐름: LINE WORKS 버튼 클릭 → OAuth 인증 → `users.json` 조회 → 세션 발급
+- state 검증으로 CSRF 방지 (httpOnly 쿠키 10분 유효)
+
+#### 역할 기반 메뉴 접근 제어
+| 역할 | 접근 가능 메뉴 |
+|---|---|
+| `superadmin` | 전체 (env 변수로 설정된 계정) |
+| `admin` | 전체 (콘텐츠 + Users + Settings) |
+| `editor` | 콘텐츠만 (Company, Business, Project, Product, Contact, Partners) |
+
+- `app/admin/(protected)/layout.tsx`: `filterNavItems()` 함수로 역할별 메뉴 필터링
+- 사이드바 하단에 로그인 사용자 ID + 역할 뱃지 표시
+
+#### 사용자 관리 페이지 (`/admin/users`)
+- Admin/Superadmin만 접근 가능
+- LINE WORKS 이메일 + 이름 + 역할로 사용자 직접 등록
+- 역할 변경 (Editor ↔ Admin), 활성화/비활성화, 삭제 기능
+
+#### 로그인 페이지 개선
+- LINE WORKS 로그인 버튼 (최상단 강조)
+- 구분선 아래 Superadmin 아이디/패스워드 로그인 유지
+- OAuth 에러 메시지 한국어 처리 (`not_authorized`, `disabled`, `token_failed` 등)
+
+#### 필요 환경변수 (`.env`)
+```
+WORKS_CLIENT_ID=      # LINE WORKS Developer Console에서 발급
+WORKS_CLIENT_SECRET=  # LINE WORKS Developer Console에서 발급
+NEXTAUTH_URL=         # 서비스 도메인 (예: https://sehyunict.com)
+```
+
+> LINE WORKS Developer Console → 앱 생성 → Redirect URI: `{NEXTAUTH_URL}/api/auth/callback` 등록 필요
+
+---
 
 ### 2026-03-31 (2) — 모바일 대응 & 페이지 전환 효과 개선
 

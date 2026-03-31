@@ -5,13 +5,11 @@ export type UserStatus = "pending" | "active" | "disabled";
 
 export interface AdminUser {
   id: string;
-  username: string;
-  passwordHash: string;
-  passwordSalt: string;
+  worksId: string;       // LINE WORKS 이메일 또는 userId
+  displayName?: string;
   role: Exclude<UserRole, "superadmin">;
-  status: UserStatus;
+  status: Exclude<UserStatus, "pending">;
   createdAt: string;
-  approvedAt?: string;
 }
 
 export interface UsersData {
