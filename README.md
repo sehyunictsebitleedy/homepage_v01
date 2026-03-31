@@ -149,7 +149,7 @@ homepage_v01/
 - **`.link-underline`** — 슬라이드 언더라인 (`::after` width 0→100%)
 - **`TiltCard`** — 마우스 위치 기반 perspective 3D 틸트 (intensity 조절 가능)
 - **`CountUp`** — framer-motion `useInView` 기반 cubic ease-out 카운트업
-- **`template.tsx`** — 페이지 전환 시 하단 3px 라임→핑크 그라디언트 라인 (`scaleX: 0→1→0`)
+- **`template.tsx`** — 페이지 전환 시 하단 6px 라임→핑크 그라디언트 라인 (`scaleX: 0→1→0`)
 
 ### 텍스처
 - `body::before` — SVG fractalNoise grain 오버레이 (opacity 3.5%)

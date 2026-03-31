@@ -16,7 +16,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
       {/* 하단 라인 와이프 */}
       <motion.div
-        className="fixed bottom-0 left-0 w-full h-[3px] z-[150] pointer-events-none"
+        className="fixed bottom-0 left-0 w-full h-[6px] z-[150] pointer-events-none"
         style={{
           background: "linear-gradient(90deg, #c8ff00, #ff3cac)",
           transformOrigin: "left center",
