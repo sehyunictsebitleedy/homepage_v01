@@ -242,6 +242,26 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-04-01 — UI 세부 조정
+
+#### Contact 지도 줌 아웃
+- `data/contact.json` mapEmbedUrl의 Google Maps 반경 파라미터 `198m → 1200m`으로 확대
+- `ContactContent.tsx` OpenStreetMap 폴백 bbox도 넓혀 주변 맥락 표시
+
+#### 홈 About 섹션
+- About Company 버튼을 텍스트 오른쪽 끝으로 이동 (`flex-row items-end` + `shrink-0`)
+- 섹션 상하 패딩 `py-14 → py-24`로 확대
+- `HighlightText` 컴포넌트가 `\n`을 `<br />`로 렌더링하도록 수정 — JSON에서 줄바꿈 가능
+
+#### 홈 SEbit Brand 섹션 컬러 통일
+- 브랜드 카드 h3 타이틀: accent 컬러 → `#f0f0f0` 흰색으로 변경
+- 브랜드 카드 태그(LLM 등): accent 컬러 테두리 → `#333` 테두리 + `#f0f0f0` 텍스트로 통일
+
+#### 페이지 전환 라인
+- `template.tsx` 라인 두께 `3px → 6px`
+
+---
+
 ### 2026-03-31 (3) — 역할 기반 어드민 권한 시스템 (LINE WORKS OAuth)
 
 #### 인증 아키텍처 개편

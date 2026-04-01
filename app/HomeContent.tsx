@@ -19,12 +19,14 @@ const fadeUp: Variants = {
 };
 
 function HighlightText({ text }: { text: string }) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  const parts = text.split(/(\*\*[^*]+\*\*|\n)/g);
   return (
     <>
       {parts.map((part, i) =>
         part.startsWith("**") && part.endsWith("**") ? (
           <span key={i} className="text-[#c8ff00]">{part.slice(2, -2)}</span>
+        ) : part === "\n" ? (
+          <br key={i} />
         ) : (
           <span key={i}>{part}</span>
         )
@@ -297,15 +299,14 @@ export default function HomeContent({
             >
               <div className="flex items-start justify-between">
                 <span
-                  className="font-mono text-[10px] tracking-widest uppercase border px-2 py-0.5"
-                  style={{ color: accent, borderColor: `${accent}40` }}
+                  className="font-mono text-[10px] tracking-widest uppercase border border-[#333] px-2 py-0.5 text-[#f0f0f0]"
                 >
                   {category}
                 </span>
                 <ArrowUpRight size={13} className="text-[#2a2a2a] group-hover:text-[#444] transition-colors" />
               </div>
               <div>
-                <h3 className="text-xl font-bold tracking-tight mb-2 transition-colors" style={{ color: accent }}>
+                <h3 className="text-xl font-bold tracking-tight mb-2 text-[#f0f0f0]">
                   {name}
                 </h3>
                 <div className="flex flex-col gap-1">
@@ -377,23 +378,23 @@ export default function HomeContent({
       </section>
 
       {/* ── ABOUT STRIP ──────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
-        <div className="max-w-3xl">
+      <section className="px-6 md:px-12 py-24 border-t border-[#1e1e1e]">
+        <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-[clamp(1.2rem,2.5vw,2rem)] font-semibold tracking-tight text-[#f0f0f0] leading-[1.4]"
+            className="flex-1 text-[clamp(1.2rem,2.5vw,2rem)] font-semibold tracking-tight text-[#f0f0f0] leading-[1.4]"
           >
             <HighlightText text={about.text} />
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mt-8"
+            className="shrink-0"
           >
             <Link
               href={about.linkHref}

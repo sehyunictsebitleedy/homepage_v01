@@ -59,7 +59,7 @@ export default function ContactContent({ data }: { data: ContactData }) {
         </div>
         <div className="border border-[#1e1e1e] overflow-hidden" style={{ height: 420 }}>
           <iframe
-            src={data.mapEmbedUrl || `https://www.openstreetmap.org/export/embed.html?bbox=127.0881%2C37.2077%2C127.0961%2C37.2117&layer=mapnik&marker=37.2097454%2C127.0921059`}
+            src={data.mapEmbedUrl || `https://www.openstreetmap.org/export/embed.html?bbox=127.0821%2C37.2047%2C127.1021%2C37.2147&layer=mapnik&marker=37.2097454%2C127.0921059`}
             className="w-full h-full border-0"
             loading="lazy"
             allowFullScreen
