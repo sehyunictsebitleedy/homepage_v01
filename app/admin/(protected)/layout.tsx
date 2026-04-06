@@ -14,7 +14,6 @@ import {
   Home,
   Navigation,
   Settings,
-  Users,
   UserCog,
 } from "lucide-react";
 
@@ -33,7 +32,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Project", href: "/admin/project", icon: FolderKanban, roles: ["superadmin", "admin", "editor"] },
   { label: "Product", href: "/admin/product", icon: Package, roles: ["superadmin", "admin", "editor"] },
   { label: "Contact", href: "/admin/contact", icon: Phone, roles: ["superadmin", "admin", "editor"] },
-  { label: "Partners", href: "/admin/partners", icon: Users, roles: ["superadmin", "admin", "editor"] },
   { label: "─ 시스템", href: "", icon: null },
   { label: "Users", href: "/admin/users", icon: UserCog, roles: ["superadmin", "admin"] },
   { label: "Settings", href: "/admin/settings", icon: Settings, roles: ["superadmin", "admin"] },

@@ -242,6 +242,40 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-04-06 — 홈 About 배경 영상 & 마퀴 프로젝트 전환
+
+#### 홈 About 섹션 배경 영상 패럴랙스
+- 배경 이미지(`about_bg02.png`) → **영상(`about_bg_mv.mp4`)** 으로 교체
+- `autoPlay muted loop playsInline` 설정, `object-cover`로 섹션 전체 채움
+- framer-motion `useScroll` + `useTransform`으로 스크롤 패럴랙스 적용 (`-30% ~ +30%` Y 이동)
+- `overflow-hidden` 섹션으로 패럴랙스 이동 시 넘침 방지
+- hover 시 오버레이 `opacity-95 → opacity-75` 전환 (0.5s)
+
+#### 홈 마퀴 배너 → 2025 프로젝트로 교체
+- `MarqueeBar.tsx` 전면 개편: `partners: string[]` → `items: { title, client }[]`
+- `"use client"` 추가, hover 시 `animationPlayState: paused`로 일시정지
+- 클릭 시 `/project` 페이지로 이동 (`<Link>` 래핑)
+- `app/page.tsx`: `partners.json` 대신 `project.json`의 2025년 프로젝트 읽어서 전달
+
+#### 어드민 협력사(Partners) 메뉴 제거
+- `(protected)/layout.tsx` NAV_ITEMS에서 Partners 항목 삭제
+- 미사용 `Users` 아이콘 import 제거
+
+#### 홈 인트로 타이머
+- `setTimeout` 1500ms → **1000ms**
+
+#### 홈 About 텍스트 · 스타일
+- `HighlightText` 컴포넌트: `\n` → `<br />` 렌더링 추가
+- About Company 버튼 오른쪽 정렬 (`flex-row md:items-end`)
+- 섹션 패딩 `py-24 → py-36`
+
+#### 홈 SEbit Brand 섹션
+- 카드 h3 타이틀 accent 컬러 → `#f0f0f0` 흰색
+- 태그(LLM 등) accent 컬러 → `#333` 테두리 + `#f0f0f0` 텍스트
+- 미사용 `accent` 변수 destructuring 제거
+
+---
+
 ### 2026-04-01 — UI 세부 조정
 
 #### Contact 지도 줌 아웃

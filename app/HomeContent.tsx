@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, type Variants } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
 import ScrambleText from "@/components/ui/ScrambleText";
@@ -38,17 +38,24 @@ function HighlightText({ text }: { text: string }) {
 export default function HomeContent({
   home,
   site,
-  partners,
+  marqueeItems,
 }: {
   home: HomeData;
   site: SiteData;
-  partners: string[];
+  marqueeItems: { title: string; client: string }[];
 }) {
   const { hero, services, about, cta } = home;
   const [intro, setIntro] = useState(true);
 
+  const aboutRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: aboutScroll } = useScroll({
+    target: aboutRef,
+    offset: ["start end", "end start"],
+  });
+  const aboutBgY = useTransform(aboutScroll, [0, 1], ["-20%", "20%"]);
+
   useEffect(() => {
-    const timer = setTimeout(() => setIntro(false), 1500);
+    const timer = setTimeout(() => setIntro(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -247,7 +254,7 @@ export default function HomeContent({
       </section>
 
       {/* ── MARQUEE ──────────────────────────────────────── */}
-      <MarqueeBar partners={partners} />
+      <MarqueeBar items={marqueeItems} />
 
       {/* ── SEBIT BRAND ──────────────────────────────────── */}
       <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
@@ -285,7 +292,7 @@ export default function HomeContent({
             { name: "SEbit AI", category: "LLM", desc: "Context Engineering 기술로 구현한 AI 에이전트. Agen-D, Agen-Sight, Agen-Talk 시리즈.", accent: "#ff3cac" },
             { name: "SEbit LUMO", category: "Mobile", desc: "iOS · Android 통합 크로스플랫폼 모바일 개발 프레임워크.", accent: "#ddd9d9" },
             { name: "SEbit GeoAxis", category: "GIS / CAD", desc: "2D/3D GIS 엔진, CAD Viewer, AR 시각화, 시설물 관리 솔루션.", accent: "#c8ff00" },
-          ].map(({ name, category, desc, accent }, i) => (
+          ].map(({ name, category, desc }, i) => (
             <motion.a
               key={name}
               href="http://sebit.co.kr"
@@ -378,8 +385,33 @@ export default function HomeContent({
       </section>
 
       {/* ── ABOUT STRIP ──────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-24 border-t border-[#1e1e1e]">
-        <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
+      <section
+        ref={aboutRef}
+        className="px-6 md:px-12 py-36 border-t border-[#1e1e1e] relative overflow-hidden group/about"
+      >
+        <motion.div
+          className="pointer-events-none"
+          style={{
+            position: "absolute",
+            top: "-30%",
+            left: 0,
+            right: 0,
+            bottom: "-30%",
+            y: aboutBgY,
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/about_bg_mv.mp4" type="video/mp4" />
+          </video>
+        </motion.div>
+        <div className="absolute inset-0 bg-[#080808] opacity-95 group-hover/about:opacity-75 transition-opacity duration-500 pointer-events-none" />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
