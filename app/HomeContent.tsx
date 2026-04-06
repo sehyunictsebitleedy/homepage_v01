@@ -140,6 +140,17 @@ export default function HomeContent({
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative min-h-[100svh] flex flex-col justify-between px-6 md:px-12 pt-28 pb-12 overflow-hidden">
 
+        {/* 배경: hero 이미지 */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "url('/hero-main_bg02.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            opacity: 0.2,
+          }}
+        />
+
         {/* 배경: 그리드 */}
         <div
           className="pointer-events-none absolute inset-0"
