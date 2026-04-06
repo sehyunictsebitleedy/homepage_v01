@@ -242,6 +242,24 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-04-06 (2) — 텍스트 케이싱 통일 & 푸터 연도 수정
+
+#### SEbit 케이싱 통일
+- Hero 버튼 `"SEBIT BRAND"` → `"SEbit BRAND"` (`data/home.json`)
+- 상단 메뉴 SEbit 버튼: `uppercase` CSS 제거 → `SEbit` 그대로 표시 (데스크탑 + 모바일)
+- SEbit 섹션 링크 버튼 텍스트: `sebit.co.kr` → `SEbit.co.kr`
+- SEbit Brand 카드 hover 시 커서 `cursor-none` → `cursor-pointer` 수정
+
+#### 푸터 연도
+- `data/site.json` copyright `© 2013` → `© 2026` (사이트 구축연도 기준)
+
+#### 홈 About 섹션 배경
+- 배경 이미지 → 영상(`about_bg_mv.mp4`) 교체, 패럴랙스 스크롤 적용
+- hover 오버레이 투명도 `opacity-95 → opacity-75` 전환
+- 섹션 패딩 `py-36`, `backgroundPosition: center -70%`
+
+---
+
 ### 2026-04-06 — 홈 About 배경 영상 & 마퀴 프로젝트 전환
 
 #### 홈 About 섹션 배경 영상 패럴랙스
@@ -483,7 +501,7 @@ NEXTAUTH_URL=         # 서비스 도메인 (예: https://sehyunict.com)
 - `steps(1)` 타이밍으로 디지털 끊김 표현, 3.5초 주기, 상시 미세 크로마틱 text-shadow
 
 #### SEbit 브랜드 섹션
-- 홈페이지 본문에 SEBIT 브랜드 소개 단락 추가
+- 홈페이지 본문에 SEbit 브랜드 소개 단락 추가
 - `.sebit-card` hover 강화: 좌측 라임 accent 바 scaleY, box-shadow 글로우, shine sweep 오버레이
 
 #### 협력사 마퀴 배너 CMS화

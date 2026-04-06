@@ -216,7 +216,7 @@ export default function HomeContent({
                   href={hero.btn1Href}
                   target={hero.btn1Target}
                   rel={hero.btn1Target === "_blank" ? "noopener noreferrer" : undefined}
-                  className="group flex items-center gap-2 bg-[#c8ff00] text-[#080808] text-xs font-bold tracking-widest uppercase px-6 py-3 hover:bg-[#d4ff33] transition-colors"
+                  className="group flex items-center gap-2 bg-[#c8ff00] text-[#080808] text-xs font-bold tracking-widest px-6 py-3 hover:bg-[#d4ff33] transition-colors"
                 >
                   {hero.btn1Label}
                   <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -256,7 +256,7 @@ export default function HomeContent({
       {/* ── MARQUEE ──────────────────────────────────────── */}
       <MarqueeBar items={marqueeItems} />
 
-      {/* ── SEBIT BRAND ──────────────────────────────────── */}
+      {/* ── SEbit BRAND ──────────────────────────────────── */}
       <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -281,7 +281,7 @@ export default function HomeContent({
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 border border-[#1e1e1e] text-[#ddd9d9] text-xs font-medium tracking-widest uppercase px-6 py-3 hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors shrink-0"
           >
-            sebit.co.kr
+            SEbit.co.kr
             <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </motion.div>
@@ -302,7 +302,7 @@ export default function HomeContent({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.1, duration: 0.6, ease: "easeOut" }}
-              className="sebit-card group bg-[#080808] border border-[#1e1e1e] p-6 flex flex-col gap-5 cursor-none"
+              className="sebit-card group bg-[#080808] border border-[#1e1e1e] p-6 flex flex-col gap-5 cursor-pointer"
             >
               <div className="flex items-start justify-between">
                 <span

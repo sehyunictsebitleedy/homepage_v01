@@ -53,7 +53,7 @@ export default function NavbarContent({
             href="http://sebit.co.kr"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-1.5 relative group overflow-hidden border border-[#c8ff00]/40 px-3.5 py-1.5 text-[11px] font-mono font-bold tracking-[0.2em] uppercase text-[#c8ff00] hover:text-[#080808] transition-colors duration-300"
+            className="hidden md:flex items-center gap-1.5 relative group overflow-hidden border border-[#c8ff00]/40 px-3.5 py-1.5 text-[11px] font-mono font-bold tracking-[0.2em] text-[#c8ff00] hover:text-[#080808] transition-colors duration-300"
           >
             {/* 슬라이드 fill 효과 */}
             <span className="absolute inset-0 bg-[#c8ff00] translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" />
@@ -97,7 +97,7 @@ export default function NavbarContent({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center gap-2 text-[11px] font-mono font-bold tracking-[0.2em] uppercase text-[#c8ff00]"
+                className="inline-flex items-center gap-2 text-[11px] font-mono font-bold tracking-[0.2em] text-[#c8ff00]"
               >
                 SEbit Brand Site
               </a>
