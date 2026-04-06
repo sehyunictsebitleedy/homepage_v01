@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform, type Variants } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
 import ScrambleText from "@/components/ui/ScrambleText";
@@ -46,13 +46,6 @@ export default function HomeContent({
 }) {
   const { hero, services, about, cta } = home;
   const [intro, setIntro] = useState(true);
-
-  const aboutRef = useRef<HTMLElement>(null);
-  const { scrollYProgress: aboutScroll } = useScroll({
-    target: aboutRef,
-    offset: ["start end", "end start"],
-  });
-  const aboutBgY = useTransform(aboutScroll, [0, 1], ["-20%", "20%"]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIntro(false), 1000);
@@ -140,16 +133,17 @@ export default function HomeContent({
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative min-h-[100svh] flex flex-col justify-between px-6 md:px-12 pt-28 pb-12 overflow-hidden">
 
-        {/* 배경: hero 이미지 */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage: "url('/hero-main_bg02.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center center",
-            opacity: 0.2,
-          }}
-        />
+        {/* 배경: hero 영상 */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="pointer-events-none absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.15 }}
+        >
+          <source src="/hero_main_bg.mp4" type="video/mp4" />
+        </video>
 
         {/* 배경: 그리드 */}
         <div
@@ -397,31 +391,22 @@ export default function HomeContent({
 
       {/* ── ABOUT STRIP ──────────────────────────────────── */}
       <section
-        ref={aboutRef}
-        className="px-6 md:px-12 py-36 border-t border-[#1e1e1e] relative overflow-hidden group/about"
+        className="px-6 md:px-12 py-36 border-t border-[#1e1e1e] relative"
       >
         <motion.div
-          className="pointer-events-none"
-          style={{
-            position: "absolute",
-            top: "-30%",
-            left: 0,
-            right: 0,
-            bottom: "-30%",
-            y: aboutBgY,
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/about_bg_mv.mp4" type="video/mp4" />
-          </video>
+          <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-4">✦ About</p>
+          <h2 className="font-black tracking-[-0.03em] text-[clamp(3rem,7.5vw,6rem)] leading-tight">
+            <span className="text-outline">SE</span>
+            <span className="text-[#f0f0f0]">HYUN</span>
+            <span className="text-[#c8ff00]"> ICT</span>
+          </h2>
         </motion.div>
-        <div className="absolute inset-0 bg-[#080808] opacity-95 group-hover/about:opacity-75 transition-opacity duration-500 pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
           <motion.p
             initial={{ opacity: 0, y: 20 }}

@@ -27,7 +27,7 @@ export default function MarqueeBar({ items }: Props) {
       <div
         className="flex whitespace-nowrap w-max"
         style={{
-          animation: "marquee 40s linear infinite",
+          animation: "marquee 70s linear infinite",
           animationPlayState: paused ? "paused" : "running",
         }}
       >

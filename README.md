@@ -242,6 +242,20 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-04-06 (4) — Hero 영상 배경 & About 타이틀 추가
+
+#### Hero 섹션
+- 배경 이미지 → `hero_main_bg.mp4` 영상으로 교체 (`opacity: 0.15`, autoPlay·muted·loop)
+
+#### About 섹션
+- 영상 배경·패럴랙스 제거 (단순화)
+- 대형 섹션 타이틀 추가: `✦ About` 레이블 + `SE`(outline) + `HYUN`(흰색) + `ICT`(라임) — 다른 섹션과 동일한 스타일
+
+#### 마퀴 속도
+- 2025 프로젝트 마퀴 속도 `40s → 70s` (느리게)
+
+---
+
 ### 2026-04-06 (3) — Hero 배경 이미지 추가
 
 - Hero 섹션 뒷배경에 `hero-main_bg02.png` 이미지 추가 (`opacity: 0.2`)
