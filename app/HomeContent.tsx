@@ -311,7 +311,7 @@ export default function HomeContent({
             >
               <div className="flex items-start justify-between">
                 <span
-                  className="font-mono text-[10px] tracking-widest uppercase border border-[#333] px-2 py-0.5 text-[#f0f0f0]"
+                  className="font-mono text-[14px] tracking-widest uppercase border border-[#333] px-2 py-0.5 text-[#f0f0f0]"
                 >
                   {category}
                 </span>
@@ -323,7 +323,7 @@ export default function HomeContent({
                 </h3>
                 <div className="flex flex-col gap-1">
                   {desc.split(/(?<=\.) /).map((sentence, si) => (
-                    <p key={si} className="text-xs text-[#b5b5b5] leading-relaxed">{sentence}</p>
+                    <p key={si} className="text-[14px] text-[#b5b5b5] leading-relaxed">{sentence}</p>
                   ))}
                 </div>
               </div>

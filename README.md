@@ -242,6 +242,13 @@ homepage_v01/
 
 ## 변경 이력
 
+### 2026-04-06 (6) — SEbit 카드 폰트 사이즈 조정
+
+- SEbit 카드 카테고리 태그: `10px → 14px`
+- SEbit 카드 설명 텍스트: `12px(text-xs) → 14px`
+
+---
+
 ### 2026-04-06 (5) — 전역 텍스트 줄바꿈 설정
 
 - `globals.css` body에 `word-break: keep-all` 전역 적용
