@@ -311,7 +311,7 @@ export default function HomeContent({
             >
               <div className="flex items-start justify-between">
                 <span
-                  className="font-mono text-[14px] tracking-widest uppercase border border-[#333] px-2 py-0.5 text-[#f0f0f0]"
+                  className="font-mono text-[10px] tracking-widest uppercase border border-[#333] px-2 py-0.5 text-[#f0f0f0]"
                 >
                   {category}
                 </span>
