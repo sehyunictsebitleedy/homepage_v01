@@ -279,7 +279,7 @@ export default function HomeContent({
             href="http://sebit.co.kr"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 border border-[#1e1e1e] text-[#ddd9d9] text-xs font-medium tracking-widest uppercase px-6 py-3 hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors shrink-0"
+            className="group inline-flex items-center gap-2 border border-[#1e1e1e] text-[#ddd9d9] text-xs font-medium tracking-widest px-6 py-3 hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors shrink-0"
           >
             SEbit.co.kr
             <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
