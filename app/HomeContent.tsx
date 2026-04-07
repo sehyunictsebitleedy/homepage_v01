@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, type Variants } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
 import ScrambleText from "@/components/ui/ScrambleText";
@@ -47,8 +47,23 @@ export default function HomeContent({
   const { hero, services, about, cta } = home;
   const [intro, setIntro] = useState(true);
 
+  // Hero 마우스 패럴랙스
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 18 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 18 });
+
   useEffect(() => {
-    const timer = setTimeout(() => setIntro(false), 1000);
+    const onMove = (e: MouseEvent) => {
+      mouseX.set((e.clientX / window.innerWidth - 0.5) * 24);
+      mouseY.set((e.clientY / window.innerHeight - 0.5) * 12);
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [mouseX, mouseY]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIntro(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -83,22 +98,51 @@ export default function HomeContent({
               }}
             />
 
-            {/* 스캔라인 */}
-            <div className="hero-scanline" />
-
-            {/* 메인 텍스트 */}
+            {/* 메인 텍스트 — scanline reveal */}
             <motion.div
               className="text-center select-none px-4"
-              initial={{ opacity: 0, scale: 1.15 }}
-              animate={{ opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }}
-              exit={{ scale: 0.12, y: "-30vh", opacity: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.6, 1] } }}
+              exit={{ scale: 0.12, y: "-30vh", opacity: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.6, 1] as [number,number,number,number] } }}
             >
-              <div className="font-black leading-[0.85] tracking-[-0.04em] text-[clamp(5rem,18vw,20rem)] text-outline">
-                SEHYUN
+              {/* SEHYUN */}
+              <div className="relative" style={{ overflow: "hidden" }}>
+                <motion.div
+                  className="font-black leading-[0.85] tracking-[-0.04em] text-[clamp(5rem,18vw,20rem)] text-outline"
+                  initial={{ clipPath: "inset(100% 0 0 0)" }}
+                  animate={{ clipPath: "inset(0% 0 0 0)", transition: { duration: 0.55, delay: 0.15, ease: "linear" } }}
+                >
+                  SEHYUN
+                </motion.div>
+                <motion.div
+                  className="absolute left-0 right-0 h-[3px] pointer-events-none"
+                  style={{ background: "#c8ff00", boxShadow: "0 0 14px #c8ff00, 0 0 40px rgba(200,255,0,0.35)", top: 0 }}
+                  initial={{ top: 0, opacity: 1 }}
+                  animate={{ top: "100%", opacity: 0, transition: { duration: 0.55, delay: 0.15, ease: "linear" } }}
+                />
               </div>
-              <div className="font-black leading-[0.85] tracking-[-0.04em] text-[clamp(5rem,18vw,20rem)]">
-                <span className="text-glitch" data-text="ICT">ICT</span>
-              </div>
+
+              {/* ICT — 슬롯머신 stagger */}
+              <motion.div
+                className="flex justify-center font-black leading-[0.85] tracking-[-0.04em] text-[clamp(5rem,18vw,20rem)] text-[#c8ff00]"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.8 } },
+                }}
+              >
+                {["I", "C", "T"].map((char) => (
+                  <motion.span
+                    key={char}
+                    style={{ display: "inline-block" }}
+                    variants={{
+                      hidden: { clipPath: "inset(100% 0 0 0)", y: -16 },
+                      visible: { clipPath: "inset(0% 0 0 0)", y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </motion.div>
             </motion.div>
 
             {/* 태그라인 */}
@@ -191,6 +235,7 @@ export default function HomeContent({
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                style={{ x: springX, y: springY }}
               >
                 <h1 className="font-black leading-[0.88] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]">
                   <span className="text-outline">{hero.title1}</span>
@@ -272,10 +317,26 @@ export default function HomeContent({
         >
           <div>
             <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-4">✦ Brand</p>
-            <h2 className="font-black tracking-[-0.03em] text-[clamp(3rem,7.5vw,6rem)] leading-tight">
-              <span className="text-outline">SE</span>
-              <span className="text-[#c8ff00]">bit</span>
-            </h2>
+            <motion.h2
+              className="font-black tracking-[-0.03em] text-[clamp(3rem,7.5vw,6rem)] leading-tight"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }}
+            >
+              {[["S","E"],["b","i","t"]].map((group, gi) =>
+                group.map((char, ci) => (
+                  <motion.span
+                    key={`${gi}-${ci}`}
+                    style={{ display: "inline-block" }}
+                    className={gi === 0 ? "text-outline" : "text-[#c8ff00]"}
+                    variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16,1,0.3,1] } } }}
+                  >
+                    {char}
+                  </motion.span>
+                ))
+              )}
+            </motion.h2>
             <p className="mt-3 text-sm text-[#b5b5b5] max-w-md leading-relaxed">
               From Sehyun to the World, Every Bit Matters.
             </p>
@@ -307,8 +368,9 @@ export default function HomeContent({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.1, duration: 0.6, ease: "easeOut" }}
-              className="sebit-card group bg-[#080808] border border-[#1e1e1e] p-6 flex flex-col gap-5 cursor-pointer"
+              className="sebit-card group bg-[#080808] border border-[#1e1e1e] p-6 flex flex-col gap-5 cursor-pointer relative overflow-hidden"
             >
+              <div className="absolute bottom-0 left-0 h-[2px] w-full bg-[#c8ff00] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               <div className="flex items-start justify-between">
                 <span
                   className="font-mono text-[10px] tracking-widest uppercase border border-[#333] px-2 py-0.5 text-[#f0f0f0]"
@@ -340,7 +402,12 @@ export default function HomeContent({
           viewport={{ once: true, margin: "-80px" }}
           className="mb-8 flex items-end justify-between"
         >
-          <motion.div variants={fadeUp} custom={0}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
             <h2 className="font-black tracking-[-0.03em] text-[clamp(3rem,7.5vw,6rem)] leading-tight">
               <span className="text-outline">Our</span>&nbsp;
               <span className="text-[#c8ff00]">Products</span>
@@ -401,11 +468,26 @@ export default function HomeContent({
           className="mb-12"
         >
           <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-4">✦ About</p>
-          <h2 className="font-black tracking-[-0.03em] text-[clamp(3rem,7.5vw,6rem)] leading-tight">
-            <span className="text-outline">SE</span>
-            <span className="text-[#f0f0f0]">HYUN</span>
-            <span className="text-[#c8ff00]"> ICT</span>
-          </h2>
+          <motion.h2
+            className="font-black tracking-[-0.03em] text-[clamp(3rem,7.5vw,6rem)] leading-tight"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04 } } }}
+          >
+            {[{t:"SE",c:"text-outline"},{t:"HYUN",c:"text-[#f0f0f0]"},{t:" ICT",c:"text-[#c8ff00]"}].map(({t,c},gi) =>
+              t.split("").map((char,ci) => (
+                <motion.span
+                  key={`${gi}-${ci}`}
+                  style={{ display: "inline-block", whiteSpace: "pre" }}
+                  className={c}
+                  variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16,1,0.3,1] } } }}
+                >
+                  {char}
+                </motion.span>
+              ))
+            )}
+          </motion.h2>
         </motion.div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
           <motion.p
