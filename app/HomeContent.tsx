@@ -63,7 +63,7 @@ export default function HomeContent({
   }, [mouseX, mouseY]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIntro(false), 3000);
+    const timer = setTimeout(() => setIntro(false), 1700);
     return () => clearTimeout(timer);
   }, []);
 
