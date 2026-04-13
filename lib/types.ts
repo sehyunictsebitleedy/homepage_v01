@@ -139,6 +139,7 @@ export interface HomeData {
     btn2Label: string;
     btn2Href: string;
     btn2Target: "_self" | "_blank";
+    heroTags: string[];
   };
   services: HomeServiceItem[];
   about: {

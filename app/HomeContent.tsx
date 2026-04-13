@@ -46,6 +46,7 @@ export default function HomeContent({
 }) {
   const { hero, services, about, cta } = home;
   const [intro, setIntro] = useState(true);
+  const [tagIndex, setTagIndex] = useState(0);
 
   // Hero 마우스 패럴랙스
   const mouseX = useMotionValue(0);
@@ -61,6 +62,13 @@ export default function HomeContent({
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
   }, [mouseX, mouseY]);
+
+  const heroTags = home.hero.heroTags ?? [];
+  useEffect(() => {
+    if (heroTags.length === 0) return;
+    const id = setInterval(() => setTagIndex((i) => (i + 1) % heroTags.length), 2200);
+    return () => clearInterval(id);
+  }, [heroTags.length]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIntro(false), 1700);
@@ -256,10 +264,34 @@ export default function HomeContent({
                 ))}
               </motion.p>
 
+              {/* 사업영역 — 순환 슬로건 */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+                className="mt-6 flex items-center gap-3 font-black tracking-[-0.02em] text-[clamp(1rem,2.5vw,1.8rem)]"
+              >
+                <span className="text-[#444]">We build</span>
+                <span className="relative overflow-hidden" style={{ minWidth: "12ch" }}>
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={tagIndex}
+                      initial={{ y: "100%", opacity: 0 }}
+                      animate={{ y: "0%", opacity: 1 }}
+                      exit={{ y: "-100%", opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="inline-block text-[#c8ff00]"
+                    >
+                      {heroTags[tagIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0, duration: 0.6 }}
+                transition={{ delay: 1.35, duration: 0.6 }}
                 className="mt-10 flex flex-wrap items-center justify-center gap-3"
               >
                 <a
