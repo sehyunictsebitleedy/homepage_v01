@@ -10,7 +10,13 @@
     "btn2Href": "/contact",
     "btn1Target": "_blank",
     "btn2Target": "_self",
-    "heroTags": ["GIS Engine", "CAD Viewer", "AI Agent", "공공데이터", "IT Consulting"]
+    "heroTags": [
+      "AI Agent",
+      "CAD Viewer",
+      "GIS Engine",
+      "IT Consulting",
+      "SI/SE/SM "
+    ]
   },
   "services": [
     {
