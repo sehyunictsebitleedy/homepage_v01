@@ -32,7 +32,7 @@ export default function CompanyContent({ data }: { data: CompanyData }) {
         </p>
       </motion.div>
 
-      <div className="mb-24 grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1e1e1e]">
+      <div className="mb-24 grid grid-cols-1 md:grid-cols-3 gap-px bg-[#343434]">
         {[
           { label: "Mission", text: data.mission },
           { label: "Vision", text: data.vision },

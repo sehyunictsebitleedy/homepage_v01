@@ -20,7 +20,7 @@ export default function NavbarContent({
   const logo = logoText.replace("ICT", "");
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#1e1e1e] bg-[#080808]/80 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#343434] bg-[#080808]/80 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link
           href="/"
@@ -73,7 +73,7 @@ export default function NavbarContent({
       </nav>
 
       {open && (
-        <div className="md:hidden border-t border-[#1e1e1e] bg-[#080808]">
+        <div className="md:hidden border-t border-[#343434] bg-[#080808]">
           <ul className="flex flex-col px-6 py-4 gap-4">
             {enabled.map(({ label, href }) => {
               const active = pathname === href;
@@ -91,7 +91,7 @@ export default function NavbarContent({
                 </li>
               );
             })}
-            <li className="pt-2 border-t border-[#1e1e1e]">
+            <li className="pt-2 border-t border-[#343434]">
               <a
                 href="http://sebit.co.kr"
                 target="_blank"

@@ -67,7 +67,7 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="sticky top-16 z-10 bg-[#080808] border-b border-[#1e1e1e] -mx-6 md:-mx-12 px-6 md:px-12 mb-12"
+        className="sticky top-16 z-10 bg-[#080808] border-b border-[#343434] -mx-6 md:-mx-12 px-6 md:px-12 mb-12"
       >
         <div className="flex gap-0 overflow-x-auto scrollbar-none">
           {data.years.map(({ year }) => (
@@ -114,7 +114,7 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
                 <span className="font-black text-[clamp(1.5rem,4vw,3rem)] tracking-[-0.04em] text-[#c8ff00]">
                   {year}
                 </span>
-                <div className="flex-1 h-px bg-[#1e1e1e]" />
+                <div className="flex-1 h-px bg-[#343434]" />
                 <CountUp
                   to={projects.length}
                   suffix=" PJT"

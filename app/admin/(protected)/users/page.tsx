@@ -33,7 +33,7 @@ export default async function UsersPage() {
         <h2 className="font-mono text-xs tracking-widest uppercase text-[#b5b5b5] mb-4">
           사용자 추가
         </h2>
-        <form action={addUserAction} className="border border-[#1e1e1e] p-5 space-y-4">
+        <form action={addUserAction} className="border border-[#343434] p-5 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-[10px] font-mono tracking-widest uppercase text-[#a1a1a1] mb-1.5">
@@ -44,7 +44,7 @@ export default async function UsersPage() {
                 name="worksId"
                 required
                 placeholder="user@company.com"
-                className="w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#555]"
+                className="w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#555]"
               />
             </div>
             <div>
@@ -55,7 +55,7 @@ export default async function UsersPage() {
                 type="text"
                 name="displayName"
                 placeholder="홍길동"
-                className="w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#555]"
+                className="w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#555]"
               />
             </div>
           </div>
@@ -67,7 +67,7 @@ export default async function UsersPage() {
               <select
                 name="role"
                 defaultValue="editor"
-                className="bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors"
+                className="bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors"
               >
                 <option value="editor">Editor — 콘텐츠 수정</option>
                 <option value="admin">Admin — 전체 관리</option>
@@ -89,11 +89,11 @@ export default async function UsersPage() {
           등록된 사용자 ({users.length})
         </h2>
         {users.length === 0 ? (
-          <p className="text-xs text-[#555] py-4 border border-[#1e1e1e] px-5">
+          <p className="text-xs text-[#555] py-4 border border-[#343434] px-5">
             등록된 사용자가 없습니다.
           </p>
         ) : (
-          <div className="border border-[#1e1e1e] divide-y divide-[#1e1e1e]">
+          <div className="border border-[#343434] divide-y divide-[#343434]">
             {users.map((u) => (
               <div key={u.id} className="flex flex-col sm:flex-row sm:items-center gap-4 px-5 py-4">
                 <div className="flex-1 min-w-0">
@@ -124,14 +124,14 @@ export default async function UsersPage() {
                     <select
                       name="role"
                       defaultValue={u.role}
-                      className="bg-[#111] border border-[#1e1e1e] text-[#b5b5b5] text-xs px-2 py-1.5 outline-none focus:border-[#c8ff00] transition-colors"
+                      className="bg-[#111] border border-[#343434] text-[#b5b5b5] text-xs px-2 py-1.5 outline-none focus:border-[#c8ff00] transition-colors"
                     >
                       <option value="editor">Editor</option>
                       <option value="admin">Admin</option>
                     </select>
                     <button
                       type="submit"
-                      className="px-2 py-1.5 border border-[#1e1e1e] text-[#b5b5b5] text-xs tracking-widest uppercase hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors"
+                      className="px-2 py-1.5 border border-[#343434] text-[#b5b5b5] text-xs tracking-widest uppercase hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors"
                     >
                       변경
                     </button>

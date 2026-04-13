@@ -34,7 +34,7 @@ export default function ContactContent({ data }: { data: ContactData }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.7 }}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-[#1e1e1e] mb-24"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-[#343434] mb-24"
       >
         {/* 왼쪽: 지도 */}
         <div className="relative" style={{ minHeight: 320 }}>
@@ -48,13 +48,13 @@ export default function ContactContent({ data }: { data: ContactData }) {
         </div>
 
         {/* 오른쪽: Info */}
-        <div className="border-t lg:border-t-0 lg:border-l border-[#1e1e1e] p-8 flex flex-col justify-between gap-6">
+        <div className="border-t lg:border-t-0 lg:border-l border-[#343434] p-8 flex flex-col justify-between gap-6">
           <div>
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#c8ff00] mb-6">— Location &amp; Info</p>
-            <div className="divide-y divide-[#1e1e1e]">
+            <div className="divide-y divide-[#343434]">
               {INFO.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-start gap-4 py-5">
-                  <div className="w-7 h-7 border border-[#1e1e1e] flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-7 h-7 border border-[#343434] flex items-center justify-center shrink-0 mt-0.5">
                     <Icon size={12} className="text-[#c8ff00]" />
                   </div>
                   <div>
@@ -70,7 +70,7 @@ export default function ContactContent({ data }: { data: ContactData }) {
               href={`https://map.kakao.com/link/map/${encodeURIComponent(data.mapQuery || data.address)},37.2097454,127.0921059`}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[10px] tracking-widest uppercase text-[#c8ff00] hover:text-[#d4ff33] transition-colors border border-[#1e1e1e] px-3 py-1.5 hover:border-[#c8ff00]"
+              className="font-mono text-[10px] tracking-widest uppercase text-[#c8ff00] hover:text-[#d4ff33] transition-colors border border-[#343434] px-3 py-1.5 hover:border-[#c8ff00]"
             >
               카카오맵 ↗
             </a>
@@ -78,7 +78,7 @@ export default function ContactContent({ data }: { data: ContactData }) {
               href={`https://map.naver.com/p/search/${encodeURIComponent(data.mapQuery || data.address)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[10px] tracking-widest uppercase text-[#c8ff00] hover:text-[#d4ff33] transition-colors border border-[#1e1e1e] px-3 py-1.5 hover:border-[#c8ff00]"
+              className="font-mono text-[10px] tracking-widest uppercase text-[#c8ff00] hover:text-[#d4ff33] transition-colors border border-[#343434] px-3 py-1.5 hover:border-[#c8ff00]"
             >
               네이버지도 ↗
             </a>
@@ -105,56 +105,56 @@ export default function ContactContent({ data }: { data: ContactData }) {
         </div>
 
         <form
-          className="border border-[#1e1e1e]"
+          className="border border-[#343434]"
           onSubmit={(e) => e.preventDefault()}
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* 이름 */}
-            <div className="border-b border-r-0 md:border-r border-[#1e1e1e] p-6">
+            <div className="border-b border-r-0 md:border-r border-[#343434] p-6">
               <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-3">담당자명 *</label>
               <input
                 type="text"
-                className="w-full bg-transparent text-[#f0f0f0] text-base outline-none placeholder:text-[#333] border-b border-[#1e1e1e] pb-2 focus:border-[#c8ff00] transition-colors"
+                className="w-full bg-transparent text-[#f0f0f0] text-base outline-none placeholder:text-[#333] border-b border-[#343434] pb-2 focus:border-[#c8ff00] transition-colors"
                 placeholder="홍길동"
               />
             </div>
             {/* 회사 */}
-            <div className="border-b border-[#1e1e1e] p-6">
+            <div className="border-b border-[#343434] p-6">
               <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-3">회사명 *</label>
               <input
                 type="text"
-                className="w-full bg-transparent text-[#f0f0f0] text-base outline-none placeholder:text-[#333] border-b border-[#1e1e1e] pb-2 focus:border-[#c8ff00] transition-colors"
+                className="w-full bg-transparent text-[#f0f0f0] text-base outline-none placeholder:text-[#333] border-b border-[#343434] pb-2 focus:border-[#c8ff00] transition-colors"
                 placeholder="(주)회사명"
               />
             </div>
             {/* 연락처 */}
-            <div className="border-b border-r-0 md:border-r border-[#1e1e1e] p-6">
+            <div className="border-b border-r-0 md:border-r border-[#343434] p-6">
               <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-3">연락처 *</label>
               <input
                 type="tel"
-                className="w-full bg-transparent text-[#f0f0f0] text-base outline-none placeholder:text-[#333] border-b border-[#1e1e1e] pb-2 focus:border-[#c8ff00] transition-colors"
+                className="w-full bg-transparent text-[#f0f0f0] text-base outline-none placeholder:text-[#333] border-b border-[#343434] pb-2 focus:border-[#c8ff00] transition-colors"
                 placeholder="010-0000-0000"
               />
             </div>
             {/* 이메일 */}
-            <div className="border-b border-[#1e1e1e] p-6">
+            <div className="border-b border-[#343434] p-6">
               <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-3">이메일</label>
               <input
                 type="email"
-                className="w-full bg-transparent text-[#f0f0f0] text-base outline-none placeholder:text-[#333] border-b border-[#1e1e1e] pb-2 focus:border-[#c8ff00] transition-colors"
+                className="w-full bg-transparent text-[#f0f0f0] text-base outline-none placeholder:text-[#333] border-b border-[#343434] pb-2 focus:border-[#c8ff00] transition-colors"
                 placeholder="email@example.com"
               />
             </div>
           </div>
 
           {/* 분야 */}
-          <div className="border-b border-[#1e1e1e] p-6">
+          <div className="border-b border-[#343434] p-6">
             <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-4">상담 분야</label>
             <div className="flex flex-wrap gap-2">
               {["GIS / CAD", "공공데이터", "AI 솔루션", "모바일 앱", "웹 시스템", "기타"].map((tag) => (
                 <label key={tag} className="cursor-pointer">
                   <input type="checkbox" className="sr-only peer" />
-                  <span className="inline-block font-mono text-[11px] tracking-widest uppercase border border-[#1e1e1e] px-3 py-1.5 text-[#666] peer-checked:border-[#c8ff00] peer-checked:text-[#c8ff00] transition-colors hover:border-[#444] hover:text-[#aaa]">
+                  <span className="inline-block font-mono text-[11px] tracking-widest uppercase border border-[#343434] px-3 py-1.5 text-[#666] peer-checked:border-[#c8ff00] peer-checked:text-[#c8ff00] transition-colors hover:border-[#444] hover:text-[#aaa]">
                     {tag}
                   </span>
                 </label>
@@ -163,7 +163,7 @@ export default function ContactContent({ data }: { data: ContactData }) {
           </div>
 
           {/* 문의 내용 */}
-          <div className="border-b border-[#1e1e1e] p-6">
+          <div className="border-b border-[#343434] p-6">
             <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-3">문의 내용 *</label>
             <textarea
               rows={6}

@@ -20,7 +20,7 @@ export default function MarqueeBar({ items }: Props) {
   return (
     <Link
       href="/project"
-      className="block overflow-hidden border-y border-[#1e1e1e] py-3 bg-[#080808] cursor-pointer"
+      className="block overflow-hidden border-y border-[#343434] py-3 bg-[#080808] cursor-pointer"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >

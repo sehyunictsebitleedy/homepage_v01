@@ -5,9 +5,9 @@ import { Plus, Trash2 } from "lucide-react";
 import type { HomeData, HomeServiceItem } from "@/lib/types";
 import { saveHome } from "./actions";
 
-const input = "w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
+const input = "w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
 const label = "block text-[10px] font-mono tracking-widest uppercase text-[#a1a1a1] mb-1";
-const section = "border border-[#1e1e1e] bg-[#0d0d0d] p-6 space-y-4";
+const section = "border border-[#343434] bg-[#0d0d0d] p-6 space-y-4";
 
 function SaveButton({ status, onClick }: { status: string; onClick: () => void }) {
   return (
@@ -73,7 +73,7 @@ export default function HomeForm({ initial }: { initial: HomeData }) {
                 />
                 <button type="button"
                   onClick={() => setData((d) => ({ ...d, hero: { ...d.hero, heroTags: (d.hero.heroTags ?? []).filter((_, idx) => idx !== i) } }))}
-                  className="px-2 text-[#555] hover:text-[#ff3cac] transition-colors border border-[#1e1e1e]">
+                  className="px-2 text-[#555] hover:text-[#ff3cac] transition-colors border border-[#343434]">
                   <Trash2 size={13} />
                 </button>
               </div>
@@ -90,7 +90,7 @@ export default function HomeForm({ initial }: { initial: HomeData }) {
           <div><label className={label}>버튼1 링크</label><input className={input} value={data.hero.btn1Href} onChange={(e) => setHero("btn1Href", e.target.value)} /></div>
           <div>
             <label className={label}>창</label>
-            <div className="flex border border-[#1e1e1e] overflow-hidden">
+            <div className="flex border border-[#343434] overflow-hidden">
               {(["_self", "_blank"] as const).map((t) => (
                 <button key={t} type="button"
                   onClick={() => setHero("btn1Target", t)}
@@ -106,7 +106,7 @@ export default function HomeForm({ initial }: { initial: HomeData }) {
           <div><label className={label}>버튼2 링크</label><input className={input} value={data.hero.btn2Href} onChange={(e) => setHero("btn2Href", e.target.value)} /></div>
           <div>
             <label className={label}>창</label>
-            <div className="flex border border-[#1e1e1e] overflow-hidden">
+            <div className="flex border border-[#343434] overflow-hidden">
               {(["_self", "_blank"] as const).map((t) => (
                 <button key={t} type="button"
                   onClick={() => setHero("btn2Target", t)}

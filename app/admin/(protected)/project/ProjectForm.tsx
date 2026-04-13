@@ -5,7 +5,7 @@ import { Plus, Trash2 } from "lucide-react";
 import type { ProjectData, ProjectYear, ProjectItem } from "@/lib/types";
 import { saveProject } from "./actions";
 
-const inputCls = "w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
+const inputCls = "w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
 const TAGS = ["GIS", "CAD", "Mobile", "SI", "IT", "유지보수", "인증", "특허", "인프라"];
 
 export default function ProjectForm({ initial }: { initial: ProjectData }) {
@@ -49,18 +49,18 @@ export default function ProjectForm({ initial }: { initial: ProjectData }) {
     <div className="max-w-3xl space-y-6">
       <div className="flex justify-between items-center">
         <button onClick={addYear}
-          className="flex items-center gap-1.5 text-xs text-[#a1a1a1] hover:text-[#c8ff00] transition-colors border border-dashed border-[#1e1e1e] hover:border-[#c8ff00]/40 px-4 py-2">
+          className="flex items-center gap-1.5 text-xs text-[#a1a1a1] hover:text-[#c8ff00] transition-colors border border-dashed border-[#343434] hover:border-[#c8ff00]/40 px-4 py-2">
           <Plus size={13} /> 연도 추가
         </button>
         <SaveButton status={status} onClick={handleSave} />
       </div>
 
       {data.years.map((y, yi) => (
-        <div key={yi} className="border border-[#1e1e1e] bg-[#0d0d0d] p-4 space-y-3">
+        <div key={yi} className="border border-[#343434] bg-[#0d0d0d] p-4 space-y-3">
           {/* 연도 헤더 */}
           <div className="flex items-center gap-3">
             <input
-              className="w-20 shrink-0 bg-[#080808] border border-[#1e1e1e] text-[#c8ff00] text-sm font-bold px-3 py-1.5 outline-none focus:border-[#c8ff00] transition-colors"
+              className="w-20 shrink-0 bg-[#080808] border border-[#343434] text-[#c8ff00] text-sm font-bold px-3 py-1.5 outline-none focus:border-[#c8ff00] transition-colors"
               value={y.year}
               onChange={(e) => updateYear(yi, e.target.value)}
             />
@@ -72,7 +72,7 @@ export default function ProjectForm({ initial }: { initial: ProjectData }) {
           </div>
 
           {/* 프로젝트 목록 */}
-          <div className="space-y-2 pl-2 border-l border-[#1e1e1e]">
+          <div className="space-y-2 pl-2 border-l border-[#343434]">
             {y.projects.map((p, pi) => (
               <div key={pi} className="grid grid-cols-1 md:grid-cols-[1fr_1fr_90px_32px] gap-2 items-center">
                 <input className={inputCls} placeholder="프로젝트명" value={p.title}

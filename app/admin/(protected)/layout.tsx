@@ -74,8 +74,8 @@ export default async function AdminLayout({
 
   return (
     <div className="min-h-screen bg-[#080808] flex">
-      <aside className="w-56 shrink-0 border-r border-[#1e1e1e] flex flex-col">
-        <div className="h-14 flex items-center px-5 border-b border-[#1e1e1e]">
+      <aside className="w-56 shrink-0 border-r border-[#343434] flex flex-col">
+        <div className="h-14 flex items-center px-5 border-b border-[#343434]">
           <span className="font-mono text-sm font-bold tracking-[0.15em] uppercase">
             SEHYUN<span className="text-[#c8ff00]">ICT</span>
           </span>
@@ -108,7 +108,7 @@ export default async function AdminLayout({
           })}
         </nav>
 
-        <div className="p-3 border-t border-[#1e1e1e]">
+        <div className="p-3 border-t border-[#343434]">
           <div className="px-3 py-2 mb-1">
             <p className="text-[10px] text-[#666] font-mono tracking-wider">
               {session.id === "superadmin" ? "superadmin" : session.id}
@@ -130,7 +130,7 @@ export default async function AdminLayout({
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="h-14 border-b border-[#1e1e1e] flex items-center px-6">
+        <header className="h-14 border-b border-[#343434] flex items-center px-6">
           <span className="text-xs text-[#d1d1d1] tracking-widest uppercase">Admin Panel</span>
         </header>
         <main className="flex-1 p-6 overflow-auto">{children}</main>

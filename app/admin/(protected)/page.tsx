@@ -53,10 +53,10 @@ export default function AdminDashboard() {
           <Link
             key={href}
             href={href}
-            className="group border border-[#1e1e1e] bg-[#0d0d0d] p-5 hover:border-[#c8ff00]/40 hover:bg-[#111] transition-all"
+            className="group border border-[#343434] bg-[#0d0d0d] p-5 hover:border-[#c8ff00]/40 hover:bg-[#111] transition-all"
           >
             <div className="flex items-start justify-between mb-4">
-              <div className="w-8 h-8 border border-[#1e1e1e] flex items-center justify-center group-hover:border-[#c8ff00]/40 transition-colors">
+              <div className="w-8 h-8 border border-[#343434] flex items-center justify-center group-hover:border-[#c8ff00]/40 transition-colors">
                 <Icon size={14} className="text-[#b5b5b5] group-hover:text-[#c8ff00] transition-colors" />
               </div>
               <ArrowUpRight
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
           href="/"
           target="_blank"
           rel="noopener noreferrer"
-          className="group border border-dashed border-[#1e1e1e] p-5 hover:border-[#c8ff00]/40 transition-all flex flex-col justify-between"
+          className="group border border-dashed border-[#343434] p-5 hover:border-[#c8ff00]/40 transition-all flex flex-col justify-between"
         >
           <ArrowUpRight
             size={14}
@@ -92,7 +92,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Env notice */}
-      <div className="mt-8 border border-[#1e1e1e] bg-[#0d0d0d] px-4 py-3 flex items-start gap-3">
+      <div className="mt-8 border border-[#343434] bg-[#0d0d0d] px-4 py-3 flex items-start gap-3">
         <span className="text-[#c8ff00] text-xs mt-0.5">!</span>
         <p className="text-xs text-[#d1d1d1] leading-relaxed">
           프로덕션 환경에서는 <code className="text-[#ddd9d9]">.env</code> 파일에{" "}

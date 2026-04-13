@@ -5,7 +5,7 @@ import { Plus, Trash2, GripVertical } from "lucide-react";
 import type { NavData, NavItem } from "@/lib/types";
 import { saveNav } from "./actions";
 
-const input = "w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
+const input = "w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
 
 export default function NavForm({ initial }: { initial: NavData }) {
   const [data, setData] = useState<NavData>(initial);
@@ -36,7 +36,7 @@ export default function NavForm({ initial }: { initial: NavData }) {
       </div>
 
       {data.items.map((item, i) => (
-        <div key={i} className="border border-[#1e1e1e] bg-[#0d0d0d] p-3 grid grid-cols-1 md:grid-cols-[24px_1fr_1fr_60px_32px] gap-2 items-center">
+        <div key={i} className="border border-[#343434] bg-[#0d0d0d] p-3 grid grid-cols-1 md:grid-cols-[24px_1fr_1fr_60px_32px] gap-2 items-center">
           <GripVertical size={14} className="text-[#333] hidden md:block" />
           <input className={input} placeholder="메뉴명" value={item.label}
             onChange={(e) => update(i, { label: e.target.value })} />
@@ -57,7 +57,7 @@ export default function NavForm({ initial }: { initial: NavData }) {
       ))}
 
       <button onClick={add}
-        className="w-full border border-dashed border-[#1e1e1e] py-3 text-xs text-[#a1a1a1] hover:text-[#c8ff00] hover:border-[#c8ff00]/40 transition-colors flex items-center justify-center gap-2">
+        className="w-full border border-dashed border-[#343434] py-3 text-xs text-[#a1a1a1] hover:text-[#c8ff00] hover:border-[#c8ff00]/40 transition-colors flex items-center justify-center gap-2">
         <Plus size={13} /> 메뉴 추가
       </button>
 

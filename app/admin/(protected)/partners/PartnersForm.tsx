@@ -11,7 +11,7 @@ export default function PartnersForm({ partners }: { partners: PartnerItem[] }) 
   return (
     <div className="space-y-8">
       {/* 추가 폼 */}
-      <div className="border border-[#1e1e1e] bg-[#0d0d0d] p-6">
+      <div className="border border-[#343434] bg-[#0d0d0d] p-6">
         <p className="text-xs font-mono tracking-widest uppercase text-[#a1a1a1] mb-4">
           협력사 추가
         </p>
@@ -29,7 +29,7 @@ export default function PartnersForm({ partners }: { partners: PartnerItem[] }) 
             type="text"
             required
             placeholder="협력사명 입력"
-            className="flex-1 bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#444]"
+            className="flex-1 bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#444]"
           />
           <button
             type="submit"
@@ -42,8 +42,8 @@ export default function PartnersForm({ partners }: { partners: PartnerItem[] }) 
       </div>
 
       {/* 목록 */}
-      <div className="border border-[#1e1e1e]">
-        <div className="px-4 py-3 border-b border-[#1e1e1e]">
+      <div className="border border-[#343434]">
+        <div className="px-4 py-3 border-b border-[#343434]">
           <span className="text-xs font-mono tracking-widest uppercase text-[#a1a1a1]">
             협력사 목록 ({partners.length})
           </span>
@@ -55,7 +55,7 @@ export default function PartnersForm({ partners }: { partners: PartnerItem[] }) 
           </div>
         )}
 
-        <ul className="divide-y divide-[#1e1e1e]">
+        <ul className="divide-y divide-[#343434]">
           {partners.map((partner) => (
             <li key={partner.id} className="flex items-center justify-between px-4 py-3">
               <span className="text-sm text-[#ddd9d9]">{partner.name}</span>

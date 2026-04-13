@@ -39,7 +39,7 @@ export default function LoginForm({ action, worksError }: Props) {
         </div>
 
         {/* Card */}
-        <div className="border border-[#1e1e1e] bg-[#0d0d0d] p-8 space-y-6">
+        <div className="border border-[#343434] bg-[#0d0d0d] p-8 space-y-6">
           <h1 className="text-sm font-semibold tracking-widest uppercase text-[#ddd9d9]">
             Sign In
           </h1>
@@ -64,9 +64,9 @@ export default function LoginForm({ action, worksError }: Props) {
 
           {/* 구분선 */}
           <div className="flex items-center gap-3">
-            <div className="flex-1 h-px bg-[#1e1e1e]" />
+            <div className="flex-1 h-px bg-[#343434]" />
             <span className="text-[10px] font-mono text-[#333] tracking-widest uppercase">or</span>
-            <div className="flex-1 h-px bg-[#1e1e1e]" />
+            <div className="flex-1 h-px bg-[#343434]" />
           </div>
 
           {/* Superadmin 로그인 */}
@@ -80,7 +80,7 @@ export default function LoginForm({ action, worksError }: Props) {
                 name="username"
                 autoComplete="username"
                 required
-                className="w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#555]"
+                className="w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#555]"
                 placeholder="admin"
               />
             </div>
@@ -94,7 +94,7 @@ export default function LoginForm({ action, worksError }: Props) {
                 name="password"
                 autoComplete="current-password"
                 required
-                className="w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#555]"
+                className="w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2.5 outline-none focus:border-[#c8ff00] transition-colors placeholder:text-[#555]"
                 placeholder="••••••••"
               />
             </div>
@@ -106,7 +106,7 @@ export default function LoginForm({ action, worksError }: Props) {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full bg-[#1e1e1e] text-[#b5b5b5] text-xs font-bold tracking-widest uppercase py-3 hover:bg-[#2a2a2a] hover:text-[#f0f0f0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#343434] text-[#b5b5b5] text-xs font-bold tracking-widest uppercase py-3 hover:bg-[#2a2a2a] hover:text-[#f0f0f0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isPending ? "Signing in..." : "Superadmin Sign In"}
             </button>

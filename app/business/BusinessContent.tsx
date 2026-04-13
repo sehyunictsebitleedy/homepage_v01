@@ -21,7 +21,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
         </h1>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#343434]">
         {data.areas.map(({ num, title, accent, desc, tags }, i) => (
           <motion.div
             key={num}
@@ -43,7 +43,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="font-mono text-[10px] tracking-widest uppercase border border-[#1e1e1e] text-[#d1d1d1] px-2 py-1"
+                  className="font-mono text-[10px] tracking-widest uppercase border border-[#343434] text-[#d1d1d1] px-2 py-1"
                 >
                   {tag}
                 </span>

@@ -5,7 +5,7 @@ import { Plus, Trash2, X } from "lucide-react";
 import type { ProductData, Product } from "@/lib/types";
 import { saveProduct } from "./actions";
 
-const inputCls = "w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
+const inputCls = "w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
 const labelCls = "block text-[10px] font-mono tracking-widest uppercase text-[#a1a1a1] mb-1";
 
 export default function ProductForm({ initial }: { initial: ProductData }) {
@@ -44,7 +44,7 @@ export default function ProductForm({ initial }: { initial: ProductData }) {
   return (
     <div className="max-w-2xl space-y-4">
       {data.products.map((p, i) => (
-        <section key={i} className="border border-[#1e1e1e] bg-[#0d0d0d] p-6 space-y-3">
+        <section key={i} className="border border-[#343434] bg-[#0d0d0d] p-6 space-y-3">
           <div className="flex items-center justify-between mb-2">
             <span className="font-mono text-xs text-[#c8ff00] tracking-widest">{p.id}</span>
             <button onClick={() => remove(i)}
@@ -66,7 +66,7 @@ export default function ProductForm({ initial }: { initial: ProductData }) {
                   onChange={(e) => update(i, { accent: e.target.value })} />
                 <input type="color" value={p.accent}
                   onChange={(e) => update(i, { accent: e.target.value })}
-                  className="w-10 h-[38px] border border-[#1e1e1e] bg-[#080808] cursor-pointer shrink-0" />
+                  className="w-10 h-[38px] border border-[#343434] bg-[#080808] cursor-pointer shrink-0" />
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function ProductForm({ initial }: { initial: ProductData }) {
             <label className={labelCls}>기능 목록</label>
             <div className="flex flex-wrap gap-1.5 mb-2">
               {p.features.map((f, fi) => (
-                <span key={fi} className="flex items-center gap-1 font-mono text-[10px] border border-[#1e1e1e] text-[#d1d1d1] px-2 py-0.5">
+                <span key={fi} className="flex items-center gap-1 font-mono text-[10px] border border-[#343434] text-[#d1d1d1] px-2 py-0.5">
                   {f}
                   <button onClick={() => removeFeature(i, fi)} className="text-[#555] hover:text-[#ff3cac]">
                     <X size={10} />
@@ -113,7 +113,7 @@ export default function ProductForm({ initial }: { initial: ProductData }) {
       ))}
 
       <button onClick={add}
-        className="w-full border border-dashed border-[#1e1e1e] py-3 text-xs text-[#a1a1a1] hover:text-[#c8ff00] hover:border-[#c8ff00]/40 transition-colors flex items-center justify-center gap-2">
+        className="w-full border border-dashed border-[#343434] py-3 text-xs text-[#a1a1a1] hover:text-[#c8ff00] hover:border-[#c8ff00]/40 transition-colors flex items-center justify-center gap-2">
         <Plus size={13} /> 제품 추가
       </button>
 

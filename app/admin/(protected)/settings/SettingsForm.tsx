@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { SiteData } from "@/lib/types";
 import { saveSite } from "./actions";
 
-const input = "w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
+const input = "w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
 const label = "block text-[10px] font-mono tracking-widest uppercase text-[#a1a1a1] mb-1";
 
 export default function SettingsForm({ initial }: { initial: SiteData }) {
@@ -28,7 +28,7 @@ export default function SettingsForm({ initial }: { initial: SiteData }) {
   return (
     <div className="max-w-lg space-y-6">
       {/* 기본 정보 */}
-      <section className="border border-[#1e1e1e] bg-[#0d0d0d] p-6 space-y-4">
+      <section className="border border-[#343434] bg-[#0d0d0d] p-6 space-y-4">
         <h2 className="text-xs font-mono tracking-widest uppercase text-[#c8ff00] pb-2">기본 정보</h2>
         <div>
           <label className={label}>사이트명</label>
@@ -52,7 +52,7 @@ export default function SettingsForm({ initial }: { initial: SiteData }) {
       </section>
 
       {/* SEO */}
-      <section className="border border-[#1e1e1e] bg-[#0d0d0d] p-6 space-y-4">
+      <section className="border border-[#343434] bg-[#0d0d0d] p-6 space-y-4">
         <h2 className="text-xs font-mono tracking-widest uppercase text-[#c8ff00] pb-2">SEO 설정</h2>
         <div>
           <label className={label}>페이지 타이틀</label>
@@ -66,7 +66,7 @@ export default function SettingsForm({ initial }: { initial: SiteData }) {
       </section>
 
       {/* Footer */}
-      <section className="border border-[#1e1e1e] bg-[#0d0d0d] p-6 space-y-4">
+      <section className="border border-[#343434] bg-[#0d0d0d] p-6 space-y-4">
         <h2 className="text-xs font-mono tracking-widest uppercase text-[#c8ff00] pb-2">푸터</h2>
         <div>
           <label className={label}>저작권 표시</label>

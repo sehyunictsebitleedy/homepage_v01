@@ -5,7 +5,7 @@ import { Plus, Trash2 } from "lucide-react";
 import type { CompanyData, HistoryItem } from "@/lib/types";
 import { saveCompany } from "./actions";
 
-const inputCls = "w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
+const inputCls = "w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
 const labelCls = "block text-[10px] font-mono tracking-widest uppercase text-[#a1a1a1] mb-1";
 
 export default function CompanyForm({ initial }: { initial: CompanyData }) {
@@ -51,7 +51,7 @@ export default function CompanyForm({ initial }: { initial: CompanyData }) {
   return (
     <div className="max-w-2xl space-y-8">
       {/* 기본 정보 */}
-      <section className="border border-[#1e1e1e] bg-[#0d0d0d] p-6 space-y-4">
+      <section className="border border-[#343434] bg-[#0d0d0d] p-6 space-y-4">
         <h2 className="text-xs font-mono tracking-widest uppercase text-[#c8ff00] mb-4">기본 정보</h2>
         <div>
           <label className={labelCls}>회사 소개 (description)</label>
@@ -73,7 +73,7 @@ export default function CompanyForm({ initial }: { initial: CompanyData }) {
       </section>
 
       {/* 연혁 */}
-      <section className="border border-[#1e1e1e] bg-[#0d0d0d] p-6">
+      <section className="border border-[#343434] bg-[#0d0d0d] p-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xs font-mono tracking-widest uppercase text-[#c8ff00]">연혁 (History)</h2>
           <button onClick={addHistory}
@@ -83,11 +83,11 @@ export default function CompanyForm({ initial }: { initial: CompanyData }) {
         </div>
         <div className="space-y-4">
           {data.history.map((item, i) => (
-            <div key={i} className="border border-[#1e1e1e] p-3 space-y-2">
+            <div key={i} className="border border-[#343434] p-3 space-y-2">
               {/* 연도 행 */}
               <div className="flex gap-2 items-center">
                 <input
-                  className="w-16 shrink-0 bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors"
+                  className="w-16 shrink-0 bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors"
                   placeholder="연도"
                   value={item.year}
                   onChange={(e) => updateYear(i, e.target.value)}
@@ -104,7 +104,7 @@ export default function CompanyForm({ initial }: { initial: CompanyData }) {
                   <div key={ei} className="flex gap-2 items-center">
                     <span className="text-[#333] text-xs shrink-0">—</span>
                     <input
-                      className="flex-1 min-w-0 bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-1.5 outline-none focus:border-[#c8ff00] transition-colors"
+                      className="flex-1 min-w-0 bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-1.5 outline-none focus:border-[#c8ff00] transition-colors"
                       placeholder="내용"
                       value={ev}
                       onChange={(e) => updateEvent(i, ei, e.target.value)}

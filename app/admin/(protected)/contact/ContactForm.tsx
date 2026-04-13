@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { ContactData } from "@/lib/types";
 import { saveContact } from "./actions";
 
-const inputCls = "w-full bg-[#080808] border border-[#1e1e1e] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
+const inputCls = "w-full bg-[#080808] border border-[#343434] text-[#f0f0f0] text-sm px-3 py-2 outline-none focus:border-[#c8ff00] transition-colors";
 const labelCls = "block text-[10px] font-mono tracking-widest uppercase text-[#a1a1a1] mb-1";
 
 export default function ContactForm({ initial }: { initial: ContactData }) {
@@ -23,7 +23,7 @@ export default function ContactForm({ initial }: { initial: ContactData }) {
 
   return (
     <div className="max-w-lg space-y-6">
-      <section className="border border-[#1e1e1e] bg-[#0d0d0d] p-6 space-y-4">
+      <section className="border border-[#343434] bg-[#0d0d0d] p-6 space-y-4">
         <h2 className="text-xs font-mono tracking-widest uppercase text-[#c8ff00] mb-4">연락처 정보</h2>
         <div>
           <label className={labelCls}>전화번호 (Tel)</label>

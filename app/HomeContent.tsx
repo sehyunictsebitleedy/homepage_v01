@@ -91,7 +91,7 @@ export default function HomeContent({
               className="pointer-events-none absolute inset-0"
               style={{
                 backgroundImage:
-                  "linear-gradient(#1e1e1e 1px, transparent 1px), linear-gradient(90deg, #1e1e1e 1px, transparent 1px)",
+                  "linear-gradient(#343434 1px, transparent 1px), linear-gradient(90deg, #343434 1px, transparent 1px)",
                 backgroundSize: "80px 80px",
                 opacity: 0.3,
               }}
@@ -202,7 +202,7 @@ export default function HomeContent({
           className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(#1e1e1e 1px, transparent 1px), linear-gradient(90deg, #1e1e1e 1px, transparent 1px)",
+              "linear-gradient(#343434 1px, transparent 1px), linear-gradient(90deg, #343434 1px, transparent 1px)",
             backgroundSize: "80px 80px",
             opacity: 0.25,
           }}
@@ -307,7 +307,7 @@ export default function HomeContent({
                   href={hero.btn2Href}
                   target={hero.btn2Target}
                   rel={hero.btn2Target === "_blank" ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-2 border border-[#1e1e1e] text-[#ddd9d9] text-xs font-medium tracking-widest uppercase px-6 py-3 hover:border-[#444] hover:text-[#f0f0f0] transition-colors"
+                  className="flex items-center gap-2 border border-[#343434] text-[#ddd9d9] text-xs font-medium tracking-widest uppercase px-6 py-3 hover:border-[#444] hover:text-[#f0f0f0] transition-colors"
                 >
                   {hero.btn2Label}
                 </a>
@@ -339,7 +339,7 @@ export default function HomeContent({
       <MarqueeBar items={marqueeItems} />
 
       {/* ── SEbit BRAND ──────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
+      <section className="px-6 md:px-12 py-14 border-t border-[#343434]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -377,14 +377,14 @@ export default function HomeContent({
             href="http://sebit.co.kr"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 border border-[#1e1e1e] text-[#ddd9d9] text-xs font-medium tracking-widest px-6 py-3 hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors shrink-0"
+            className="group inline-flex items-center gap-2 border border-[#343434] text-[#ddd9d9] text-xs font-medium tracking-widest px-6 py-3 hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors shrink-0"
           >
             SEbit.co.kr
             <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#1e1e1e]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#343434]">
           {[
             { name: "SEbit Nexus", category: "iPaaS", desc: "AI Flow Builder 기반의 통합 플랫폼. API Gateway, DLQ Manager로 엔터프라이즈 연동을 자동화합니다.", accent: "#c8ff00" },
             { name: "SEbit AI", category: "LLM", desc: "Context Engineering 기술로 구현한 AI 에이전트. Agen-D, Agen-Sight, Agen-Talk 시리즈.", accent: "#ff3cac" },
@@ -400,7 +400,7 @@ export default function HomeContent({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.1, duration: 0.6, ease: "easeOut" }}
-              className="sebit-card group bg-[#080808] border border-[#1e1e1e] p-6 flex flex-col gap-5 cursor-pointer relative overflow-hidden"
+              className="sebit-card group bg-[#080808] border border-[#343434] p-6 flex flex-col gap-5 cursor-pointer relative overflow-hidden"
             >
               <div className="absolute bottom-0 left-0 h-[2px] w-full bg-[#c8ff00] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               <div className="flex items-start justify-between">
@@ -427,7 +427,7 @@ export default function HomeContent({
       </section>
 
       {/* ── SERVICES ─────────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
+      <section className="px-6 md:px-12 py-14 border-t border-[#343434]">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -456,7 +456,7 @@ export default function HomeContent({
           </motion.div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#343434]">
           {services.map(({ num, title, desc, href }, i) => (
             <motion.div
               key={num}
@@ -469,7 +469,7 @@ export default function HomeContent({
               <TiltCard className="h-full" intensity={5}>
               <Link
                 href={href}
-                className="card-hover group flex flex-col justify-between gap-8 bg-[#080808] border border-[#1e1e1e] p-8 h-full hover:bg-[#0d0d0d] transition-colors"
+                className="card-hover group flex flex-col justify-between gap-8 bg-[#080808] border border-[#343434] p-8 h-full hover:bg-[#0d0d0d] transition-colors"
               >
                 <div className="flex items-start justify-between">
                   <span className="font-mono text-xs text-[#a1a1a1] tracking-widest">{num}</span>
@@ -490,7 +490,7 @@ export default function HomeContent({
 
       {/* ── ABOUT STRIP ──────────────────────────────────── */}
       <section
-        className="px-6 md:px-12 py-36 border-t border-[#1e1e1e] relative"
+        className="px-6 md:px-12 py-36 border-t border-[#343434] relative"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -540,7 +540,7 @@ export default function HomeContent({
           >
             <Link
               href={about.linkHref}
-              className="group inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#b5b5b5] hover:text-[#f0f0f0] transition-colors border-b border-[#1e1e1e] pb-1 hover:border-[#444]"
+              className="group inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#b5b5b5] hover:text-[#f0f0f0] transition-colors border-b border-[#343434] pb-1 hover:border-[#444]"
             >
               {about.linkLabel}
               <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -550,7 +550,7 @@ export default function HomeContent({
       </section>
 
       {/* ── CONTACT CTA ──────────────────────────────────── */}
-      <section className="px-6 md:px-12 py-14 border-t border-[#1e1e1e]">
+      <section className="px-6 md:px-12 py-14 border-t border-[#343434]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -570,14 +570,14 @@ export default function HomeContent({
           </div>
           <Link
             href={cta.btnHref}
-            className="group flex-shrink-0 flex items-center gap-3 border border-[#1e1e1e] px-8 py-4 text-sm font-bold tracking-widest uppercase text-[#f0f0f0] hover:bg-[#c8ff00] hover:text-[#080808] hover:border-[#c8ff00] transition-all"
+            className="group flex-shrink-0 flex items-center gap-3 border border-[#343434] px-8 py-4 text-sm font-bold tracking-widest uppercase text-[#f0f0f0] hover:bg-[#c8ff00] hover:text-[#080808] hover:border-[#c8ff00] transition-all"
           >
             {cta.btnLabel}
             <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </motion.div>
 
-        <div className="mt-16 pt-8 border-t border-[#1e1e1e] flex flex-col md:flex-row justify-between gap-4">
+        <div className="mt-16 pt-8 border-t border-[#343434] flex flex-col md:flex-row justify-between gap-4">
           <span className="font-mono text-xs text-[#a1a1a1] tracking-wider">{site.footer.copyright}</span>
           <span className="font-mono text-xs text-[#a1a1a1] tracking-wider">{site.footer.contact}</span>
         </div>

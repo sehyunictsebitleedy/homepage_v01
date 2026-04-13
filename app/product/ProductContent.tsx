@@ -30,7 +30,7 @@ export default function ProductContent({ data }: { data: ProductData }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="mb-10 border border-[#1e1e1e] p-8 flex flex-col md:flex-row items-center justify-between gap-6"
+        className="mb-10 border border-[#343434] p-8 flex flex-col md:flex-row items-center justify-between gap-6"
       >
         <div>
           <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#c8ff00] mb-2">SmartGeoKit ServiceLine</p>
@@ -58,7 +58,7 @@ export default function ProductContent({ data }: { data: ProductData }) {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ delay: i * 0.08, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <TiltCard className="sebit-card bg-[#080808] border border-[#1e1e1e] p-8 md:p-12">
+            <TiltCard className="sebit-card bg-[#080808] border border-[#343434] p-8 md:p-12">
             <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
               <div className="md:w-80 shrink-0">
                 <div className="flex items-center gap-3 mb-4">
