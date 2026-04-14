@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring, type Variants } from "framer-motion";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
 import ScrambleText from "@/components/ui/ScrambleText";
 import TiltCard from "@/components/ui/TiltCard";
@@ -86,17 +86,6 @@ export default function HomeContent({
             exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.3 } }}
             onClick={() => setIntro(false)}
           >
-            {/* 그리드 배경 */}
-            <div
-              className="pointer-events-none absolute inset-0"
-              style={{
-                backgroundImage:
-                  "linear-gradient(#343434 1px, transparent 1px), linear-gradient(90deg, #343434 1px, transparent 1px)",
-                backgroundSize: "80px 80px",
-                opacity: 0.3,
-              }}
-            />
-
             {/* 라임 glow */}
             <div
               className="absolute inset-0 pointer-events-none"
@@ -197,17 +186,6 @@ export default function HomeContent({
           <source src="/hero_main_bg.mp4" type="video/mp4" />
         </video>
 
-        {/* 배경: 그리드 */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(#343434 1px, transparent 1px), linear-gradient(90deg, #343434 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-            opacity: 0.25,
-          }}
-        />
-
         {/* 배경: 라임 glow orb */}
         <div
           className="hero-orb"
@@ -265,74 +243,65 @@ export default function HomeContent({
               </motion.p>
 
               {/* 사업영역 — 순환 슬로건 */}
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-                className="mt-6 flex items-center gap-3 font-black tracking-[-0.02em] text-[clamp(1rem,2.5vw,1.8rem)]"
-              >
-                <span className="text-[#444]">We build</span>
-                <span className="relative overflow-hidden" style={{ minWidth: "12ch" }}>
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={tagIndex}
-                      initial={{ y: "100%", opacity: 0 }}
-                      animate={{ y: "0%", opacity: 1 }}
-                      exit={{ y: "-100%", opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      className="inline-block text-[#c8ff00]"
-                    >
-                      {heroTags[tagIndex]}
-                    </motion.span>
-                  </AnimatePresence>
-                </span>
-              </motion.div>
+              {heroTags.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9, duration: 0.6 }}
+                  className="mt-6 flex items-center gap-3 font-black tracking-[-0.02em] text-[clamp(1rem,2.5vw,1.8rem)]"
+                >
+                  <span className="text-[#444]">We build</span>
+                  <span className="relative overflow-hidden" style={{ minWidth: "12ch" }}>
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={tagIndex}
+                        initial={{ y: "100%", opacity: 0 }}
+                        animate={{ y: "0%", opacity: 1 }}
+                        exit={{ y: "-100%", opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        className="inline-block text-[#c8ff00]"
+                      >
+                        {heroTags[tagIndex]}
+                      </motion.span>
+                    </AnimatePresence>
+                  </span>
+                </motion.div>
+              )}
 
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.35, duration: 0.6 }}
-                className="mt-10 flex flex-wrap items-center justify-center gap-3"
-              >
-                <a
-                  href={hero.btn1Href}
-                  target={hero.btn1Target}
-                  rel={hero.btn1Target === "_blank" ? "noopener noreferrer" : undefined}
-                  className="group flex items-center gap-2 bg-[#c8ff00] text-[#080808] text-xs font-bold tracking-widest px-6 py-3 hover:bg-[#d4ff33] transition-colors"
+              {(hero.btn1Enabled || hero.btn2Enabled) && (
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.0, duration: 0.6 }}
+                  className="mt-10 flex flex-wrap items-center justify-center gap-3"
                 >
-                  {hero.btn1Label}
-                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-                <a
-                  href={hero.btn2Href}
-                  target={hero.btn2Target}
-                  rel={hero.btn2Target === "_blank" ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-2 border border-[#343434] text-[#ddd9d9] text-xs font-medium tracking-widest uppercase px-6 py-3 hover:border-[#444] hover:text-[#f0f0f0] transition-colors"
-                >
-                  {hero.btn2Label}
-                </a>
-              </motion.div>
+                  {hero.btn1Enabled && (
+                    <a
+                      href={hero.btn1Href}
+                      target={hero.btn1Target}
+                      rel={hero.btn1Target === "_blank" ? "noopener noreferrer" : undefined}
+                      className="group flex items-center gap-2 bg-[#c8ff00] text-[#080808] text-xs font-bold tracking-widest px-6 py-3 hover:bg-[#d4ff33] transition-colors"
+                    >
+                      {hero.btn1Label}
+                      <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </a>
+                  )}
+                  {hero.btn2Enabled && (
+                    <a
+                      href={hero.btn2Href}
+                      target={hero.btn2Target}
+                      rel={hero.btn2Target === "_blank" ? "noopener noreferrer" : undefined}
+                      className="flex items-center gap-2 border border-[#343434] text-[#ddd9d9] text-xs font-medium tracking-widest uppercase px-6 py-3 hover:border-[#444] hover:text-[#f0f0f0] transition-colors"
+                    >
+                      {hero.btn2Label}
+                    </a>
+                  )}
+                </motion.div>
+              )}
             </>
           )}
         </div>
 
-        {/* 스크롤 인디케이터 */}
-        {!intro && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="flex items-center justify-center gap-3 relative z-10"
-          >
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-            >
-              <ArrowDown size={14} className="text-[#d1d1d1]" />
-            </motion.div>
-            <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#d1d1d1]">Scroll</span>
-          </motion.div>
-        )}
       </section>
 
       {/* ── MARQUEE ──────────────────────────────────────── */}

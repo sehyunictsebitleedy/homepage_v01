@@ -39,8 +39,18 @@ export interface BusinessArea {
   tags: string[];
 }
 
+export interface MarketItem {
+  id: string;
+  title: string;
+  accent: string;
+  services: string[];
+  targets: string[];
+  approach: string[];
+}
+
 export interface BusinessData {
   areas: BusinessArea[];
+  market: MarketItem[];
 }
 
 export interface ProjectItem {
@@ -51,6 +61,7 @@ export interface ProjectItem {
 
 export interface ProjectYear {
   year: string;
+  subtitle?: string;
   projects: ProjectItem[];
 }
 
@@ -136,9 +147,11 @@ export interface HomeData {
     btn1Label: string;
     btn1Href: string;
     btn1Target: "_self" | "_blank";
+    btn1Enabled: boolean;
     btn2Label: string;
     btn2Href: string;
     btn2Target: "_self" | "_blank";
+    btn2Enabled: boolean;
     heroTags: string[];
   };
   services: HomeServiceItem[];

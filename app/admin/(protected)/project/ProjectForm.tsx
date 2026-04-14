@@ -17,6 +17,9 @@ export default function ProjectForm({ initial }: { initial: ProjectData }) {
   const updateYear = (yi: number, value: string) =>
     setYears(data.years.map((y, i) => i === yi ? { ...y, year: value } : y));
 
+  const updateSubtitle = (yi: number, value: string) =>
+    setYears(data.years.map((y, i) => i === yi ? { ...y, subtitle: value || undefined } : y));
+
   const updateProject = (yi: number, pi: number, patch: Partial<ProjectItem>) =>
     setYears(data.years.map((y, i) =>
       i === yi ? { ...y, projects: y.projects.map((p, j) => j === pi ? { ...p, ...patch } : p) } : y
@@ -70,6 +73,12 @@ export default function ProjectForm({ initial }: { initial: ProjectData }) {
               <Trash2 size={14} />
             </button>
           </div>
+          <input
+            className={inputCls}
+            placeholder="부제 (선택사항)"
+            value={y.subtitle ?? ""}
+            onChange={(e) => updateSubtitle(yi, e.target.value)}
+          />
 
           {/* 프로젝트 목록 */}
           <div className="space-y-2 pl-2 border-l border-[#343434]">

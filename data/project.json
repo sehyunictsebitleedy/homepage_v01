@@ -2,6 +2,7 @@
   "years": [
     {
       "year": "2025",
+      "subtitle": "삼성전자/삼성디스플레이 DIGITAL TWIN 플랫폼, 환경안전, 방재모니터링 분야 신규 사업, 시스템 운영, 전자 선도과제",
       "projects": [
         { "title": "반도체 인프라 통합 DIGITAL TWIN 플랫폼(DUE) 운영", "client": "삼성전자", "tag": "GIS" },
         { "title": "반도체 인프라 통합 DIGITAL TWIN 플랫폼(DUE) 고도화", "client": "삼성전자", "tag": "GIS" },

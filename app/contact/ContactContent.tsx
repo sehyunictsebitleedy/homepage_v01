@@ -29,7 +29,7 @@ export default function ContactContent({ data }: { data: ContactData }) {
         </h1>
       </motion.div>
 
-      {/* 지도 + Info */}
+      {/* 지도 + Info — 5:5 */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -145,45 +145,45 @@ export default function ContactContent({ data }: { data: ContactData }) {
                 placeholder="email@example.com"
               />
             </div>
-          </div>
 
-          {/* 분야 */}
-          <div className="border-b border-[#343434] p-6">
-            <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-4">상담 분야</label>
-            <div className="flex flex-wrap gap-2">
-              {["GIS / CAD", "공공데이터", "AI 솔루션", "모바일 앱", "웹 시스템", "기타"].map((tag) => (
-                <label key={tag} className="cursor-pointer">
-                  <input type="checkbox" className="sr-only peer" />
-                  <span className="inline-block font-mono text-[11px] tracking-widest uppercase border border-[#343434] px-3 py-1.5 text-[#666] peer-checked:border-[#c8ff00] peer-checked:text-[#c8ff00] transition-colors hover:border-[#444] hover:text-[#aaa]">
-                    {tag}
-                  </span>
-                </label>
-              ))}
+            {/* 분야 */}
+            <div className="border-b border-[#343434] p-6 md:col-span-2">
+              <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-4">상담 분야</label>
+              <div className="flex flex-wrap gap-2">
+                {["GIS / CAD", "공공데이터", "AI 솔루션", "모바일 앱", "웹 시스템", "기타"].map((tag) => (
+                  <label key={tag} className="cursor-pointer">
+                    <input type="checkbox" className="sr-only peer" />
+                    <span className="inline-block font-mono text-[11px] tracking-widest uppercase border border-[#343434] px-3 py-1.5 text-[#666] peer-checked:border-[#c8ff00] peer-checked:text-[#c8ff00] transition-colors hover:border-[#444] hover:text-[#aaa]">
+                      {tag}
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* 문의 내용 */}
-          <div className="border-b border-[#343434] p-6">
-            <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-3">문의 내용 *</label>
-            <textarea
-              rows={6}
-              className="w-full bg-transparent text-[#f0f0f0] text-sm outline-none placeholder:text-[#333] resize-none focus:placeholder:text-[#444] transition-colors leading-relaxed"
-              placeholder="프로젝트 개요, 요구사항, 예산 규모, 일정 등을 자유롭게 적어주세요."
-            />
-          </div>
+            {/* 문의 내용 */}
+            <div className="border-b border-[#343434] p-6 md:col-span-2">
+              <label className="block font-mono text-[10px] tracking-[0.25em] uppercase text-[#aaa] mb-3">문의 내용 *</label>
+              <textarea
+                rows={6}
+                className="w-full bg-transparent text-[#f0f0f0] text-sm outline-none placeholder:text-[#333] resize-none focus:placeholder:text-[#444] transition-colors leading-relaxed"
+                placeholder="프로젝트 개요, 요구사항, 예산 규모, 일정 등을 자유롭게 적어주세요."
+              />
+            </div>
 
-          {/* 제출 */}
-          <div className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <p className="font-mono text-[10px] tracking-wider text-[#444]">
-              * 표시 항목은 필수 입력입니다
-            </p>
-            <button
-              type="submit"
-              className="group flex items-center gap-3 bg-[#c8ff00] text-[#080808] text-xs font-black tracking-[0.2em] uppercase px-10 py-4 hover:bg-[#d4ff33] transition-colors"
-            >
-              상담 접수
-              <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-            </button>
+            {/* 제출 */}
+            <div className="p-6 md:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <p className="font-mono text-[10px] tracking-wider text-[#444]">
+                * 표시 항목은 필수 입력입니다
+              </p>
+              <button
+                type="submit"
+                className="group flex items-center gap-3 bg-[#c8ff00] text-[#080808] text-xs font-black tracking-[0.2em] uppercase px-10 py-4 hover:bg-[#d4ff33] transition-colors"
+              >
+                상담 접수
+                <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+              </button>
+            </div>
           </div>
         </form>
       </motion.div>

@@ -94,7 +94,7 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
 
       {/* 연도별 섹션 */}
       <div className="space-y-12">
-        {data.years.map(({ year, projects }, yi) => (
+        {data.years.map(({ year, subtitle, projects }, yi) => (
           <div
             key={year}
             ref={(el) => { sectionRefs.current[year] = el; }}
@@ -128,6 +128,13 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
                   />
                 )}
               </button>
+
+              {/* 연도 부제 */}
+              {subtitle && (
+                <p className="mb-4 font-mono text-xs text-[#666] tracking-wide leading-relaxed">
+                  {subtitle}
+                </p>
+              )}
 
               {/* 프로젝트 목록 */}
               <AnimatePresence initial={false}>

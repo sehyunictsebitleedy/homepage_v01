@@ -13,10 +13,11 @@ export default function BusinessForm({ initial }: { initial: BusinessData }) {
   const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
 
   const updateArea = (i: number, patch: Partial<BusinessArea>) =>
-    setData((d) => ({ areas: d.areas.map((a, idx) => idx === i ? { ...a, ...patch } : a) }));
+    setData((d) => ({ ...d, areas: d.areas.map((a, idx) => idx === i ? { ...a, ...patch } : a) }));
 
   const addArea = () =>
     setData((d) => ({
+      ...d,
       areas: [...d.areas, {
         num: String(d.areas.length + 1).padStart(2, "0"),
         title: "", accent: "", desc: "", tags: []
@@ -24,7 +25,7 @@ export default function BusinessForm({ initial }: { initial: BusinessData }) {
     }));
 
   const removeArea = (i: number) =>
-    setData((d) => ({ areas: d.areas.filter((_, idx) => idx !== i) }));
+    setData((d) => ({ ...d, areas: d.areas.filter((_, idx) => idx !== i) }));
 
   const addTag = (i: number, tag: string) => {
     if (!tag.trim()) return;
