@@ -236,6 +236,47 @@ homepage_v01/
 - 커스텀 CSS 파일 생성 금지 — Tailwind 유틸리티 + `globals.css`만 사용
 - `data/*.json`은 런타임에 직접 수정되므로 git에서 추적되지만, 운영 서버에서는 별도 관리 권장
 - `lib/auth.ts` / `lib/users.ts` / `lib/types.ts` 변경 시 — 임포트하는 모든 파일 함께 수정 후 `npx tsc --noEmit` 확인 필수
+
+---
+
+## 최근 업데이트
+
+### 2026-04-15
+
+#### Hero 섹션 개선
+- 인트로 오버레이 및 Hero 배경 격자무늬 라인 제거
+- `SEHYUNICT` 타이틀 한 줄 표시 (`whitespace-nowrap`, `clamp` 유지)
+- Hero 순환 슬로건(heroTags) 제거 — 어드민 편집 항목에서도 제거
+- 버튼 2개(btn1, btn2) ON/OFF 토글 기능 추가
+  - `HomeData.hero`에 `btn1Enabled`, `btn2Enabled` 필드 추가
+  - 어드민 Home 폼에서 버튼별 표시 여부 개별 제어 가능
+- Hero 사업 영역 박스 3개 추가
+  - **SEbit 솔루션** (Boxes 아이콘) · **시스템 구축/운영** (Server) · **GIS/CAD 솔루션** (Map)
+  - 기본: 아이콘만 크게 표시 / hover 시 라벨 + 설명 텍스트 슬라이드 reveal
+  - 하단 라임 라인 슬라이드 인 효과 (sebit-card 스타일 통일)
+
+#### Business 페이지
+- **Market Coverage** 섹션 추가 — 2×2 그리드 카드 레이아웃
+  - 사업장 시설·재해관리 / 경영관리 공통 / 위탁운영(ITO) / 특화 서비스
+  - 좌측: ID 뱃지 + 타이틀 + 추진방식 / 우측: 주요서비스
+- 어드민 Business 폼에서 Market 항목 추가·수정·삭제 가능
+- `BusinessData`에 `market: MarketItem[]` 타입 추가
+
+#### Project 페이지
+- 연도별 `subtitle` 부제 필드 추가 (2025년 적용)
+- 어드민 Project 폼에서 연도별 부제 입력 가능
+- `ProjectYear`에 `subtitle?: string` 옵셔널 타입 추가
+
+#### Contact 페이지
+- 지도 + 연락처 정보 영역 **5:5 분할 레이아웃** 변경 (기존 전체 지도)
+- **PROJECT REQUEST FORM** 전체 폭으로 추가
+  - 담당자명·회사명·연락처·이메일·상담 분야(체크박스)·문의 내용 필드
+  - 상담 분야: GIS/CAD, 공공데이터, AI 솔루션, 모바일 앱, 웹 시스템, 기타
+
+#### 스타일 전역 변경
+- 전체 보더 색상 `#1e1e1e` → `#343434` (가시성 개선)
+- `text-wrap: pretty` 전역 적용 (모바일 줄바꿈 개선)
+- `word-break: keep-all` 전역 적용 (한글 단어 분리 방지)
 - 인증 흐름 변경 시 — `proxy.ts` + `(protected)/layout.tsx` + `login/actions.ts` 세 파일 세트로 점검
 
 ---

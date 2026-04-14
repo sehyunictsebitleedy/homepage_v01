@@ -59,35 +59,7 @@ export default function HomeForm({ initial }: { initial: HomeData }) {
         </div>
         <div><label className={label}>태그라인</label><input className={input} value={data.hero.tagline} onChange={(e) => setHero("tagline", e.target.value)} /></div>
         <div><label className={label}>설명 (줄바꿈: \n)</label><textarea rows={2} className={input + " resize-none"} value={data.hero.description} onChange={(e) => setHero("description", e.target.value)} /></div>
-        <div>
-          <label className={label}>사업영역 태그 (Hero 키워드)</label>
-          <div className="space-y-2">
-            {(data.hero.heroTags ?? []).map((tag, i) => (
-              <div key={i} className="flex gap-2">
-                <input
-                  className={input}
-                  value={tag}
-                  onChange={(e) => setData((d) => {
-                    const tags = [...(d.hero.heroTags ?? [])];
-                    tags[i] = e.target.value;
-                    return { ...d, hero: { ...d.hero, heroTags: tags } };
-                  })}
-                />
-                <button type="button"
-                  onClick={() => setData((d) => ({ ...d, hero: { ...d.hero, heroTags: (d.hero.heroTags ?? []).filter((_, idx) => idx !== i) } }))}
-                  className="px-2 text-[#555] hover:text-[#ff3cac] transition-colors border border-[#343434]">
-                  <Trash2 size={13} />
-                </button>
-              </div>
-            ))}
-            <button type="button"
-              onClick={() => setData((d) => ({ ...d, hero: { ...d.hero, heroTags: [...(d.hero.heroTags ?? []), ""] } }))}
-              className="flex items-center gap-1 text-[10px] font-mono tracking-widest uppercase text-[#555] hover:text-[#c8ff00] transition-colors">
-              <Plus size={12} /> 태그 추가
-            </button>
-          </div>
-        </div>
-        <div className="grid grid-cols-[1fr_1fr_auto_auto] gap-3 items-end">
+<div className="grid grid-cols-[1fr_1fr_auto_auto] gap-3 items-end">
           <div><label className={label}>버튼1 텍스트</label><input className={input} value={data.hero.btn1Label} onChange={(e) => setHero("btn1Label", e.target.value)} /></div>
           <div><label className={label}>버튼1 링크</label><input className={input} value={data.hero.btn1Href} onChange={(e) => setHero("btn1Href", e.target.value)} /></div>
           <div>

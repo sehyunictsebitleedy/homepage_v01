@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring, type Variants } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Boxes, Server, Map } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
 import ScrambleText from "@/components/ui/ScrambleText";
 import TiltCard from "@/components/ui/TiltCard";
@@ -46,7 +46,6 @@ export default function HomeContent({
 }) {
   const { hero, services, about, cta } = home;
   const [intro, setIntro] = useState(true);
-  const [tagIndex, setTagIndex] = useState(0);
 
   // Hero 마우스 패럴랙스
   const mouseX = useMotionValue(0);
@@ -62,13 +61,6 @@ export default function HomeContent({
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
   }, [mouseX, mouseY]);
-
-  const heroTags = home.hero.heroTags ?? [];
-  useEffect(() => {
-    if (heroTags.length === 0) return;
-    const id = setInterval(() => setTagIndex((i) => (i + 1) % heroTags.length), 2200);
-    return () => clearInterval(id);
-  }, [heroTags.length]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIntro(false), 1700);
@@ -223,10 +215,8 @@ export default function HomeContent({
                 transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 style={{ x: springX, y: springY }}
               >
-                <h1 className="font-black leading-[0.88] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]">
+                <h1 className="font-black leading-[0.88] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)] whitespace-nowrap">
                   <span className="text-outline">{hero.title1}</span>
-                </h1>
-                <h1 className="font-black leading-[0.88] tracking-[-0.04em] text-[clamp(4rem,12vw,11rem)]">
                   <span className="text-glitch" data-text={hero.title2}>{hero.title2}</span>
                 </h1>
               </motion.div>
@@ -242,31 +232,31 @@ export default function HomeContent({
                 ))}
               </motion.p>
 
-              {/* 사업영역 — 순환 슬로건 */}
-              {heroTags.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9, duration: 0.6 }}
-                  className="mt-6 flex items-center gap-3 font-black tracking-[-0.02em] text-[clamp(1rem,2.5vw,1.8rem)]"
-                >
-                  <span className="text-[#444]">We build</span>
-                  <span className="relative overflow-hidden" style={{ minWidth: "12ch" }}>
-                    <AnimatePresence mode="wait">
-                      <motion.span
-                        key={tagIndex}
-                        initial={{ y: "100%", opacity: 0 }}
-                        animate={{ y: "0%", opacity: 1 }}
-                        exit={{ y: "-100%", opacity: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="inline-block text-[#c8ff00]"
-                      >
-                        {heroTags[tagIndex]}
-                      </motion.span>
-                    </AnimatePresence>
-                  </span>
-                </motion.div>
-              )}
+              {/* 사업 영역 박스 */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.95, duration: 0.6 }}
+                className="mt-8 flex flex-wrap justify-center gap-3"
+              >
+                {[
+                  { Icon: Boxes, label: "SEbit 솔루션", desc: "AI·iPaaS·모바일 자체 솔루션" },
+                  { Icon: Server, label: "시스템 구축/운영", desc: "엔터프라이즈 SI/SE/SM 전반" },
+                  { Icon: Map, label: "GIS/CAD 솔루션", desc: "공간정보·도면 분석 플랫폼" },
+                ].map(({ Icon, label, desc }) => (
+                  <div key={label} className="group relative flex flex-col items-center gap-3 border border-[#222] hover:border-[#343434] px-6 py-8 bg-[#0a0a0a]/70 backdrop-blur-sm w-[270px] overflow-hidden transition-colors duration-300 cursor-default">
+                    {/* 하단 라임 라인 */}
+                    <div className="absolute bottom-0 left-0 h-[1px] w-full bg-[#c8ff00] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                    {/* 아이콘 */}
+                    <Icon size={30} className="text-[#c8ff00]" />
+                    {/* 텍스트 — hover시 슬라이드 인 */}
+                    <div className="flex flex-col items-center gap-1.5 text-center max-h-0 overflow-hidden opacity-0 group-hover:max-h-[80px] group-hover:opacity-100 transition-all duration-300 ease-out">
+                      <span className="font-mono text-[13px] tracking-[0.08em] text-[#f0f0f0]">{label}</span>
+                      <span className="font-mono text-[11px] tracking-wide text-[#666] leading-relaxed">{desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
 
               {(hero.btn1Enabled || hero.btn2Enabled) && (
                 <motion.div
