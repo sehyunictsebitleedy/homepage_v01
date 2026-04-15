@@ -248,11 +248,11 @@ export default function HomeContent({
                     {/* 하단 라임 라인 */}
                     <div className="absolute bottom-0 left-0 h-[1px] w-full bg-[#c8ff00] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                     {/* 아이콘 */}
-                    <Icon size={30} className="text-[#c8ff00]" />
+                    <Icon size={32} className="text-[#c8ff00]" />
                     {/* 텍스트 — hover시 슬라이드 인 */}
                     <div className="flex flex-col items-center gap-1.5 text-center max-h-0 overflow-hidden opacity-0 group-hover:max-h-[80px] group-hover:opacity-100 transition-all duration-300 ease-out">
-                      <span className="font-mono text-[13px] tracking-[0.08em] text-[#f0f0f0]">{label}</span>
-                      <span className="font-mono text-[11px] tracking-wide text-[#666] leading-relaxed">{desc}</span>
+                      <span className="font-mono text-[16px] tracking-[0.08em] text-[#f0f0f0] text-[bold]">{label}</span>
+                      <span className="font-mono text-[12px] tracking-wide text-[#666] leading-relaxed">{desc}</span>
                     </div>
                   </div>
                 ))}

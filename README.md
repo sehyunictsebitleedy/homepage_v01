@@ -241,6 +241,25 @@ homepage_v01/
 
 ## 최근 업데이트
 
+### 2026-04-15 (2)
+
+#### Product 페이지
+- 각 제품 카드에 **제품설명** 버튼 추가
+  - `imageUrl` 필드가 설정된 제품에만 버튼 노출
+  - 클릭 시 전체화면 라이트박스(검은 배경 + 닫기 버튼) 이미지 표시
+  - `public/product_img01.png` ~ `product_img08.png` 이미지 파일 추가
+- `Product` 타입에 `imageUrl?: string` 옵셔널 필드 추가
+- 어드민 Product 폼에서 이미지 URL 편집 가능
+
+#### Hero 섹션
+- 사업 영역 박스 아이콘 크기 20% 확대 (30 → 36)
+
+#### 스타일 수정
+- `.sebit-card::before`, `::after` pseudo-element에 `pointer-events: none` 추가
+  - 카드 내부 버튼 클릭 이벤트 차단 문제 해결
+
+---
+
 ### 2026-04-15
 
 #### Hero 섹션 개선

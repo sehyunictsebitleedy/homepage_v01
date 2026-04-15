@@ -87,6 +87,11 @@ export default function ProductForm({ initial }: { initial: ProductData }) {
               onChange={(e) => update(i, { desc: e.target.value })} />
           </div>
           <div>
+            <label className={labelCls}>제품설명 이미지 URL</label>
+            <input className={inputCls} value={p.imageUrl ?? ""} placeholder="/product_img01.png"
+              onChange={(e) => update(i, { imageUrl: e.target.value || undefined })} />
+          </div>
+          <div>
             <label className={labelCls}>기능 목록</label>
             <div className="flex flex-wrap gap-1.5 mb-2">
               {p.features.map((f, fi) => (

@@ -207,6 +207,7 @@ body::before {
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
 /* 상단 shine sweep */
@@ -221,6 +222,7 @@ body::before {
   );
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .sebit-card:hover {
