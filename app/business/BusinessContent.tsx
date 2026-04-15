@@ -80,7 +80,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
             transition={{ delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="bg-[#080808] p-6 md:p-8 flex flex-col gap-5"
           >
-            <div className="flex gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
               {/* 왼쪽: 헤더 + 대상/추진방식 */}
               <div className="flex flex-col gap-5 flex-1">
                 {/* 헤더 */}
@@ -104,7 +104,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
               </div>
 
               {/* 오른쪽: 주요 서비스 */}
-              <div className="w-56 shrink-0 pl-6 border-l border-[#1e1e1e]">
+              <div className="w-full sm:w-56 shrink-0 sm:pl-6 sm:border-l border-t sm:border-t-0 border-[#1e1e1e] pt-4 sm:pt-0">
                 <p className="font-mono text-[12px] tracking-widest uppercase text-[#555] mb-2">주요 서비스</p>
                 <ul className="space-y-1">
                   {services.map((s) => (

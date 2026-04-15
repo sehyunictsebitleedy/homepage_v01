@@ -251,11 +251,11 @@ export default function HomeContent({
                     rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                     className="group relative flex flex-col items-center justify-center cursor-pointer"
                     style={{
-                      width: 210,
-                      height: 210,
+                      width: "clamp(100px, 26vw, 210px)",
+                      height: "clamp(100px, 26vw, 210px)",
                       borderRadius: "50%",
                       border: "1px solid #333",
-                      marginLeft: idx === 0 ? 0 : 30,
+                      marginLeft: idx === 0 ? 0 : "clamp(6px, 2.5vw, 30px)",
                       background: "rgba(8,8,8,0.4)",
                       backdropFilter: "blur(8px)",
                       transition: "border-color 0.3s, background 0.3s",
