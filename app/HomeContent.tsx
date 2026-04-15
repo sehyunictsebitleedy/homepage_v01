@@ -248,8 +248,8 @@ export default function HomeContent({
                     key={item.label}
                     className="group relative flex flex-col items-center justify-center cursor-default"
                     style={{
-                      width: 240,
-                      height: 240,
+                      width: 210,
+                      height: 210,
                       borderRadius: "50%",
                       border: "1px solid #333",
                       marginLeft: idx === 0 ? 0 : 30,
