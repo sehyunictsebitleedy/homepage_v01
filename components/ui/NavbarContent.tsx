@@ -21,7 +21,7 @@ export default function NavbarContent({
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#343434] bg-[#080808]/80 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link href="/" className="flex items-center">
-          <Image src="/logo_top.png" alt="SEHYUN ICT" width={140} height={36} className="h-8 w-auto object-contain" />
+          <Image src="/logo_top.png" alt="SEHYUN ICT" width={140} height={36} className="h-8 w-auto object-contain" style={{ filter: "brightness(0) invert(1)" }} />
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">
