@@ -71,7 +71,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#1e1e1e]">
-        {data.market.map(({ id, title, accent, services, targets, approach }, i) => (
+        {data.market.map(({ id, title, accent, services, approach }, i) => (
           <motion.div
             key={id}
             initial={{ opacity: 0, y: 20 }}

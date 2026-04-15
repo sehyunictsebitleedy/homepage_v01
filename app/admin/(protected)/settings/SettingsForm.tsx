@@ -37,7 +37,7 @@ export default function SettingsForm({ initial }: { initial: SiteData }) {
         <div>
           <label className={label}>로고 텍스트</label>
           <input className={input} value={data.logoText} onChange={(e) => set("logoText", e.target.value)} />
-          <p className="mt-1 text-[10px] text-[#555]">※ 마지막 "ICT" 앞 부분이 흰색, "ICT"는 라임색으로 표시됩니다.</p>
+          <p className="mt-1 text-[10px] text-[#555]">※ 마지막 &quot;ICT&quot; 앞 부분이 흰색, &quot;ICT&quot;는 라임색으로 표시됩니다.</p>
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>

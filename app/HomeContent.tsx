@@ -240,13 +240,16 @@ export default function HomeContent({
                 className="mt-10 flex items-center justify-center"
               >
                 {[
-                  { Icon: BrainCircuit, label: "SEbit 솔루션", desc: "AI·iPaaS·모바일 자체 솔루션" },
-                  { Icon: Server,       label: "System 구축/운영", desc: "엔터프라이즈 SI/SE/SM 전반" },
-                  { Icon: Map,          label: "Solution GIS/CAD", desc: "공간정보·도면 분석 플랫폼" },
+                  { Icon: BrainCircuit, label: "SEbit 솔루션", desc: "AI·iPaaS·모바일 자체 솔루션", href: "http://sebit.co.kr", target: "_blank" },
+                  { Icon: Server,       label: "System 구축/운영", desc: "엔터프라이즈 SI/SE/SM 전반", href: "/business", target: "_self" },
+                  { Icon: Map,          label: "Solution GIS/CAD", desc: "공간정보·도면 분석 플랫폼", href: "/product", target: "_self" },
                 ].map((item, idx) => (
-                  <div
+                  <a
                     key={item.label}
-                    className="group relative flex flex-col items-center justify-center cursor-default"
+                    href={item.href}
+                    target={item.target}
+                    rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+                    className="group relative flex flex-col items-center justify-center cursor-pointer"
                     style={{
                       width: 210,
                       height: 210,
@@ -274,7 +277,7 @@ export default function HomeContent({
                       <span className="font-mono font-bold text-[18px] tracking-wide text-[#f0f0f0] leading-snug">{item.label}</span>
                       <span className="font-mono text-[13px] tracking-wide text-[#666] leading-relaxed">{item.desc}</span>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </motion.div>
 

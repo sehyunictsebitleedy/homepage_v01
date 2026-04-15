@@ -31,7 +31,7 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
     if (year === CURRENT_YEAR) return;
     setOpenYears((prev) => {
       const next = new Set(prev);
-      next.has(year) ? next.delete(year) : next.add(year);
+      if (next.has(year)) { next.delete(year); } else { next.add(year); }
       return next;
     });
   };
