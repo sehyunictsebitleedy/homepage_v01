@@ -85,13 +85,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
               <div className="flex flex-col gap-5 flex-1">
                 {/* 헤더 */}
                 <div className="flex items-center gap-3">
-                  <span
-                    className="w-8 h-8 flex items-center justify-center font-black text-sm text-[#080808] shrink-0"
-                    style={{ background: accent }}
-                  >
-                    {id}
-                  </span>
-                  <h3 className="text-sm font-bold tracking-tight leading-tight" style={{ color: accent }}>
+                  <h3 className="text-xl font-bold tracking-tight leading-tight" style={{ color: accent }}>
                     {title}
                   </h3>
                 </div>
@@ -111,7 +105,7 @@ export default function BusinessContent({ data }: { data: BusinessData }) {
 
               {/* 오른쪽: 주요 서비스 */}
               <div className="w-56 shrink-0 pl-6 border-l border-[#1e1e1e]">
-                <p className="font-mono text-[10px] tracking-widest uppercase text-[#555] mb-2">주요 서비스</p>
+                <p className="font-mono text-[12px] tracking-widest uppercase text-[#555] mb-2">주요 서비스</p>
                 <ul className="space-y-1">
                   {services.map((s) => (
                     <li key={s} className="text-xs text-[#b5b5b5] flex items-start gap-1.5">

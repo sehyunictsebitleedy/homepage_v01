@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -8,25 +9,19 @@ import type { NavItem } from "@/lib/types";
 
 export default function NavbarContent({
   items,
-  logoText,
 }: {
   items: NavItem[];
-  logoText: string;
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const enabled = items.filter((i) => i.enabled);
-  const logo = logoText.replace("ICT", "");
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#343434] bg-[#080808]/80 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link
-          href="/"
-          className="font-mono text-sm font-bold tracking-[0.2em] uppercase text-[#f0f0f0] hover:text-[#c8ff00] transition-colors"
-        >
-          {logo}<span className="text-[#c8ff00]">ICT</span>
+        <Link href="/" className="flex items-center">
+          <Image src="/logo_top.png" alt="SEHYUN ICT" width={140} height={36} className="h-8 w-auto object-contain" />
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">

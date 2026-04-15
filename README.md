@@ -241,6 +241,27 @@ homepage_v01/
 
 ## 최근 업데이트
 
+### 2026-04-15 (3)
+
+#### 네비게이션
+- 텍스트 로고 → `logo_top.png` 이미지로 교체
+- `Navbar.tsx` / `NavbarContent.tsx`에서 `logoText` 의존성 제거
+
+#### Hero 섹션
+- 사업영역 박스 3개 → 교집합 원형(circle) 레이아웃으로 변경
+  - `-20px` 겹침으로 살짝 교차하는 Venn 스타일
+  - 아이콘: BrainCircuit(AI) · Server(시스템) · Map(GIS/CAD), `strokeWidth={1}` 얇게
+  - hover 시 label(굵게) + desc 텍스트 reveal 유지
+  - 원 크기 192×192, opacity 0.4
+
+#### 폰트
+- `Geist` → `Inter` (본문), `Geist Mono` → `JetBrains Mono` (코드) 변경
+
+#### Business 페이지
+- Market 카드 번호(num) 제거
+
+---
+
 ### 2026-04-15 (2)
 
 #### Product 페이지

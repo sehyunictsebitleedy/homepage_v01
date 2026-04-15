@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring, type Variants } from "framer-motion";
-import { ArrowUpRight, Boxes, Server, Map } from "lucide-react";
+import { ArrowUpRight, BrainCircuit, Server, Map } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
 import ScrambleText from "@/components/ui/ScrambleText";
 import TiltCard from "@/components/ui/TiltCard";
@@ -225,34 +225,54 @@ export default function HomeContent({
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="mt-8 max-w-md text-sm leading-relaxed text-[#ededed]"
+                className="mt-8 max-w-lg text-base leading-relaxed text-[#ededed]"
               >
                 {hero.description.split("\n").map((line, i, arr) => (
                   <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
                 ))}
               </motion.p>
 
-              {/* 사업 영역 박스 */}
+              {/* 사업 영역 — 교집합 원형 */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.95, duration: 0.6 }}
-                className="mt-8 flex flex-wrap justify-center gap-3"
+                className="mt-10 flex items-center justify-center"
               >
                 {[
-                  { Icon: Boxes, label: "SEbit 솔루션", desc: "AI·iPaaS·모바일 자체 솔루션" },
-                  { Icon: Server, label: "시스템 구축/운영", desc: "엔터프라이즈 SI/SE/SM 전반" },
-                  { Icon: Map, label: "GIS/CAD 솔루션", desc: "공간정보·도면 분석 플랫폼" },
-                ].map(({ Icon, label, desc }) => (
-                  <div key={label} className="group relative flex flex-col items-center gap-3 border border-[#222] hover:border-[#343434] px-6 py-8 bg-[#0a0a0a]/70 backdrop-blur-sm w-[270px] overflow-hidden transition-colors duration-300 cursor-default">
-                    {/* 하단 라임 라인 */}
-                    <div className="absolute bottom-0 left-0 h-[1px] w-full bg-[#c8ff00] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                  { Icon: BrainCircuit, label: "SEbit 솔루션", desc: "AI·iPaaS·모바일 자체 솔루션" },
+                  { Icon: Server,       label: "System 구축/운영", desc: "엔터프라이즈 SI/SE/SM 전반" },
+                  { Icon: Map,          label: "Solution GIS/CAD", desc: "공간정보·도면 분석 플랫폼" },
+                ].map((item, idx) => (
+                  <div
+                    key={item.label}
+                    className="group relative flex flex-col items-center justify-center cursor-default"
+                    style={{
+                      width: 240,
+                      height: 240,
+                      borderRadius: "50%",
+                      border: "1px solid #333",
+                      marginLeft: idx === 0 ? 0 : 30,
+                      background: "rgba(8,8,8,0.4)",
+                      backdropFilter: "blur(8px)",
+                      transition: "border-color 0.3s, background 0.3s",
+                      zIndex: idx,
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "#c8ff00";
+                      (e.currentTarget as HTMLElement).style.zIndex = "10";
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "#333";
+                      (e.currentTarget as HTMLElement).style.zIndex = String(idx);
+                    }}
+                  >
                     {/* 아이콘 */}
-                    <Icon size={32} className="text-[#c8ff00]" />
-                    {/* 텍스트 — hover시 슬라이드 인 */}
-                    <div className="flex flex-col items-center gap-1.5 text-center max-h-0 overflow-hidden opacity-0 group-hover:max-h-[80px] group-hover:opacity-100 transition-all duration-300 ease-out">
-                      <span className="font-mono text-[16px] tracking-[0.08em] text-[#f0f0f0] text-[bold]">{label}</span>
-                      <span className="font-mono text-[12px] tracking-wide text-[#666] leading-relaxed">{desc}</span>
+                    <item.Icon size={48} strokeWidth={1} className="text-[#c8ff00] group-hover:opacity-0 transition-opacity duration-200" />
+                    {/* hover 텍스트 */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 px-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="font-mono font-bold text-[18px] tracking-wide text-[#f0f0f0] leading-snug">{item.label}</span>
+                      <span className="font-mono text-[13px] tracking-wide text-[#666] leading-relaxed">{item.desc}</span>
                     </div>
                   </div>
                 ))}
