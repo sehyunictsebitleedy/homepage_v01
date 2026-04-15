@@ -131,7 +131,7 @@ export default function ProjectContent({ data }: { data: ProjectData }) {
 
               {/* 연도 부제 */}
               {subtitle && (
-                <p className="mb-4 font-mono text-xs text-[#666] tracking-wide leading-relaxed">
+                <p className="mb-4 font-mono text-xs text-[#b5b3b3] text-[14px] tracking-wide leading-relaxed">
                   {subtitle}
                 </p>
               )}
