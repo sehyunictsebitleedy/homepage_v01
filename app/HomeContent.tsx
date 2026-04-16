@@ -271,11 +271,11 @@ export default function HomeContent({
                     }}
                   >
                     {/* 아이콘 */}
-                    <item.Icon size={48} strokeWidth={1} className="text-[#c8ff00] group-hover:opacity-0 transition-opacity duration-200" />
+                    <item.Icon size={48} strokeWidth={1} className="text-[#c8ff00] group-hover:opacity-0 transition-opacity duration-200 w-7 h-7 sm:w-12 sm:h-12" />
                     {/* hover 텍스트 */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 px-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="font-mono font-bold text-[18px] tracking-wide text-[#f0f0f0] leading-snug">{item.label}</span>
-                      <span className="font-mono text-[13px] tracking-wide text-[#666] leading-relaxed">{item.desc}</span>
+                      <span className="font-mono font-bold text-[11px] sm:text-[18px] tracking-wide text-[#f0f0f0] leading-snug">{item.label}</span>
+                      <span className="font-mono text-[9px] sm:text-[13px] tracking-wide text-[#666] leading-relaxed">{item.desc}</span>
                     </div>
                   </a>
                 ))}
