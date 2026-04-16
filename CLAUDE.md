@@ -4,7 +4,7 @@ http://sehyunict.com 홈페이지 리뉴얼
 
 ## 디자인 스타일
 
-- MZ 감성의 텍스처 스타일
+- MZ 감성의 타이포그래픽 디자인 스타일
 - 10년차 이상의 디자이너 스킬
 - 전체 배경: 딥 블랙 (`#080808`)
 - 포인트 컬러: 라임 `#c8ff00` / 핑크 `#ff3cac`
@@ -32,6 +32,7 @@ http://sehyunict.com 홈페이지 리뉴얼
 - Next.js 16에서 middleware 파일명은 `proxy.ts`, export 함수명은 `proxy`
 - 페이지 패턴: 서버 컴포넌트(page.tsx)가 readData()로 JSON 읽기 → 클라이언트 컴포넌트(*Content.tsx)에 props로 전달
 - 어드민 폼은 클라이언트 컴포넌트(*Form.tsx) + 서버 액션(actions.ts) 패턴 사용
+- 클로드 새로운 방식의 버전이 업그레이도 되면 적용하면서 상태 유지 체크
 
 ## 명령어
 
