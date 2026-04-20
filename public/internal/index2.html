@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEbit Ecosystem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #080808;
+  --text: #f0f0f0;
+  --muted: #8b8b8b;
+  --border: #292828;
+  --lime: #c8ff00;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* grain */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ── Intro overlay ── */
+#intro {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), visibility 0.8s;
+}
+#intro.hidden { opacity: 0; visibility: hidden; }
+.intro-logo {
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  overflow: hidden;
+}
+.intro-logo span { display: inline-block; animation: intro-up 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+.intro-logo span:nth-child(2) { color: var(--lime); animation-delay: 0.08s; }
+.intro-bar { width: 0; height: 2px; background: var(--lime); animation: intro-bar 1.4s cubic-bezier(0.22,1,0.36,1) 0.3s forwards; }
+.intro-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); opacity: 0; animation: intro-fade 0.6s ease 0.9s forwards; }
+@keyframes intro-up { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes intro-bar { to { width: min(400px, 60vw); } }
+@keyframes intro-fade { to { opacity: 1; } }
+
+/* ── Layout ── */
+.wrap { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  mix-blend-mode: difference;
+}
+.nav-logo { font-size: 14px; font-weight: 800; letter-spacing: -0.03em; color: #fff; }
+.nav-logo em { font-style: normal; color: var(--lime); }
+.nav-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; }
+
+/* ── Hero ── */
+.hero {
+  padding: 160px 0 80px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.hero-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 40px;
+  display: flex; align-items: center; gap: 16px;
+}
+.hero-kicker::before { content: ''; width: 32px; height: 1px; background: var(--muted); }
+.hero-title {
+  font-size: clamp(5rem, 14vw, 11rem);
+  font-weight: 900; letter-spacing: -0.06em; line-height: 0.85; overflow: hidden;
+}
+.hero-title .line { display: block; transform: translateY(110%); animation: line-up 1s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-title .line:nth-child(1) { animation-delay: 0.1s; }
+.hero-title .line:nth-child(2) { animation-delay: 0.2s; }
+.hero-title .outline { -webkit-text-stroke: 2px rgba(255,255,255,0.4); color: transparent; }
+.hero-title .accent { color: var(--lime); }
+@keyframes line-up { to { transform: none; } }
+
+.hero-foot { margin-top: 60px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.hero-stats { display: flex; gap: 48px; }
+.stat { display: flex; flex-direction: column; gap: 6px; }
+.stat-n { font-size: 2.8rem; font-weight: 900; letter-spacing: -0.05em; color: var(--lime); line-height: 1; }
+.stat-l { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+.hero-desc { max-width: 280px; font-size: 13px; color: #444; line-height: 1.8; text-align: right; }
+
+/* ── Section label ── */
+.sec-label {
+  display: flex; align-items: center; gap: 20px;
+  padding: 80px 0 0; margin-bottom: 0;
+}
+.sec-num { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--muted); }
+.sec-title { font-size: 15px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+.sec-line { flex: 1; height: 1px; background: var(--border); }
+
+/* ── 2×4 Grid ── */
+.sol-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  margin-top: 24px;
+}
+
+.sol-card {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+}
+
+/* hover overlay */
+.sol-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--lime);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+.sol-card:hover::after { transform: scaleY(1); }
+.sol-card:hover .card-idx { color: rgba(8,8,8,0.35); }
+.sol-card:hover .card-title { color: #080808; }
+.sol-card:hover .card-tag { color: rgba(8,8,8,0.4); }
+.sol-card:hover .card-desc { opacity: 1; transform: translateY(0); color: rgba(8,8,8,0.75); }
+.sol-card:hover .card-tags-row { opacity: 1; transform: translateY(0); }
+
+.card-idx {
+  position: absolute;
+  top: 28px; right: 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #2a2a2a;
+  z-index: 1;
+  transition: color 0.3s;
+}
+.card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  position: relative; z-index: 1;
+  transition: color 0.3s;
+}
+.card-title {
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text);
+  position: relative; z-index: 1;
+  transition: color 0.3s;
+}
+.card-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(8,8,8,0.75);
+  margin-top: 14px;
+  position: relative; z-index: 1;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s 0.1s, transform 0.35s 0.1s;
+  word-break: keep-all;
+}
+.card-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 12px;
+  position: relative; z-index: 1;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s 0.18s, transform 0.35s 0.18s;
+}
+.ctag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  padding: 3px 8px;
+  border: 1px solid rgba(8,8,8,0.2);
+  color: rgba(8,8,8,0.6);
+  letter-spacing: 0.05em;
+}
+
+/* ── Big list rows (레거시·품질) ── */
+.big-list { border-top: 1px solid var(--border); margin-top: 24px; }
+
+.big-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+}
+.big-row::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  z-index: 0;
+}
+.big-row:hover::after { transform: scaleX(1); }
+.big-row:hover .row-name { color: #080808; }
+.big-row:hover .row-tag,
+.big-row:hover .row-idx { color: rgba(8,8,8,0.4); }
+.big-row:hover .row-arrow { opacity: 1; color: #080808; }
+
+.row-idx {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  color: var(--muted); width: 60px; flex-shrink: 0;
+  position: relative; z-index: 1; transition: color 0.3s;
+}
+.row-name {
+  flex: 1;
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+  font-weight: 900; letter-spacing: -0.045em; line-height: 1;
+  padding: 32px 0;
+  position: relative; z-index: 1; transition: color 0.3s;
+}
+.row-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); width: 200px; flex-shrink: 0; text-align: right;
+  position: relative; z-index: 1; transition: color 0.3s;
+}
+.row-arrow {
+  font-size: 20px; opacity: 0;
+  position: relative; z-index: 1;
+  transition: opacity 0.3s; padding: 0 12px; color: #080808;
+}
+
+/* accordion detail */
+.row-detail {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.22,1,0.36,1);
+  border-bottom: 1px solid var(--border);
+  background: #0c0c0c;
+}
+.row-detail.open { max-height: 300px; }
+.row-detail-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px 0;
+}
+.detail-desc { font-size: 14px; color: #666; line-height: 1.8; }
+.detail-desc strong { color: #bbb; font-weight: 600; }
+.detail-tags { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; }
+.dtag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; padding: 4px 10px;
+  border: 1px solid var(--border); color: #3a3a3a; letter-spacing: 0.05em;
+}
+.dtag.lime { border-color: rgba(200,255,0,0.2); color: rgba(200,255,0,0.6); }
+
+/* ── Big quote ── */
+.big-quote { padding: 96px 0; border-bottom: 1px solid var(--border); }
+.big-quote-text {
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  font-weight: 900; letter-spacing: -0.05em; line-height: 1.1; color: #1e1e1e;
+}
+.big-quote-text .on { color: var(--text); }
+.big-quote-text .lime { color: var(--lime); }
+
+/* ── Flow ── */
+.flow-section { padding: 72px 0;}
+.flow-head {
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 900; letter-spacing: -0.04em; margin-bottom: 40px;
+  display: flex; align-items: center; gap: 20px;
+}
+.flow-head-bar { width: 3px; height: 1em; background: var(--lime); flex-shrink: 0; }
+.flow-strip {
+  display: flex; align-items: stretch;
+   background: var(--border); margin-bottom: 1px;
+}
+.f-node {
+  flex: 1; background: #0c0c0c; padding: 20px;
+  position: relative; overflow: hidden; transition: background 0.25s;
+}
+.f-node::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.f-node:hover { background: #101010; }
+.f-node:hover::before { transform: scaleX(1); }
+.f-node.c-lime::before { background: var(--lime); }
+.f-node.c-orange::before { background: #fb923c; }
+.f-node.c-blue::before { background: #60a5fa; }
+.f-node.c-lime .fn { color: var(--lime); }
+.f-node.c-orange .fn { color: #fb923c; }
+.f-node.c-blue .fn { color: #60a5fa; }
+.fn { font-size: 14px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 5px; }
+.fs { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+.f-arrow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 10px; color: #3a3a3a; font-size: 18px; flex-shrink: 0;
+  background: var(--bg);
+  
+}
+.f-canvas {
+  padding: 18px 24px; border: 1px solid rgba(200,255,0,0.1);
+  background: rgba(200,255,0,0.02);
+  display: flex; align-items: center; gap: 14px;
+}
+.f-canvas-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--lime); opacity: 0.6;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity:0.6; transform:scale(1); } 50% { opacity:1; transform:scale(1.4); } }
+.f-canvas span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(200,255,0,0.5); letter-spacing: 0.04em; }
+
+/* ── Service map ── */
+.map-section { padding: 72px 0; }
+.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 32px; }
+.svc-item {
+  background: #0a0a0a; padding: 24px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  position: relative; overflow: hidden;
+}
+.svc-item::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--lime);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); z-index: 0;
+}
+.svc-item:hover::before { transform: scaleX(1); }
+.svc-item:hover .svc-name { color: #080808; }
+.svc-item:hover .svc-right { color: rgba(8,8,8,0.45); }
+.svc-name { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.03em; position: relative; z-index: 1; transition: color 0.3s; }
+.svc-right { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-align: right; position: relative; z-index: 1; transition: color 0.3s; line-height: 1.7; }
+
+/* ── Footer ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 80px 0;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+}
+.footer-big { font-size: clamp(4rem, 12vw, 9rem); font-weight: 900; letter-spacing: -0.07em; line-height: 0.85; }
+.footer-big .outline { -webkit-text-stroke: 1.5px rgba(240,240,240,0.1); color: transparent; }
+.footer-big .accent { color: var(--lime); }
+.footer-info { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; line-height: 2.2; text-align: right; }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 768px) {
+  .wrap { padding: 0 20px; }
+  nav { padding: 20px; }
+  .sol-grid { grid-template-columns: 1fr; }
+  .sol-card { aspect-ratio: 4/3; }
+  .row-tag { display: none; }
+  .row-detail-inner { grid-template-columns: 1fr; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .hero-foot { flex-direction: column; align-items: flex-start; }
+  .hero-desc { text-align: left; }
+  .footer { flex-direction: column; align-items: flex-start; }
+  .footer-info { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- Intro -->
+<div id="intro">
+  <div class="intro-logo"><span>SE</span><span>bit</span></div>
+  <div class="intro-bar"></div>
+  <div class="intro-sub">Ecosystem Architecture</div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">SE<em>bit</em></div>
+  <div class="nav-meta">Internal — 2026</div>
+</nav>
+
+<div class="wrap">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-kicker">SEbit AI Infra — Internal Document</div>
+    <div class="hero-title">
+      <span class="line"><span class="outline">SE</span><span class="accent">bit</span></span>
+      <span class="line">Eco<span class="outline">system</span></span>
+    </div>
+    <div class="hero-foot">
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n" data-count="17">0</span><span class="stat-l">Repos</span></div>
+        <div class="stat"><span class="stat-n" data-count="8">0</span><span class="stat-l">Solutions</span></div>
+        <div class="stat"><span class="stat-n" data-count="500">0</span><span class="stat-l">Components</span></div>
+      </div>
+      <div class="hero-desc">AI·iPaaS·3D·HR·품질 자동화를<br>아우르는 자사 솔루션 생태계</div>
+    </div>
+  </div>
+
+  <!-- 01 자사 솔루션 2×4 그리드 -->
+  <div class="sec-label reveal">
+    <span class="sec-num">01</span>
+    <span class="sec-title">자사 솔루션 / SEbit Platform</span>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="sol-grid reveal">
+
+    <div class="sol-card">
+      <span class="card-idx">01-01</span>
+      <div class="card-tag">iPaaS · Data</div>
+      <div class="card-title">SEbit Origin</div>
+      <div class="card-desc">고객사의 MES, ERP, SCM, WMS 등 수백 개 레거시 시스템 데이터를 통합 저장하는 원천 데이터 플랫폼. API-On을 통해 각 납품 시스템이 유기적으로 연결.</div>
+      <div class="card-tags-row">
+        <span class="ctag">Manufacturing</span><span class="ctag">ERP/SCM/WMS</span><span class="ctag">IoT</span><span class="ctag">Drizzle ORM</span>
+      </div>
+    </div>
+
+    <div class="sol-card">
+      <span class="card-idx">01-02</span>
+      <div class="card-tag">iPaaS · Gateway</div>
+      <div class="card-title">SEbit API-On</div>
+      <div class="card-desc">Origin 데이터를 각 시스템이 필요한 형태로 변환·라우팅. Flow Designer로 코드 없이 파이프라인 설계. 자가치유 DLQ로 실패 메시지 자동 복구.</div>
+      <div class="card-tags-row">
+        <span class="ctag">Flow Designer</span><span class="ctag">자가치유 DLQ</span><span class="ctag">AES-256</span>
+      </div>
+    </div>
+
+    <div class="sol-card">
+      <span class="card-idx">01-03</span>
+      <div class="card-tag">iPaaS · UI Hub</div>
+      <div class="card-title">SEbit Canvas</div>
+      <div class="card-desc">전사 중앙 UI 허브. 500+ 컴포넌트/템플릿을 Nuxt Layer로 모든 시스템에 상속. RBAC 5-level 권한 체계.</div>
+      <div class="card-tags-row">
+        <span class="ctag">500+ Templates</span><span class="ctag">Nuxt Layer</span><span class="ctag">RBAC 5-level</span>
+      </div>
+    </div>
+
+    <div class="sol-card">
+      <span class="card-idx">01-04</span>
+      <div class="card-tag">iPaaS · AI Engine</div>
+      <div class="card-title">SEbit Nexus</div>
+      <div class="card-desc">전사 AI iPaaS 두뇌. Vue Flow 기반 19종 AI 노드, Knowledge RAG, DLQ 자가치유 (특허), 부하 시뮬레이션.</div>
+      <div class="card-tags-row">
+        <span class="ctag">AI Flow Builder</span><span class="ctag">19 Nodes</span><span class="ctag">RAG</span><span class="ctag">특허</span>
+      </div>
+    </div>
+
+    <div class="sol-card">
+      <span class="card-idx">01-05</span>
+      <div class="card-tag">iPaaS · Quality</div>
+      <div class="card-title">SEbit Cure</div>
+      <div class="card-desc">코드 품질 게이트 + 보안 자동화. 6종 스캐너(SAST/SCA/DAST/Secret). AI 자가 치유로 취약점 자동 수정. 100점 스코어링.</div>
+      <div class="card-tags-row">
+        <span class="ctag">Sonar</span><span class="ctag">ZAP</span><span class="ctag">gRPC</span><span class="ctag">LLM Heal</span>
+      </div>
+    </div>
+
+    <div class="sol-card">
+      <span class="card-idx">01-06</span>
+      <div class="card-tag">3D · Backend</div>
+      <div class="card-title">SEbit Agen-D</div>
+      <div class="card-desc">CAD/STEP, Revit IFC → FBX / OBJ / glTF / GLB 변환. Cloud Run Job 비동기 처리 + GCS 저장/CDN 서빙.</div>
+      <div class="card-tags-row">
+        <span class="ctag">STEP/IFC</span><span class="ctag">IfcOpenShell</span><span class="ctag">Cloud Run</span>
+      </div>
+    </div>
+
+    <div class="sol-card">
+      <span class="card-idx">01-07</span>
+      <div class="card-tag">3D · Frontend</div>
+      <div class="card-title">SEbit Unity</div>
+      <div class="card-desc">Unity 6 WebGPU 엔진 기반 웹 3D 뷰어. Gizmo 이동/회전, Delta JSON 비파괴 편집. 양방향 JS-Unity 브릿지.</div>
+      <div class="card-tags-row">
+        <span class="ctag">Unity 6</span><span class="ctag">WebGPU</span><span class="ctag">Delta JSON</span>
+      </div>
+    </div>
+
+    <div class="sol-card">
+      <span class="card-idx">01-08</span>
+      <div class="card-tag">iPaaS · HR</div>
+      <div class="card-title">SEbit Insight</div>
+      <div class="card-desc">5개 부서(SE/SM/AI/콘텐츠/R&D) 수주 현황 + 개인 성과 실시간 대시보드. M/M 투입 영업이익 자동 산출.</div>
+      <div class="card-tags-row">
+        <span class="ctag">PDCA</span><span class="ctag">HR</span><span class="ctag">5 Dept</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 02 레거시 납품 -->
+  <div class="sec-label reveal">
+    <span class="sec-num">02</span>
+    <span class="sec-title">레거시 납품 / Customer Delivery</span>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="big-list">
+    <div class="big-row reveal" data-detail="d9">
+      <span class="row-idx">02-01</span>
+      <span class="row-name">SEbit-PROVE</span>
+      <span class="row-tag">납품 · 제조</span>
+      <span class="row-arrow">↗</span>
+    </div>
+    <div class="row-detail" id="d9">
+      <div class="row-detail-inner">
+        <div class="detail-desc">제조 공정 운영 검증. <strong>MES BOP 데이터</strong> 기반 시뮬레이션으로 설계 정합성 사전 검증. PROVES는 SCP 확장 버전. API-On 9 routes 연동.</div>
+        <div class="detail-tags">
+          <span class="dtag">MES BOP</span><span class="dtag">Simulation</span>
+          <span class="dtag lime">API-On 9 routes</span><span class="dtag">prove.sebit.co.kr</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="big-row reveal" data-detail="d10">
+      <span class="row-idx">02-02</span>
+      <span class="row-name">SEbit-Sentinel</span>
+      <span class="row-tag">납품 · 모니터링</span>
+      <span class="row-arrow">↗</span>
+    </div>
+    <div class="row-detail" id="d10">
+      <div class="row-detail-inner">
+        <div class="detail-desc">인프라 Utility 이상추적 자동화. <strong>13 AI Agent</strong>, Hybrid Graph-RAG (Neo4j + pgvector), Kill Switch 5단계 긴급 차단 체계.</div>
+        <div class="detail-tags">
+          <span class="dtag lime">13 AI Agents</span><span class="dtag">Graph-RAG</span>
+          <span class="dtag lime">MCP 37+</span><span class="dtag">Neo4j</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 품질 3중 체계 -->
+  <div class="sec-label reveal">
+    <span class="sec-num">03</span>
+    <span class="sec-title">품질 3중 체계 / Infra Repos</span>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="big-list">
+    <div class="big-row reveal" data-detail="d11">
+      <span class="row-idx">03-01</span>
+      <span class="row-name">SEbit ESLint</span>
+      <span class="row-tag">Layer 1 · 코드</span>
+      <span class="row-arrow">↗</span>
+    </div>
+    <div class="row-detail" id="d11">
+      <div class="row-detail-inner">
+        <div class="detail-desc"><strong>7개 커스텀 ESLint 룰</strong>. browser-api 가드, mock 금지, hardcoded URL 차단, safe-date-month 등 전사 코드 품질 표준화.</div>
+        <div class="detail-tags">
+          <span class="dtag">7 Custom Rules</span><span class="dtag">Mock 금지</span><span class="dtag">URL 차단</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="big-row reveal" data-detail="d12">
+      <span class="row-idx">03-02</span>
+      <span class="row-name">SEbit CI</span>
+      <span class="row-tag">Layer 2 · 파이프라인</span>
+      <span class="row-arrow">↗</span>
+    </div>
+    <div class="row-detail" id="d12">
+      <div class="row-detail-inner">
+        <div class="detail-desc">공유 워크플로우 3개. lint + test 품질 게이트. <strong>push → Docker → Cloud Run</strong> 자동 배포 파이프라인.</div>
+        <div class="detail-tags">
+          <span class="dtag lime">자동 배포</span><span class="dtag">Quality Gate</span><span class="dtag">Docker</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="big-row reveal" data-detail="d13">
+      <span class="row-idx">03-03</span>
+      <span class="row-name">SEbit Tools</span>
+      <span class="row-tag">Layer 3 · 프로세스</span>
+      <span class="row-arrow">↗</span>
+    </div>
+    <div class="row-detail" id="d13">
+      <div class="row-detail-inner">
+        <div class="detail-desc">문서 템플릿, 커스텀 커맨드 (<strong>/review, /verify, /bootstrap</strong>), 안전장치 훅, 테스트 하네스까지 개발 프로세스 전체 표준화.</div>
+        <div class="detail-tags">
+          <span class="dtag lime">/review</span><span class="dtag lime">/verify</span><span class="dtag lime">/bootstrap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Big quote -->
+  <div class="big-quote reveal">
+    <div class="big-quote-text">
+      모든 서비스는<br>
+      <span class="on">SEbit Canvas</span>를 상속받아<br>
+      <span class="lime">500+</span> <span class="on">컴포넌트를</span> 공유한다
+    </div>
+  </div>
+
+  <!-- Flow: 생태계 순환 구조 -->
+  <div class="flow-section reveal">
+    <div class="flow-head"><span class="flow-head-bar"></span>생태계 순환 구조</div>
+    <div class="flow-strip">
+      <div class="f-node c-blue"><div class="fn">SEbit Origin</div><div class="fs">Raw Data 보존</div></div>
+      <div class="f-arrow">→</div>
+      <div class="f-node c-blue"><div class="fn">SEbit API-On</div><div class="fs">데이터 중개/변환</div></div>
+      <div class="f-arrow">→</div>
+      <div class="f-node c-orange"><div class="fn">PROVE / Sentinel</div><div class="fs">고객 납품</div></div>
+    </div>
+    <div class="flow-strip">
+      <div class="f-node c-lime"><div class="fn">SEbit Nexus</div><div class="fs">AI iPaaS 두뇌</div></div>
+      <div class="f-arrow">→</div>
+      <div class="f-node c-lime"><div class="fn">SEbit Cure</div><div class="fs">품질 게이트</div></div>
+      <div class="f-arrow">→</div>
+      <div class="f-node c-lime"><div class="fn">Agen-D · Unity · Insight</div><div class="fs">3D · Digital Twin · HR</div></div>
+    </div>
+    <div class="f-canvas">
+      <div class="f-canvas-dot"></div>
+      <span>SEbit Canvas — 전사 UI 허브 / 500+ 컴포넌트 / Nuxt Layer 상속</span>
+    </div>
+  </div>
+
+  <!-- Flow: 배포 아키텍처 -->
+  <div class="flow-section reveal" style="padding-top: 0; border-bottom: none;">
+    <div class="flow-head"><span class="flow-head-bar"></span>배포 아키텍처</div>
+    <div class="flow-strip">
+      <div class="f-node c-orange"><div class="fn">GitHub Push</div><div class="fs">트리거</div></div>
+      <div class="f-node"><div class="fn">CI Quality Gate</div><div class="fs">lint + test</div></div>
+      <div class="f-node c-blue"><div class="fn">Docker Build</div><div class="fs">Artifact Registry</div></div>
+      <div class="f-node c-lime"><div class="fn">Cloud Run</div><div class="fs">asia-northeast3</div></div>
+      <div class="f-node c-orange"><div class="fn">CF Worker</div><div class="fs">*.sebit.co.kr</div></div>
+    </div>
+    <div style="margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #787878; letter-spacing: 0.07em;">
+      Cloud SQL (PostgreSQL 16) &nbsp;·&nbsp; Secret Manager (12) &nbsp;·&nbsp; CF DNS / SSL / CDN / WAF
+    </div>
+  </div>
+
+  <!-- Service Map -->
+  <div class="map-section reveal">
+    <div class="flow-head"><span class="flow-head-bar"></span>Service Map</div>
+    <div class="svc-grid">
+      <div class="svc-item"><span class="svc-name">SEbit Origin</span><span class="svc-right">Solution<br>Port:3000 / origin.sebit.co.kr</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit API-On</span><span class="svc-right">Solution<br>Port:4000 / apion.sebit.co.kr</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit Nexus</span><span class="svc-right">Solution<br>Port:3001 / nexus.sebit.co.kr</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit Canvas</span><span class="svc-right">Solution<br>Port:3200 / canvas.sebit.co.kr</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit Cure</span><span class="svc-right">Solution<br>Port:3600</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit Agen-D</span><span class="svc-right">Solution<br>Cloud Run</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit Unity</span><span class="svc-right">Solution<br>WebGPU</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit Insight</span><span class="svc-right">Solution<br>HR Dashboard</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit Micro</span><span class="svc-right">Brand<br>sebit.co.kr</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit-PROVE</span><span class="svc-right">Legacy<br>Port:3300 / prove.sebit.co.kr</span></div>
+      <div class="svc-item"><span class="svc-name">SEbit-Sentinel</span><span class="svc-right">Legacy<br>Port:3400 / sentinel.sebit.co.kr</span></div>
+      <div class="svc-item" style="background: transparent;"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer reveal">
+    <div class="footer-big">
+      <span class="outline">SE</span><span class="accent">bit</span><br>
+      Eco<span class="outline">system</span>
+    </div>
+    <div class="footer-info">
+      AI Infra — 17 Repos<br>
+      8 Solutions — 500+ Components<br>
+      Cloud Run / PostgreSQL 16 / CF<br>
+      <br>
+      Last updated: 2026-04-17
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ── Intro ── */
+window.addEventListener('load', function() {
+  setTimeout(function() { document.getElementById('intro').classList.add('hidden'); }, 1800);
+});
+
+/* ── Row accordion ── */
+document.querySelectorAll('.big-row').forEach(function(row) {
+  row.addEventListener('click', function() {
+    var id = row.getAttribute('data-detail');
+    if (!id) return;
+    var detail = document.getElementById(id);
+    if (!detail) return;
+    var isOpen = detail.classList.contains('open');
+    document.querySelectorAll('.row-detail.open').forEach(function(d) { d.classList.remove('open'); });
+    if (!isOpen) detail.classList.add('open');
+  });
+});
+
+/* ── Scroll reveal ── */
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+/* ── Count-up ── */
+function countUp(el, target, dur) {
+  var s = 0, step = target / (dur / 16);
+  var t = setInterval(function() {
+    s = Math.min(s + step, target);
+    el.textContent = Math.floor(s) + (target === 500 ? '+' : '');
+    if (s >= target) clearInterval(t);
+  }, 16);
+}
+var cObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(function(el) {
+        countUp(el, parseInt(el.getAttribute('data-count')), 1000);
+      });
+      cObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+var statsEl = document.querySelector('.hero-stats');
+if (statsEl) cObs.observe(statsEl);
+</script>
+</body>
+</html>
