@@ -253,7 +253,7 @@ export default function HomeContent({
                       height: "clamp(100px, 26vw, 260px)",
                       borderRadius: "50%",
                       border: "1px solid #333",
-                      marginLeft: idx === 0 ? 0 : "clamp(6px, 2.5vw, 30px)",
+                      marginLeft: idx === 0 ? 0 : "clamp(6px, 5vw, 50px)",
                       background: "rgba(8,8,8,0.4)",
                       backdropFilter: "blur(8px)",
                       zIndex: idx,
