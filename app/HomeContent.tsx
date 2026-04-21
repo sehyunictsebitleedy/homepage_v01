@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring, type Variants } from "framer-motion";
-import { ArrowUpRight, BrainCircuit, Server, Map } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import MarqueeBar from "@/components/ui/MarqueeBar";
 import ScrambleText from "@/components/ui/ScrambleText";
 import TiltCard from "@/components/ui/TiltCard";
@@ -240,42 +240,45 @@ export default function HomeContent({
                 className="mt-10 flex items-center justify-center"
               >
                 {[
-                  { Icon: BrainCircuit, label: "SEbit 솔루션", desc: "AI·iPaaS·모바일 자체 솔루션", href: "http://sebit.co.kr", target: "_blank" },
-                  { Icon: Server,       label: "System 구축/운영", desc: "엔터프라이즈 SI/SE/SM 전반", href: "/business", target: "_self" },
-                  { Icon: Map,          label: "Solution GIS/CAD", desc: "공간정보·도면 분석 플랫폼", href: "/product", target: "_self" },
+                  ...hero.circles,
                 ].map((item, idx) => (
                   <a
                     key={item.label}
                     href={item.href}
                     target={item.target}
                     rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-                    className="group relative flex flex-col items-center justify-center cursor-pointer"
+                    className="group relative flex flex-col items-center justify-center transition-[border-color,box-shadow] duration-400"
                     style={{
-                      width: "clamp(100px, 26vw, 210px)",
-                      height: "clamp(100px, 26vw, 210px)",
+                      width: "clamp(100px, 26vw, 260px)",
+                      height: "clamp(100px, 26vw, 260px)",
                       borderRadius: "50%",
                       border: "1px solid #333",
                       marginLeft: idx === 0 ? 0 : "clamp(6px, 2.5vw, 30px)",
                       background: "rgba(8,8,8,0.4)",
                       backdropFilter: "blur(8px)",
-                      transition: "border-color 0.3s, background 0.3s",
                       zIndex: idx,
+                      transition: "border-color 0.4s, box-shadow 0.4s",
                     }}
                     onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "#c8ff00";
-                      (e.currentTarget as HTMLElement).style.zIndex = "10";
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.borderColor = "#c8ff00";
+                      el.style.boxShadow = "0 0 0 1px #c8ff00, 0 0 20px rgba(200,255,0,0.25), inset 0 0 20px rgba(200,255,0,0.04)";
+                      el.style.zIndex = "10";
                     }}
                     onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "#333";
-                      (e.currentTarget as HTMLElement).style.zIndex = String(idx);
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.borderColor = "#333";
+                      el.style.boxShadow = "none";
+                      el.style.zIndex = String(idx);
                     }}
                   >
-                    {/* 아이콘 */}
-                    <item.Icon size={48} strokeWidth={1} className="text-[#c8ff00] group-hover:opacity-0 transition-opacity duration-200 w-7 h-7 sm:w-12 sm:h-12" />
-                    {/* hover 텍스트 */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 px-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="font-mono font-bold text-[11px] sm:text-[18px] tracking-wide text-[#f0f0f0] leading-snug">{item.label}</span>
-                      <span className="font-mono text-[9px] sm:text-[13px] tracking-wide text-[#666] leading-relaxed">{item.desc}</span>
+                    <div className="flex flex-col items-center justify-center gap-1 px-3 text-center">
+                      <span className="font-mono font-bold text-[11px] sm:text-[18px] tracking-wide text-[#f0f0f0] group-hover:text-[#c8ff00] transition-colors duration-300 leading-snug">{item.label}</span>
+                      <span className="font-mono text-[11px] sm:text-[11px] tracking-wide text-[#666] leading-relaxed">
+                        {item.desc.split(/\\n|\n/).map((line, i, arr) => (
+                          <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+                        ))}
+                      </span>
                     </div>
                   </a>
                 ))}

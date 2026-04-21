@@ -31,6 +31,9 @@ export default function HomeForm({ initial }: { initial: HomeData }) {
   const setCta = (k: keyof HomeData["cta"], v: string) =>
     setData((d) => ({ ...d, cta: { ...d.cta, [k]: v } }));
 
+  const updateCircle = (i: number, patch: Partial<HomeData["hero"]["circles"][number]>) =>
+    setData((d) => ({ ...d, hero: { ...d.hero, circles: d.hero.circles.map((c, idx) => idx === i ? { ...c, ...patch } : c) } }));
+
   const updateService = (i: number, patch: Partial<HomeServiceItem>) =>
     setData((d) => ({ ...d, services: d.services.map((s, idx) => idx === i ? { ...s, ...patch } : s) }));
   const addService = () =>
@@ -104,6 +107,34 @@ export default function HomeForm({ initial }: { initial: HomeData }) {
               {data.hero.btn2Enabled ? "ON" : "OFF"}
             </button>
           </div>
+        </div>
+      </section>
+
+      {/* Circles */}
+      <section className={section}>
+        <h2 className="text-xs font-mono tracking-widest uppercase text-[#c8ff00] pb-2">Hero 동그라미 (3개)</h2>
+        <div className="space-y-4">
+          {data.hero.circles.map((c, i) => (
+            <div key={i} className="space-y-2">
+              <p className={label}>동그라미 {i + 1}</p>
+              <div className="grid grid-cols-2 gap-2">
+                <div><label className={label}>제목</label><input className={input} value={c.label} onChange={(e) => updateCircle(i, { label: e.target.value })} /></div>
+                <div><label className={label}>설명</label><input className={input} value={c.desc} onChange={(e) => updateCircle(i, { desc: e.target.value })} /></div>
+                <div><label className={label}>링크</label><input className={input} value={c.href} onChange={(e) => updateCircle(i, { href: e.target.value })} /></div>
+                <div>
+                  <label className={label}>창</label>
+                  <div className="flex border border-[#343434] overflow-hidden">
+                    {(["_self", "_blank"] as const).map((t) => (
+                      <button key={t} type="button" onClick={() => updateCircle(i, { target: t })}
+                        className={`flex-1 px-2.5 py-2 text-[10px] font-mono tracking-widest uppercase transition-colors ${c.target === t ? "bg-[#c8ff00] text-[#080808]" : "bg-[#080808] text-[#555] hover:text-[#a1a1a1]"}`}>
+                        {t === "_self" ? "현재" : "새창"}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

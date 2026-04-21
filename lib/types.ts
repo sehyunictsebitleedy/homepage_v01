@@ -154,6 +154,7 @@ export interface HomeData {
     btn2Target: "_self" | "_blank";
     btn2Enabled: boolean;
     heroTags: string[];
+    circles: { label: string; desc: string; href: string; target: "_self" | "_blank" }[];
   };
   services: HomeServiceItem[];
   about: {
