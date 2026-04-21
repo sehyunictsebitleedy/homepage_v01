@@ -275,7 +275,7 @@ export default function HomeContent({
                     <div className="flex flex-col items-center justify-center gap-1 px-3 text-center">
                       <span className="font-mono font-bold text-[11px] sm:text-[18px] tracking-wide text-[#f0f0f0] group-hover:text-[#c8ff00] transition-colors duration-300 leading-snug">{item.label}</span>
                       <span className="font-mono text-[11px] sm:text-[11px] tracking-wide text-[#666] leading-relaxed">
-                        {item.desc.split(/\\n|\n/).map((line, i, arr) => (
+                        {item.desc.split(/\\n|\n|\/n/).map((line, i, arr) => (
                           <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
                         ))}
                       </span>
