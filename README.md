@@ -241,6 +241,34 @@ homepage_v01/
 
 ## 최근 업데이트
 
+### 2026-04-24 — Contact 폼 이메일 발송 연동
+
+#### 문의 폼 실제 발송 기능 추가
+- **FormSubmit.co AJAX** 방식으로 이메일 발송 연동 (백엔드 코드 없음, 무료)
+- 폼 제출 시 `https://formsubmit.co/ajax/leedy@sehyunict.com` 으로 POST
+- 메일 제목 자동 생성: `[세현ICT 문의] 회사명 / 담당자명`
+- 메일 본문: 담당자명·회사명·연락처·이메일·상담분야·문의내용 표 형식(`_template: table`)
+- 전송 중 버튼 비활성화(spinner 텍스트), 완료/오류 메시지 표시
+- 성공 시 폼 자동 초기화, 상담 분야 체크박스 초기화
+- `_captcha: false` — 봇 방지 캡차 비활성화 (UX 우선)
+
+#### 이메일 발송 관련 정보
+| 항목 | 내용 |
+|---|---|
+| 서비스 | [FormSubmit.co](https://formsubmit.co) |
+| 수신 이메일 | `leedy@sehyunict.com` |
+| 발송 방식 | AJAX (fetch POST, JSON) |
+| 비용 | 무료 |
+| 설치 | 없음 (외부 서비스) |
+
+> **최초 1회 활성화 필요**: 첫 폼 제출 시 `leedy@sehyunict.com`으로 FormSubmit 확인 메일이 발송됩니다.
+> 해당 메일의 "Confirm your submission" 버튼을 클릭해야 이후부터 문의 메일이 정상 수신됩니다.
+
+#### Hero 동그라미 간격 조정
+- 원형 간격 `clamp(6px, 2.5vw, 30px)` → `clamp(6px, 5vw, 50px)` 으로 확대
+
+---
+
 ### 2026-04-15 (3)
 
 #### 네비게이션
