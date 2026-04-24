@@ -35,24 +35,26 @@ export default function ContactContent({ data }: { data: ContactData }) {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          담당자명: fields.name,
-          회사명: fields.company,
-          연락처: fields.tel,
-          이메일: fields.email,
-          상담분야: areas.join(", ") || "미선택",
-          문의내용: fields.message,
+          name: fields.name,
+          company: fields.company,
+          tel: fields.tel,
+          email: fields.email || "-",
+          area: areas.join(", ") || "미선택",
+          message: fields.message,
           _subject: `[세현ICT 문의] ${fields.company} / ${fields.name}`,
           _captcha: "false",
           _template: "table",
         }),
       });
       const json = await res.json();
+      console.log("FormSubmit response:", json);
       setStatus(json.success === "true" || json.success === true ? "done" : "error");
       if (json.success === "true" || json.success === true) {
         setFields(FIELDS_INIT);
         setAreas([]);
       }
-    } catch {
+    } catch (err) {
+      console.error("FormSubmit error:", err);
       setStatus("error");
     }
   };
