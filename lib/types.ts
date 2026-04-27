@@ -91,6 +91,7 @@ export interface ContactData {
   mapQuery?: string;
   mapEmbedUrl?: string;
   inquiryEmail?: string;
+  inquiryEmails?: string[];
 }
 
 export interface PartnerItem {

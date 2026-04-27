@@ -52,14 +52,25 @@ export default function ContactForm({ initial }: { initial: ContactData }) {
             Google Maps / 카카오맵 검색에 사용되는 키워드. mapEmbedUrl이 있으면 무시됩니다.
           </p>
         </div>
-        <div>
-          <label className={labelCls}>상담 문의 수신 이메일 (Inquiry Email)</label>
-          <input type="email" className={inputCls} value={data.inquiryEmail ?? ""}
-            onChange={(e) => set("inquiryEmail", e.target.value)}
-            placeholder="leedy@sehyunict.com" />
-          <p className="mt-1 text-[10px] text-[#555]">
-            문의 폼 제출 시 메일을 수신할 주소. FormSubmit.co를 통해 발송됩니다.
-          </p>
+        <div className="space-y-2">
+          <label className={labelCls}>상담 문의 수신 이메일 (최대 3개)</label>
+          {[0, 1, 2].map((i) => (
+            <div key={i} className="flex items-center gap-2">
+              <span className="text-[10px] font-mono text-[#555] w-4">{i + 1}</span>
+              <input
+                type="email"
+                className={inputCls}
+                value={(data.inquiryEmails ?? [])[i] ?? ""}
+                placeholder={i === 0 ? "필수 — 주 수신 이메일" : "선택 — 참조(CC) 이메일"}
+                onChange={(e) => {
+                  const arr = [...(data.inquiryEmails ?? ["", "", ""])];
+                  arr[i] = e.target.value;
+                  setData((d) => ({ ...d, inquiryEmails: arr }));
+                }}
+              />
+            </div>
+          ))}
+          <p className="text-[10px] text-[#555]">첫 번째 주소가 주 수신, 나머지는 참조(CC)로 발송됩니다.</p>
         </div>
         <div>
           <label className={labelCls}>Google Maps Embed URL</label>

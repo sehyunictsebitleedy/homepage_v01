@@ -31,7 +31,9 @@ export default function ContactContent({ data }: { data: ContactData }) {
     if (!fields.name || !fields.company || !fields.tel || !fields.message) return;
     setStatus("sending");
     try {
-      const target = data.inquiryEmail || "leedy@sehyunict.com";
+      const emails = (data.inquiryEmails ?? []).filter(Boolean);
+      const target = emails[0] || data.inquiryEmail || "leedy@sehyunict.com";
+      const cc = emails.slice(1).join(",");
       const res = await fetch(`https://formsubmit.co/ajax/${target}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -45,6 +47,7 @@ export default function ContactContent({ data }: { data: ContactData }) {
           _subject: `[세현ICT 문의] ${fields.company} / ${fields.name}`,
           _captcha: "false",
           _template: "table",
+          ...(cc ? { _cc: cc } : {}),
         }),
       });
       const json = await res.json();
