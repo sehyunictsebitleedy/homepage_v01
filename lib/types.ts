@@ -90,6 +90,7 @@ export interface ContactData {
   address: string;
   mapQuery?: string;
   mapEmbedUrl?: string;
+  inquiryEmail?: string;
 }
 
 export interface PartnerItem {

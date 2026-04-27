@@ -53,6 +53,15 @@ export default function ContactForm({ initial }: { initial: ContactData }) {
           </p>
         </div>
         <div>
+          <label className={labelCls}>상담 문의 수신 이메일 (Inquiry Email)</label>
+          <input type="email" className={inputCls} value={data.inquiryEmail ?? ""}
+            onChange={(e) => set("inquiryEmail", e.target.value)}
+            placeholder="leedy@sehyunict.com" />
+          <p className="mt-1 text-[10px] text-[#555]">
+            문의 폼 제출 시 메일을 수신할 주소. FormSubmit.co를 통해 발송됩니다.
+          </p>
+        </div>
+        <div>
           <label className={labelCls}>Google Maps Embed URL</label>
           <input
             className={inputCls}

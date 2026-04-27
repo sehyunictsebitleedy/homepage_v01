@@ -31,7 +31,8 @@ export default function ContactContent({ data }: { data: ContactData }) {
     if (!fields.name || !fields.company || !fields.tel || !fields.message) return;
     setStatus("sending");
     try {
-      const res = await fetch("https://formsubmit.co/ajax/leedy@sehyunict.com", {
+      const target = data.inquiryEmail || "leedy@sehyunict.com";
+      const res = await fetch(`https://formsubmit.co/ajax/${target}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
