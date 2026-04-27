@@ -24,7 +24,7 @@ export default function NavbarContent({
           <Image src="/logo_top.png" alt="SEHYUN ICT" width={140} height={36} className="h-8 w-auto object-contain" style={{ filter: "brightness(0) invert(1)" }} />
         </Link>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-12">
           {enabled.map(({ label, href }) => {
             const active = pathname === href;
             return (
