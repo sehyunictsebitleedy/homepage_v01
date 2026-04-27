@@ -241,6 +241,17 @@ homepage_v01/
 
 ## 최근 업데이트
 
+### 2026-04-27 — 문의 수신 이메일 다중 지정
+
+#### 관리자 Contact 메뉴 개선
+- 수신 이메일 최대 3개 지정 가능 (기존 1개)
+- 1번: 주 수신 이메일 (FormSubmit endpoint)
+- 2~3번: 참조(CC) 이메일 — FormSubmit `_cc` 파라미터로 전달
+- `ContactData`에 `inquiryEmails?: string[]` 필드 추가
+- `data/contact.json`에 `inquiryEmails` 배열 필드 추가
+
+---
+
 ### 2026-04-24 — Contact 폼 이메일 발송 연동
 
 #### 문의 폼 실제 발송 기능 추가
