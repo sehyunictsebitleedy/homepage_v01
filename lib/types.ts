@@ -78,6 +78,7 @@ export interface Product {
   accent: string;
   cert?: string;
   imageUrl?: string;
+  imageUrls?: string[];
 }
 
 export interface ProductData {

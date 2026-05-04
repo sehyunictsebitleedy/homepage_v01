@@ -14,7 +14,11 @@
         "다중 좌표계 지원"
       ],
       "accent": "#c8ff00",
-      "imageUrl": "/product_img01.png"
+      "imageUrl": "/product_img01.png",
+      "imageUrls": [
+        "/product_img01.png",
+        "/product_img01_01.jpg"
+      ]
     },
     {
       "id": "02",
