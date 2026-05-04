@@ -86,10 +86,45 @@ export default function ProductForm({ initial }: { initial: ProductData }) {
             <textarea rows={3} className={inputCls + " resize-none"} value={p.desc}
               onChange={(e) => update(i, { desc: e.target.value })} />
           </div>
-          <div>
-            <label className={labelCls}>제품설명 이미지 URL</label>
-            <input className={inputCls} value={p.imageUrl ?? ""} placeholder="/product_img01.png"
-              onChange={(e) => update(i, { imageUrl: e.target.value || undefined })} />
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <label className={labelCls}>제품설명 이미지 (슬라이드)</label>
+              <button
+                type="button"
+                onClick={() => update(i, { imageUrls: [...(p.imageUrls ?? []), ""] })}
+                className="flex items-center gap-1 text-[10px] text-[#a1a1a1] hover:text-[#c8ff00] transition-colors"
+              >
+                <Plus size={11} /> 추가
+              </button>
+            </div>
+            {(p.imageUrls ?? []).map((url, ui) => (
+              <div key={ui} className="flex gap-2 items-center">
+                <span className="text-[10px] font-mono text-[#555] w-4 shrink-0">{ui + 1}</span>
+                <input
+                  className={inputCls}
+                  value={url}
+                  placeholder="/product_img01.png"
+                  onChange={(e) => {
+                    const arr = [...(p.imageUrls ?? [])];
+                    arr[ui] = e.target.value;
+                    update(i, { imageUrls: arr });
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const arr = (p.imageUrls ?? []).filter((_, idx) => idx !== ui);
+                    update(i, { imageUrls: arr.length ? arr : undefined });
+                  }}
+                  className="text-[#555] hover:text-[#ff3cac] transition-colors shrink-0"
+                >
+                  <X size={13} />
+                </button>
+              </div>
+            ))}
+            {!(p.imageUrls?.length) && (
+              <p className="text-[10px] text-[#555]">+ 추가 버튼으로 이미지 URL을 입력하세요.</p>
+            )}
           </div>
           <div>
             <label className={labelCls}>기능 목록</label>
