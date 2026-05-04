@@ -34,7 +34,11 @@
         "시뮬레이션 기능"
       ],
       "accent": "#00f0ff",
-      "imageUrl": "/product_img02.png"
+      "imageUrl": "/product_img02.png",
+      "imageUrls": [
+        "/product_img02.png",
+        "/product_img02.jpg"
+      ]
     },
     {
       "id": "03",
@@ -51,7 +55,11 @@
       ],
       "accent": "#ff3cac",
       "cert": "GS인증 1등급",
-      "imageUrl": "/product_img03.png"
+      "imageUrl": "/product_img03.png",
+      "imageUrls": [
+        "/product_img03.png",
+        "/product_img03_01.png"
+      ]
     },
     {
       "id": "04",
@@ -68,7 +76,11 @@
       ],
       "accent": "#ff3cac",
       "cert": "GS인증 1등급",
-      "imageUrl": "/product_img04.png"
+      "imageUrl": "/product_img04.png",
+      "imageUrls": [
+        "/product_img04.png",
+        "/product_img04_01.png"
+      ]
     },
     {
       "id": "05",
