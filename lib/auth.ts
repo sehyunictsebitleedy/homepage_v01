@@ -2,10 +2,17 @@ import crypto from "crypto";
 import { cookies } from "next/headers";
 import type { UserRole } from "@/lib/types";
 
-const SECRET = process.env.ADMIN_SECRET ?? "dev-secret-please-change-in-prod";
-const ADMIN_USER = process.env.ADMIN_USER ?? "admin";
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "admin1234";
+const SECRET = process.env.ADMIN_SECRET;
+const ADMIN_USER = process.env.ADMIN_USER;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const SESSION_COOKIE = "admin_session";
+const SESSION_TTL_MS = 8 * 60 * 60 * 1000; // 8시간
+
+if (!SECRET || !ADMIN_USER || !ADMIN_PASSWORD) {
+  throw new Error(
+    "[auth] ADMIN_SECRET, ADMIN_USER, ADMIN_PASSWORD must be set in environment variables"
+  );
+}
 
 export interface SessionUser {
   id: string;
@@ -13,15 +20,30 @@ export interface SessionUser {
 }
 
 function sign(value: string): string {
-  return crypto.createHmac("sha256", SECRET).update(value).digest("hex");
+  return crypto.createHmac("sha256", SECRET as string).update(value).digest("hex");
+}
+
+function safeEqualString(a: string, b: string): boolean {
+  // 길이가 다르면 timingSafeEqual이 throw하므로 길이를 맞춰서 비교한 뒤
+  // 마지막에 길이 일치 여부도 함께 평가한다.
+  const maxLen = Math.max(a.length, b.length, 1);
+  const aBuf = Buffer.alloc(maxLen);
+  const bBuf = Buffer.alloc(maxLen);
+  aBuf.write(a);
+  bBuf.write(b);
+  const eq = crypto.timingSafeEqual(aBuf, bBuf);
+  return eq && a.length === b.length;
 }
 
 export function verifyCredentials(user: string, password: string): boolean {
-  return user === ADMIN_USER && password === ADMIN_PASSWORD;
+  const userMatch = safeEqualString(user, ADMIN_USER as string);
+  const passMatch = safeEqualString(password, ADMIN_PASSWORD as string);
+  return userMatch && passMatch;
 }
 
 export function createToken(userId: string, role: string): string {
-  const payload = `${userId}:${role}`;
+  const expiresAt = Date.now() + SESSION_TTL_MS;
+  const payload = `${userId}:${role}:${expiresAt}`;
   return `${payload}.${sign(payload)}`;
 }
 
@@ -31,20 +53,23 @@ export function verifyToken(token: string): SessionUser | null {
   const payload = token.slice(0, dotIndex);
   const sig = token.slice(dotIndex + 1);
   const expected = sign(payload);
+
   try {
-    const ok = crypto.timingSafeEqual(
-      Buffer.from(sig, "hex"),
-      Buffer.from(expected, "hex")
-    );
-    if (!ok) return null;
+    const sigBuf = Buffer.from(sig, "hex");
+    const expBuf = Buffer.from(expected, "hex");
+    if (sigBuf.length !== expBuf.length) return null;
+    if (!crypto.timingSafeEqual(sigBuf, expBuf)) return null;
   } catch {
     return null;
   }
-  const colonIndex = payload.lastIndexOf(":");
-  if (colonIndex === -1) return null;
-  const id = payload.slice(0, colonIndex);
-  const role = payload.slice(colonIndex + 1) as UserRole;
-  return { id, role };
+
+  const parts = payload.split(":");
+  if (parts.length !== 3) return null;
+  const [id, role, expiresAtStr] = parts;
+  const expiresAt = Number(expiresAtStr);
+  if (!Number.isFinite(expiresAt) || Date.now() > expiresAt) return null;
+
+  return { id, role: role as UserRole };
 }
 
 export async function getSession(): Promise<SessionUser | null> {
@@ -59,8 +84,8 @@ export async function setSession(userId: string, role: string): Promise<void> {
   cookieStore.set(SESSION_COOKIE, createToken(userId, role), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: 60 * 60 * 8,
+    sameSite: "strict",
+    maxAge: SESSION_TTL_MS / 1000,
     path: "/",
   });
 }

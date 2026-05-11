@@ -1,10 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getSession } from "@/lib/auth";
 import { readData, writeData } from "@/lib/data";
 import type { PartnersData, PartnerItem } from "@/lib/types";
 
 export async function savePartnersAction(formData: FormData) {
+  const session = await getSession();
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+
   const { partners } = readData<PartnersData>("partners.json");
 
   const action = formData.get("action") as string;

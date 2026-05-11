@@ -1,9 +1,15 @@
 "use server";
 
+import { getSession } from "@/lib/auth";
 import { writeData } from "@/lib/data";
 import type { ProductData } from "@/lib/types";
 
 export async function saveProduct(data: ProductData): Promise<{ success: boolean; error?: string }> {
+  const session = await getSession();
+  if (!session) {
+    return { success: false, error: "Unauthorized" };
+  }
+
   try {
     writeData("product.json", data);
     return { success: true };
