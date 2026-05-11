@@ -22,6 +22,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: site.seo.title,
     description: site.seo.description,
+    openGraph: {
+      title: site.seo.ogTitle ?? site.seo.title,
+      description: site.seo.ogDescription ?? site.seo.description,
+      url: site.seo.ogUrl,
+    },
   };
 }
 
@@ -30,8 +35,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const site = readData<SiteData>("site.json");
   return (
     <html lang="ko" className="scroll-smooth">
+      <head>
+        {site.seo.naverVerification && (
+          <>
+            <meta name="NaverBot" content="All" />
+            <meta name="NaverBot" content="index,follow" />
+            <meta name="Yeti" content="All" />
+            <meta name="Yeti" content="index,follow" />
+          </>
+        )}
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#080808] text-[#f0f0f0] min-h-screen`}
       >

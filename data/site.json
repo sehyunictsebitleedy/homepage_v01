@@ -5,7 +5,11 @@
   "location": "Hwaseong, Korea",
   "seo": {
     "title": "SEHYUN ICT",
-    "description": "sehyunict.com — Smarter IT Solution Provider Group"
+    "description": "sehyunict.com — Smarter IT Solution Provider Group",
+    "ogTitle": "세현아이씨티",
+    "ogUrl": "https://sehyunict.com",
+    "ogDescription": "Advanced AI Technology 기반의 최적 솔루션으로 고객 가치를 창출하고 산업은 더 안전하게, 환경은 더 건강하게, 세상은 더 밝게 혁신하는 세현아이씨티",
+    "naverVerification": true
   },
   "footer": {
     "copyright": "© 2026 SEHYUN ICT. All rights reserved.",

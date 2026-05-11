@@ -241,6 +241,18 @@ homepage_v01/
 
 ## 최근 업데이트
 
+### 2026-05-11 — 네이버 크롤러 메타태그 및 OG 태그 추가
+
+#### SEO / 메타태그
+- `data/site.json`에 `ogTitle`, `ogUrl`, `ogDescription`, `naverVerification` 필드 추가
+- `lib/types.ts` `SiteData.seo`에 옵셔널 필드 추가
+- `app/layout.tsx`
+  - `<head>`에 NaverBot / Yeti 크롤러 메타태그 직접 렌더링 (`naverVerification: true` 시 활성)
+  - `generateMetadata`에 `openGraph` 항목 추가 (title, description, url)
+- 네이버 크롤러 허용/차단 여부는 `site.json`의 `naverVerification` 값으로만 제어
+
+---
+
 ### 2026-05-04 — 제품설명 이미지 다중 슬라이드 지원
 
 #### Product 페이지

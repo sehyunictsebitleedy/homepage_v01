@@ -114,6 +114,10 @@ export interface SiteData {
   seo: {
     title: string;
     description: string;
+    ogTitle?: string;
+    ogUrl?: string;
+    ogDescription?: string;
+    naverVerification?: boolean;
   };
   footer: {
     copyright: string;
