@@ -161,14 +161,17 @@ homepage_v01/
 
 ### 환경변수 (`.env`)
 
-| 환경변수 | 기본값 | 설명 |
-|---|---|---|
-| `ADMIN_USER` | `admin` | Superadmin 아이디 |
-| `ADMIN_PASSWORD` | `admin1234` | Superadmin 비밀번호 |
-| `ADMIN_SECRET` | `dev-secret-...` | 세션 서명 키 |
-| `WORKS_CLIENT_ID` | — | LINE WORKS OAuth Client ID |
-| `WORKS_CLIENT_SECRET` | — | LINE WORKS OAuth Client Secret |
-| `NEXTAUTH_URL` | `http://localhost:3000` | 서비스 도메인 (Redirect URI 기반) |
+> ⚠️ `ADMIN_USER`, `ADMIN_PASSWORD`, `ADMIN_SECRET`은 **필수**입니다. 미설정 시 앱이 시작되지 않습니다 (fallback 제거됨).
+> `.env.example` 파일을 복사해서 시작하세요: `cp .env.example .env.local`
+
+| 환경변수 | 필수 | 설명 | 생성 방법 |
+|---|---|---|---|
+| `ADMIN_USER` | ✅ | Superadmin 아이디 | 자유 |
+| `ADMIN_PASSWORD` | ✅ | Superadmin 비밀번호 (최소 12자, 특수문자 권장) | 자유 |
+| `ADMIN_SECRET` | ✅ | 세션 토큰 서명 키 (무작위 64자 hex) | `openssl rand -hex 64` |
+| `WORKS_CLIENT_ID` | — | LINE WORKS OAuth Client ID | LINE WORKS Developer Console |
+| `WORKS_CLIENT_SECRET` | — | LINE WORKS OAuth Client Secret | LINE WORKS Developer Console |
+| `NEXTAUTH_URL` | — | 서비스 도메인 (기본 `http://localhost:3000`) | 자유 |
 
 ### 로그인 방식
 
@@ -185,7 +188,7 @@ homepage_v01/
 | `admin` | 전체 (Users, Settings 포함) |
 | `editor` | 콘텐츠만 (Users, Settings 접근 불가) |
 
-세션은 HMAC-SHA256 서명된 httpOnly 쿠키로 관리되며 8시간 유효합니다.
+세션은 HMAC-SHA256 서명된 httpOnly 쿠키로 관리되며 8시간 유효합니다. 토큰 payload에 만료 시각이 포함되어 서버에서도 만료 검증이 이루어지며, `sameSite=strict`로 CSRF 방어가 강화되어 있습니다. 모든 어드민 Server Action은 호출 직전에 `getSession()`으로 세션을 검증합니다.
 
 세션 토큰 형식: `{userId}:{role}.{HMAC-SHA256}` — `proxy.ts`가 이 형식을 검증하며, 구형/만료 쿠키는 로그인 페이지 진입 시 자동 삭제됩니다.
 
