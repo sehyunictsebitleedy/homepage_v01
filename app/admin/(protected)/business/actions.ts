@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { getSession } from "@/lib/auth";
 import { writeData } from "@/lib/data";
 import type { BusinessData } from "@/lib/types";
@@ -12,6 +13,7 @@ export async function saveBusiness(data: BusinessData): Promise<{ success: boole
 
   try {
     writeData("business.json", data);
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (e) {
     return { success: false, error: String(e) };

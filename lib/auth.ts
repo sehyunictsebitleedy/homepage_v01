@@ -8,6 +8,18 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const SESSION_COOKIE = "admin_session";
 const SESSION_TTL_MS = 8 * 60 * 60 * 1000; // 8시간
 
+// 세션 쿠키 `Secure` 플래그 결정:
+// - COOKIE_SECURE=false 면 강제로 꺼짐 (HTTP 환경 테스트용)
+// - COOKIE_SECURE=true 면 강제로 켜짐
+// - 미지정이면 NODE_ENV=production 일 때만 자동으로 켜짐 (운영 기본)
+// 운영 HTTPS 환경에선 반드시 true 로 두세요.
+const SECURE_COOKIE = (() => {
+  const explicit = process.env.COOKIE_SECURE;
+  if (explicit === "false") return false;
+  if (explicit === "true") return true;
+  return process.env.NODE_ENV === "production";
+})();
+
 if (!SECRET || !ADMIN_USER || !ADMIN_PASSWORD) {
   throw new Error(
     "[auth] ADMIN_SECRET, ADMIN_USER, ADMIN_PASSWORD must be set in environment variables"
@@ -83,8 +95,8 @@ export async function setSession(userId: string, role: string): Promise<void> {
   const cookieStore = await cookies();
   cookieStore.set(SESSION_COOKIE, createToken(userId, role), {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    secure: SECURE_COOKIE,
+    sameSite: SECURE_COOKIE ? "strict" : "lax",
     maxAge: SESSION_TTL_MS / 1000,
     path: "/",
   });
