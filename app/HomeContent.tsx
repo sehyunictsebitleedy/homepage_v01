@@ -278,7 +278,7 @@ export default function HomeContent({
                           <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
                         ))}
                       </span>
-                      <span className="font-mono text-[11px] sm:text-[12px] tracking-wide text-[#9f9f9f] leading-relaxed">
+                      <span className="hidden sm:inline font-mono text-[11px] sm:text-[12px] tracking-wide text-[#9f9f9f] leading-relaxed">
                         {item.desc.split(/\\n|\n|\/n/).map((line, i, arr) => (
                           <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
                         ))}
