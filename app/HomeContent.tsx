@@ -164,7 +164,7 @@ export default function HomeContent({
       </AnimatePresence>
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-[100svh] flex flex-col justify-between px-6 md:px-12 pt-28 pb-12 overflow-hidden">
+      <section className="relative min-h-[100svh] flex flex-col justify-between px-6 md:px-12 pt-28 pb-0 overflow-hidden">
 
         {/* 배경: hero 영상 */}
         <video
@@ -322,10 +322,12 @@ export default function HomeContent({
           )}
         </div>
 
-      </section>
+        {/* ── MARQUEE (Hero 하단) ───────────────────────── */}
+        <div className="relative z-10 mt-auto -mx-6 md:-mx-12">
+          <MarqueeBar items={marqueeItems} />
+        </div>
 
-      {/* ── MARQUEE ──────────────────────────────────────── */}
-      <MarqueeBar items={marqueeItems} />
+      </section>
 
       {/* ── SEbit BRAND ──────────────────────────────────── */}
       <section className="px-6 md:px-12 py-14 border-t border-[#343434]">
