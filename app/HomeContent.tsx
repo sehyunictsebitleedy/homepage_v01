@@ -164,7 +164,7 @@ export default function HomeContent({
       </AnimatePresence>
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-[100svh] flex flex-col justify-between px-6 md:px-12 pt-28 pb-0 overflow-hidden">
+      <section className="relative h-[calc(100svh-4rem)] flex flex-col px-6 md:px-12 pt-24 pb-0 overflow-hidden">
 
         {/* 배경: hero 영상 */}
         <video
@@ -196,8 +196,8 @@ export default function HomeContent({
         <div className="hero-scanline" style={{ animationDelay: "-2s" }} />
 
 
-        {/* 센터 콘텐츠 */}
-        <div className="relative z-10 mb-auto flex flex-col items-center text-center" style={{ marginTop: "-20px" }}>
+        {/* 텍스트 콘텐츠 (상단 고정) */}
+        <div className="relative z-10 flex flex-col items-center text-center">
           {!intro && (
             <>
               <motion.p
@@ -231,13 +231,20 @@ export default function HomeContent({
                   <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
                 ))}
               </motion.p>
+            </>
+          )}
+        </div>
 
+        {/* 원형 + 버튼 (텍스트~마퀴 사이 가운데) */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pb-16">
+          {!intro && (
+            <>
               {/* 사업 영역 — 교집합 원형 */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.95, duration: 0.6 }}
-                className="mt-10 flex items-center justify-center"
+                className="flex items-center justify-center"
               >
                 {[
                   ...hero.circles,
@@ -322,8 +329,8 @@ export default function HomeContent({
           )}
         </div>
 
-        {/* ── MARQUEE (Hero 하단) ───────────────────────── */}
-        <div className="relative z-10 mt-auto -mx-6 md:-mx-12">
+        {/* ── MARQUEE (Hero 하단 고정) ──────────────────── */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
           <MarqueeBar items={marqueeItems} />
         </div>
 
