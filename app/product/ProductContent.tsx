@@ -42,7 +42,7 @@ export default function ProductContent({ data }: { data: ProductData }) {
           <p className="text-xs text-[#a1a1a1] mt-1">SmartGeoKit 8종 제품군 상세 사양 및 적용 사례 포함</p>
         </div>
         <a
-          href="/SmartGeoKit_catalog.pdf"
+          href="/download/2025_Brochure.pdf"
           download
           className="group flex items-center gap-3 bg-[#c8ff00] text-[#080808] text-xs font-bold tracking-widest uppercase px-8 py-4 hover:bg-[#d4ff33] transition-colors shrink-0"
         >
