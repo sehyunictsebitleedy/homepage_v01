@@ -1,6 +1,117 @@
 {
   "years": [
     {
+      "year": "2026",
+      "subtitle": "삼성전자/삼성디스플레이 환경안전, 방재모니터링, 인프라, AI 분야 신규 사업, 시스템 운영",
+      "projects": [
+        {
+          "title": "SDC 26년 MES 도면관리/제조 모바일 운영",
+          "client": "삼성디스플레이",
+          "tag": "Mobile"
+        },
+        {
+          "title": "SDC 26년 MIS 모바일 오피스 운영",
+          "client": "삼성디스플레이",
+          "tag": "Mobile"
+        },
+        {
+          "title": "삼성전자/SDC 등 SmartGeoKit 솔루션 유지보수",
+          "client": "삼성전자",
+          "tag": "유지보수"
+        },
+        {
+          "title": "반도체 26년 인프라환경안전WP 운영",
+          "client": "삼성전자",
+          "tag": "운영관리"
+        },
+        {
+          "title": "반도체 26년 도면관리/설비계통관리 운영",
+          "client": "삼성전자",
+          "tag": "운영관리"
+        },
+        {
+          "title": "반도체 26년 DS EHS 시스템 운영",
+          "client": "삼성전자",
+          "tag": "운영관리"
+        },
+        {
+          "title": "반도체 26년 IDPS 시스템 운영",
+          "client": "삼성전자",
+          "tag": "운영관리"
+        },
+        {
+          "title": "반도체 iDUE 운영",
+          "client": "삼성전자",
+          "tag": "운영관리"
+        },
+        {
+          "title": "반도체 SMCS시스템 운영",
+          "client": "삼성전자",
+          "tag": "운영관리"
+        },
+        {
+          "title": "반도체 TMS 시스템 운영",
+          "client": "삼성전자",
+          "tag": "운영관리"
+        },
+        {
+          "title": "중국 서안 반도체 IDPS 시스템 운영",
+          "client": "삼성전자 (서안)",
+          "tag": "운영관리"
+        },
+        {
+          "title": "중국 서안 반도체 ARTS 시스템 운영",
+          "client": "삼성전자 (서안)",
+          "tag": "운영관리"
+        },
+        {
+          "title": "중국 서안 반도체 SMCS 시스템 운영",
+          "client": "삼성전자 (서안)",
+          "tag": "운영관리"
+        },
+        {
+          "title": "중국 서안 반도체 TMS 시스템 운영",
+          "client": "삼성전자 (서안)",
+          "tag": "운영관리"
+        },
+        {
+          "title": "삼성전자 BOP 공정검증 Sim. 고도화 개발",
+          "client": "삼성전자",
+          "tag": "SI"
+        },
+        {
+          "title": "삼성전자 DMF DT Designer 고도화 개발",
+          "client": "삼성전자",
+          "tag": "SI"
+        },
+        {
+          "title": "반도체 개인정보 보호 강화 개발",
+          "client": "삼성전자",
+          "tag": "SI"
+        },
+        {
+          "title": "반도체 SAIT IDPS 시스템 횡전개",
+          "client": "삼성전자",
+          "tag": "SI"
+        },
+        {
+          "title": "SDC 건설내역표준화 자동화 구축",
+          "client": "삼성디스플레이",
+          "tag": "SI"
+        },
+        {
+          "title": "삼성전자 수원/반도체 GIS Map 유지보수",
+          "client": "삼성전자",
+          "tag": "SI"
+        },
+        {
+          "title": "SDC GIS Map 유지보수",
+          "client": "삼성디스플레이",
+          "tag": "SI"
+        }
+      ]
+    },
+    {
       "year": "2025",
       "subtitle": "삼성전자/삼성디스플레이 DIGITAL TWIN 플랫폼, 환경안전, 방재모니터링 분야 신규 사업, 시스템 운영, 전자 선도과제, SEbit AI 솔루션",
       "projects": [
