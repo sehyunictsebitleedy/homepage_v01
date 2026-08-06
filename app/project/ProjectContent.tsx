@@ -18,9 +18,8 @@ const TAG_COLOR: Record<string, string> = {
   인프라: "text-[#ddd9d9] border-[#444]",
 };
 
-const CURRENT_YEAR = "2025";
-
 export default function ProjectContent({ data }: { data: ProjectData }) {
+  const CURRENT_YEAR = data.years[0]?.year ?? "";
   const [activeYear, setActiveYear] = useState(data.years[0]?.year ?? "");
   const [openYears, setOpenYears] = useState<Set<string>>(
     new Set(data.years.filter((y) => y.year === CURRENT_YEAR).map((y) => y.year))
