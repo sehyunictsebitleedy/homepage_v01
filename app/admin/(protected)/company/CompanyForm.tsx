@@ -36,7 +36,7 @@ export default function CompanyForm({ initial }: { initial: CompanyData }) {
     ));
 
   const addHistory = () =>
-    setHistory([...data.history, { year: String(new Date().getFullYear()), events: [""] }]);
+    setHistory([{ year: String(new Date().getFullYear()), events: [""] }, ...data.history]);
 
   const removeHistory = (i: number) =>
     setHistory(data.history.filter((_, idx) => idx !== i));
